@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace grow_a_plant
 {
-    internal class Input_handler
+    abstract class Menu_2d : Menu
     {
-        // keyboard_state, get pressed key
     }
 }

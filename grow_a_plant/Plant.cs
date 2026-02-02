@@ -8,5 +8,6 @@ namespace grow_a_plant
 {
     internal class Plant
     {
+        // humidity, fertilizer, image, growth stage
     }
 }

@@ -8,5 +8,8 @@ namespace grow_a_plant
 {
     internal class Plant_handler
     {
+        // fertlize, water, update plant
+
+        // plant, time (perhaps)
     }
 }

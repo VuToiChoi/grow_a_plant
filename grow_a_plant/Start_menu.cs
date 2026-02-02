@@ -8,5 +8,6 @@ namespace grow_a_plant
 {
     internal class Start_menu
     {
+        // options: fertilize, water, settings, log
     }
 }

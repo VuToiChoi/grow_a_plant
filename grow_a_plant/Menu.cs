@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace grow_a_plant
 {
-    internal class Menu
+    abstract class Menu
     {
+        // options available in the menu, selected option index, step up, step down, step right, step left
     }
 }
