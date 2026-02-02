@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace grow_a_plant
 {
-    internal class Settings_menu
+    internal class Settings_menu : Menu_1d
     {
-        // options: save, exit, load, 
+        public Settings_menu() : base(new[] { "Return to Game", "Save Game", "Load Game", "Exit Game" })
+        {
+        }
     }
 }
