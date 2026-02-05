@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace grow_a_plant
 {
-    abstract class Menu_2d : Menu
+     public abstract class Menu_2d : Menu
     {
         // the index of the options are determined from up to down and then left to right. So like this:
         //  0   3   6   

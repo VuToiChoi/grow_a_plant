@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace grow_a_plant
 {
-    class Start_menu : Menu_2d
+    public class Start_menu : Menu_2d
     {
         public  Start_menu() : base(new string[] { "Water", "Log", "Fertelize", "Settings" }, 2)
         {
