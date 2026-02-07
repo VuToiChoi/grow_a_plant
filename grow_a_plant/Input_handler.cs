@@ -15,6 +15,10 @@ namespace grow_a_plant
             down,
             left,
             right,
+            w,
+            s,
+            a,
+            d,
             z,
             x,
             none
@@ -40,6 +44,22 @@ namespace grow_a_plant
             else if (keyboard_state.IsKeyDown(Keys.Right))
             {
                 return key.right;
+            }
+            else if (keyboard_state.IsKeyDown(Keys.W))
+            {
+                return key.w;
+            }
+            else if (keyboard_state.IsKeyDown(Keys.S))
+            {
+                return key.s;
+            }
+            else if (keyboard_state.IsKeyDown(Keys.A))
+            {
+                return key.a;
+            }
+            else if (keyboard_state.IsKeyDown(Keys.D))
+            {
+                return key.d;
             }
             else if (keyboard_state.IsKeyDown(Keys.Z))
             {
