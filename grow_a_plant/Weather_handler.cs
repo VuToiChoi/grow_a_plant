@@ -8,5 +8,11 @@ namespace grow_a_plant
 {
     internal class Weather_handler
     {
+        // rain, sun, cloud, wind
+        public Weather_handler(/*weather_info*/) { }
+
+        private void update_weather()
+        {
+        }
     }
 }

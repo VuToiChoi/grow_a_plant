@@ -8,7 +8,8 @@ namespace grow_a_plant
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-
+        private SpriteFont _font;
+        private Plant_handler _plant_handler;
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -26,6 +27,13 @@ namespace grow_a_plant
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+            Data_handler data_Handler = new Data_handler();
+            _font = Content.Load<SpriteFont>("File");
+            Plant plant = new Plant(10, 10 ,0);
+            _plant_handler = new Plant_handler(plant);
+            data_Handler.save_plant_data(plant);
+            _plant_handler.update_plant_info();
+            data_Handler.save_plant_data(plant);
 
             // TODO: use this.Content to load your game content here
         }
@@ -43,7 +51,11 @@ namespace grow_a_plant
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
+            _spriteBatch.DrawString(_font, "Hello, World!", new Vector2(100, 100), Color.White);
+
+            _spriteBatch.End();
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);

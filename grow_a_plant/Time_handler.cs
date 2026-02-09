@@ -8,5 +8,11 @@ namespace grow_a_plant
 {
     internal class Time_handler
     {
+        // real time, in game time
+        public Time_handler(/*time_info*/) { }
+
+        private void update_time()
+        {
+        }
     }
 }
