@@ -15,11 +15,18 @@ namespace grow_a_plant
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+
+            _graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+            _graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
         }
 
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            _graphics.IsFullScreen = true;
+            _graphics.ApplyChanges();
+
+
 
             base.Initialize();
         }

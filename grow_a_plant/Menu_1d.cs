@@ -6,7 +6,21 @@ using System.Threading.Tasks;
 
 namespace grow_a_plant
 {
-    abstract class Menu_1d : Menu
+    public abstract class Menu_1d : Menu
     {
+        public Menu_1d(string[] options) : base(options)
+        {
+            _options = options;
+        }
+
+        override public void step_right()
+        {
+            step_down();
+        }
+
+        override public void step_left()
+        {
+            step_up();
+        }
     }
 }
