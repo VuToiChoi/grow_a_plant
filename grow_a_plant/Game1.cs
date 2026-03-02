@@ -60,7 +60,7 @@ namespace grow_a_plant
             GraphicsDevice.Clear(Color.CornflowerBlue);
             _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
-            _spriteBatch.DrawString(_font, "Hello, World!", new Vector2(100, 100), Color.White);
+            _spriteBatch.DrawString(_font, "Hello World!", new Vector2(100, 100), Color.White);
 
             _spriteBatch.End();
             // TODO: Add your drawing code here
