@@ -70,6 +70,7 @@ namespace grow_a_plant
             // Draw current in-game clock
             _spriteBatch.DrawString(_font, _timeHandler?.ToClockString() ?? "00:00:00", new Vector2(100, 100), Color.White);
 
+
             _spriteBatch.End();
 
             base.Draw(gameTime);
