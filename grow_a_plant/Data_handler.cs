@@ -1,57 +1,98 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.Json;
 
 namespace grow_a_plant
 {
     internal class Data_handler
     {
-        // save, load
-        public Data_handler() 
-        {
-            load_plant_data();
-        }
-        public void save_plant_data(Plant plant)
-        {
-            using (StreamWriter writer = new StreamWriter("plant_data.txt"))
-            {
-                writer.WriteLine(plant.Humidity + ";" + plant.Fertilizer + ";" + plant.Current_growth_stage);
-            }
-        }
-        private Plant load_plant_data()
-        {
-            if (File.Exists("plant_data.txt"))
-            {
-                using (StreamReader reader = new StreamReader("plant_data.txt"))
-                {
-                    while (!reader.EndOfStream)
-                    {
-                        string data = reader.ReadLine();
-                        if (data != null)
-                        {
-                            string[] split_data = data.Split(';');
-                            int humidity = int.Parse(split_data[0]);
-                            int fertilizer = int.Parse(split_data[1]);
-                            int growth_stage = int.Parse(split_data[2]);
-                            Plant loaded_plant = new Plant(humidity, fertilizer, growth_stage);
-                            return loaded_plant;
-                        }
-                        else
-                        {
-                            return new Plant(0, 0, 0); // if no data file exists, return a new plant with default values
-                        }
-                    }
-                }
-                return new Plant(0, 0, 0); // if no data file exists, return a new plant with default values
-            }
-            else
-            {
-                return new Plant(0, 0, 0); // if no data file exists, return a new plant with default values
-            }
+        private readonly string _folder;
+        private readonly string _plantPath;
+        private readonly string _timePath;
 
+        public Data_handler()
+        {
+            _folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "grow_a_plant");
+            Directory.CreateDirectory(_folder);
+            _plantPath = Path.Combine(_folder, "plant_data.txt");
+            _timePath = Path.Combine(_folder, "time_state.json");
+        }
+
+        // Backwards-compatible small API
+        public void save_plant_data(Plant plant) => SavePlantData(plant);
+        private Plant load_plant_data() => LoadPlantData();
+
+        // Robust plant persistence
+        public void SavePlantData(Plant plant)
+        {
+            try
+            {
+                File.WriteAllText(_plantPath, $"{plant.Humidity};{plant.Fertilizer};{plant.Current_growth_stage}");
+            }
+            catch
+            {
+                // best-effort
+            }
+        }
+
+        public Plant LoadPlantData()
+        {
+            try
+            {
+                if (!File.Exists(_plantPath)) return new Plant(0, 0, 0);
+                var text = File.ReadAllText(_plantPath);
+                if (string.IsNullOrWhiteSpace(text)) return new Plant(0, 0, 0);
+                var firstLine = text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries)[0];
+                var parts = firstLine.Split(';');
+                if (parts.Length < 3) return new Plant(0, 0, 0);
+
+                int humidity = int.TryParse(parts[0], out var h) ? h : 0;
+                int fertilizer = int.TryParse(parts[1], out var f) ? f : 0;
+                int growthStage = int.TryParse(parts[2], out var g) ? g : 0;
+                return new Plant(humidity, fertilizer, growthStage);
+            }
+            catch
+            {
+                return new Plant(0, 0, 0);
+            }
+        }
+
+        // Time persistence for Time_handler
+        private class TimeState
+        {
+            public long LastSavedUtcTicks { get; set; }
+            public long DayCount { get; set; }
+        }
+
+        public void SaveTimeState(long lastSavedUtcTicks, long dayCount)
+        {
+            try
+            {
+                var state = new TimeState { LastSavedUtcTicks = lastSavedUtcTicks, DayCount = dayCount };
+                var json = JsonSerializer.Serialize(state);
+                File.WriteAllText(_timePath, json);
+            }
+            catch
+            {
+                // best-effort
+            }
+        }
+
+        // Returns null if no saved state
+        public (long LastSavedUtcTicks, long DayCount)? LoadTimeState()
+        {
+            try
+            {
+                if (!File.Exists(_timePath)) return null;
+                var json = File.ReadAllText(_timePath);
+                var state = JsonSerializer.Deserialize<TimeState>(json);
+                if (state == null) return null;
+                return (state.LastSavedUtcTicks, state.DayCount);
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

@@ -10,6 +10,9 @@ namespace grow_a_plant
         private SpriteBatch _spriteBatch;
         private SpriteFont _font;
         private Plant_handler _plant_handler;
+        private Data_handler _data_Handler;
+        private Time_handler _timeHandler;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -22,11 +25,8 @@ namespace grow_a_plant
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
             _graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
-
-
 
             base.Initialize();
         }
@@ -34,15 +34,22 @@ namespace grow_a_plant
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            Data_handler data_Handler = new Data_handler();
-            _font = Content.Load<SpriteFont>("File");
-            Plant plant = new Plant(10, 10 ,0);
-            _plant_handler = new Plant_handler(plant);
-            data_Handler.save_plant_data(plant);
-            _plant_handler.update_plant_info();
-            data_Handler.save_plant_data(plant);
+            _data_Handler = new Data_handler();
 
-            // TODO: use this.Content to load your game content here
+            _font = Content.Load<SpriteFont>("File");
+
+            // Load plant (use Data_handler.LoadPlantData if desired)
+            Plant plant = new Plant(10, 10, 0);
+            _plant_handler = new Plant_handler(plant);
+
+            // Load saved time state and pass into Time_handler
+            var savedTime = _data_Handler.LoadTimeState(); // nullable tuple
+            _timeHandler = new Time_handler(savedTime);
+
+            // Example: save plant after initial update
+            _data_Handler.SavePlantData(plant);
+            _plant_handler.update_plant_info();
+            _data_Handler.SavePlantData(plant);
         }
 
         protected override void Update(GameTime gameTime)
@@ -50,7 +57,7 @@ namespace grow_a_plant
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+            _timeHandler?.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -60,12 +67,24 @@ namespace grow_a_plant
             GraphicsDevice.Clear(Color.CornflowerBlue);
             _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
-            _spriteBatch.DrawString(_font, "Hello, World!", new Vector2(100, 100), Color.White);
+            // Draw current in-game clock
+            _spriteBatch.DrawString(_font, _timeHandler?.ToClockString() ?? "00:00:00", new Vector2(100, 100), Color.White);
 
             _spriteBatch.End();
-            // TODO: Add your drawing code here
 
             base.Draw(gameTime);
+        }
+
+        protected void OnExiting(object sender, Microsoft.Xna.Framework.ExitingEventArgs args)
+        {
+            // Persist time state via Data_handler
+            if (_timeHandler != null && _data_Handler != null)
+            {
+                var state = _timeHandler.GetSaveState();
+                _data_Handler.SaveTimeState(state.LastSavedUtcTicks, state.DayCount);
+            }
+
+            base.OnExiting(sender, args);
         }
     }
 }
