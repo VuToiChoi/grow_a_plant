@@ -8,70 +8,54 @@ namespace grow_a_plant
 {
     public class Menu_handler
     {
-        private Input_handler _input_handler = new();
-
         private Menu _current_menu;
+        private Pressed_keys_handler _pressed_keys_handler;
 
-        private List<Input_handler.key> _pressed_keys;
-
-        private Dictionary<string, Main_handler.action> _menu_string_to_action_dictionary = new()
+        public enum action
         {
-            { "Return to Game", Main_handler.action.return_to_game },
-            { "Save Game", Main_handler.action.save_game },
-            { "Load Game", Main_handler.action.load_game },
-            { "Exit Game", Main_handler.action.exit_game },
-            { "Water", Main_handler.action.water },
-            { "Log", Main_handler.action.open_log },
-            { "Fertelize", Main_handler.action.fertelize },
-            { "Settings", Main_handler.action.open_settings }
+            return_to_game,
+            save_game,
+            load_game,
+            exit_game,
+            water,
+            open_log,
+            fertelize,
+            open_settings,
+            none
+        }
+
+        private Dictionary<string, action> _menu_string_to_action_dictionary = new()
+        {
+            { "Return to Game", action.return_to_game },
+            { "Save Game", action.save_game },
+            { "Load Game", action.load_game },
+            { "Exit Game", action.exit_game },
+            { "Water", action.water },
+            { "Log", action.open_log },
+            { "Fertelize", action.fertelize },
+            { "Settings", action.open_settings }
         };
 
         public Menu_handler(Menu menu_to_use_currently)
         {
             _current_menu = menu_to_use_currently;
-            _pressed_keys = new List<Input_handler.key>();
+            _pressed_keys_handler = new Pressed_keys_handler();
         }
 
-        public Main_handler.action update()
+        public action update()
         {
-            update_pressed_keys();
+            _pressed_keys_handler.update();
 
-            Input_handler.key first_pressed_key = get_first_pressed_key();
+            Input_handler.key first_pressed_key = _pressed_keys_handler.get_first_pressed_key();
 
-            if (first_pressed_key == Input_handler.key.z)
+            if (first_pressed_key == Input_handler.key.z) // option is selsected
             {
                 return _menu_string_to_action_dictionary[_current_menu.get_selected_option()];
             }
             else
             {
                 update_menu(first_pressed_key); // update what option in the menu is selected
-                return Main_handler.action.none;
-            }
-        }
-
-        private void update_pressed_keys()
-        {
-            Input_handler.key pressed_key = _input_handler.get_pressed_key();
-
-            if (pressed_key != Input_handler.key.none)
-            {
-                _pressed_keys.Add(pressed_key);
-            }
-        }
-
-        private Input_handler.key get_first_pressed_key()
-        {
-            if (_pressed_keys.Count > 0)
-            {
-                Input_handler.key key_to_return = _pressed_keys[0];
-
-                _pressed_keys.RemoveAt(0);
-
-                return key_to_return;
-            }
-            else
-            {
-                return Input_handler.key.none;
+                return action.none;
             }
         }
 
