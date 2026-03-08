@@ -16,7 +16,7 @@ namespace grow_a_plant
 
         private Dictionary<string, Main_handler.action> _menu_string_to_action_dictionary = new()
         {
-            { "Return to Game", Main_handler.action.return_to_Game },
+            { "Return to Game", Main_handler.action.return_to_game },
             { "Save Game", Main_handler.action.save_game },
             { "Load Game", Main_handler.action.load_game },
             { "Exit Game", Main_handler.action.exit_game },
@@ -29,6 +29,7 @@ namespace grow_a_plant
         public Menu_handler(Menu menu_to_use_currently)
         {
             _current_menu = menu_to_use_currently;
+            _pressed_keys = new List<Input_handler.key>();
         }
 
         public Main_handler.action update()
@@ -76,19 +77,19 @@ namespace grow_a_plant
 
         private void update_menu(Input_handler.key pressed_key)
         {
-            if (pressed_key == Input_handler.key.up)
+            if (pressed_key == Input_handler.key.up || pressed_key == Input_handler.key.w)
             {
                 _current_menu.step_up();
             }
-            else if (pressed_key == Input_handler.key.down)
+            else if (pressed_key == Input_handler.key.down || pressed_key == Input_handler.key.s)
             {
                 _current_menu.step_down();
             }
-            else if (pressed_key == Input_handler.key.right)
+            else if (pressed_key == Input_handler.key.right || pressed_key == Input_handler.key.d)
             {
                 _current_menu.step_right();
             }
-            else if (pressed_key == Input_handler.key.left)
+            else if (pressed_key == Input_handler.key.left || pressed_key == Input_handler.key.a)
             {
                 _current_menu.step_left();
             }

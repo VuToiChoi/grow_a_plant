@@ -12,7 +12,7 @@ namespace grow_a_plant
 
         public enum action
         {
-            return_to_Game,
+            return_to_game,
             save_game,
             load_game,
             exit_game,
