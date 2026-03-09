@@ -9,7 +9,7 @@ namespace grow_a_plant
 {
     public class Main_handler
     {
-        Menu_handler _menu_handler;
+        Menu_handler_interface _menu_handler_inerface;
 
         Plant_handler _plant_handler;
 
@@ -17,7 +17,7 @@ namespace grow_a_plant
 
         public Main_handler()
         {
-            _menu_handler = new Menu_handler(); // fix
+            _menu_handler_inerface = new Menu_handler_interface(); // fix
 
             _plant_handler = new Plant_handler(); // fix
 
@@ -26,7 +26,7 @@ namespace grow_a_plant
 
         public void update()
         {
-            Menu_handler.action action = _menu_handler.update();
+            Menu_handler.action action = _menu_handler_inerface.update();
 
             conduct_action(action);
 
@@ -39,7 +39,9 @@ namespace grow_a_plant
         {
             if (action == Menu_handler.action.return_to_game)
             {
-                // change menu
+                _menu_handler_inerface.change_to_start_menu();
+
+                // change something in the interface for it to change proparly
             }
             else if (action == Menu_handler.action.save_game)
             {
@@ -68,10 +70,6 @@ namespace grow_a_plant
             else if (action == Menu_handler.action.open_settings)
             {
                 // open settings menu
-            }
-            else if (action == Menu_handler.action.none)
-            {
-                // do nothing
             }
         }
 
