@@ -18,12 +18,8 @@ namespace grow_a_plant
             _timePath = Path.Combine(_folder, "time_state.json");
         }
 
-        // Backwards-compatible small API
-        public void save_plant_data(Plant plant) => SavePlantData(plant);
-        private Plant load_plant_data() => LoadPlantData();
-
         // Robust plant persistence
-        public void SavePlantData(Plant plant)
+        public void save_plant_data(Plant plant)
         {
             try
             {
@@ -35,7 +31,7 @@ namespace grow_a_plant
             }
         }
 
-        public Plant LoadPlantData()
+        public Plant load_plant_data()
         {
             try
             {
@@ -64,7 +60,7 @@ namespace grow_a_plant
             public long DayCount { get; set; }
         }
 
-        public void SaveTimeState(long lastSavedUtcTicks, long dayCount)
+        public void save_time_state(long lastSavedUtcTicks, long dayCount)
         {
             try
             {
@@ -79,7 +75,7 @@ namespace grow_a_plant
         }
 
         // Returns null if no saved state
-        public (long LastSavedUtcTicks, long DayCount)? LoadTimeState()
+        public (long LastSavedUtcTicks, long DayCount)? load_time_state()
         {
             try
             {

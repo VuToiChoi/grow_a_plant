@@ -7,7 +7,7 @@ namespace grow_a_plant
     {
         // 24 in-game hours == 12 real minutes -> multiplier = 86400 / 720 = 120 game-seconds per real-second
         private const double _game_seconds_per_real_second = 120.0;
-        private const double MaxRealSecondsPerUpdate = 0.5;
+        private const double _max_real_seconds_per_update = 2;
 
         public TimeSpan TimeOfDay { get; private set; } = TimeSpan.Zero;
         public long DayCount { get; private set; } = 0;
@@ -16,10 +16,10 @@ namespace grow_a_plant
         // Accept optional saved state (last saved UTC ticks and saved day count)
         public Time_handler((long LastSavedUtcTicks, long DayCount)? savedState = null)
         {
-            InitializeFromSavedState(savedState);
+            initialize_from_saved_state(savedState);
         }
 
-        private void InitializeFromSavedState((long LastSavedUtcTicks, long DayCount)? savedState)
+        private void initialize_from_saved_state((long LastSavedUtcTicks, long DayCount)? savedState)
         {
             // Start with local real time display
             double initialSeconds = DateTime.Now.TimeOfDay.TotalSeconds;
@@ -47,14 +47,14 @@ namespace grow_a_plant
         }
 
         // Call from Game1.Update(gameTime)
-        public void Update(GameTime gameTime)
+        public void update(GameTime gameTime)
         {
             if (IsPaused) return;
 
             double realSeconds = gameTime.ElapsedGameTime.TotalSeconds;
             if (realSeconds <= 0) return;
 
-            realSeconds = Math.Min(realSeconds, MaxRealSecondsPerUpdate);
+            realSeconds = Math.Min(realSeconds, _max_real_seconds_per_update);
 
             double advanceGameSeconds = realSeconds * _game_seconds_per_real_second;
             double newTotalSeconds = TimeOfDay.TotalSeconds + advanceGameSeconds;
@@ -70,14 +70,14 @@ namespace grow_a_plant
         }
 
         // Provide a tuple for persistence
-        public (long LastSavedUtcTicks, long DayCount) GetSaveState()
+        public (long LastSavedUtcTicks, long DayCount) get_save_state()
         {
             return (DateTime.UtcNow.Ticks, DayCount);
         }
 
-        public float GetDayProgressNormalized() => (float)(TimeOfDay.TotalSeconds / 86400.0);
-        public bool IsDaytime(int dawnHour = 6, int duskHour = 18) =>
+        public float get_day_progress_normalized() => (float)(TimeOfDay.TotalSeconds / 86400.0);
+        public bool is_daytime(int dawnHour = 6, int duskHour = 18) =>
             TimeOfDay.Hours >= dawnHour && TimeOfDay.Hours < duskHour;
-        public string ToClockString() => TimeOfDay.ToString(@"hh\:mm\:ss");
+        public string to_clock_string() => TimeOfDay.ToString(@"hh\:mm\:ss");
     }
 }

@@ -15,9 +15,9 @@ namespace grow_a_plant
         public Plant_handler(Plant plant/*saved_info, time, wheather*/)
         {
             _plant = plant;
-            //humidity in the air
+            //humidity 2m
             //time
-            //Clear
+            //Cloud cover
         }
 
         private int water_plant()
