@@ -14,5 +14,7 @@ namespace grow_a_plant
         public int Y_position { get; private set; }
 
         public Texture2D Image { get; private set; }
+
+        public bool visible { get; set; }
     }
 }
