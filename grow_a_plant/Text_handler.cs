@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace grow_a_plant
+﻿namespace grow_a_plant
 {
     internal class Text_handler
     {
@@ -23,8 +21,7 @@ namespace grow_a_plant
             _current_text = "";
         }
 
-
-        public action update(action action)
+        public void update(action action)
         {
             if (action == action.water) { _current_text = "plants been watered."; }
             else if (action == action.fertilize) { _current_text = "plants been fertilized."; }
@@ -32,9 +29,6 @@ namespace grow_a_plant
             else if (action == action.save_game) { _current_text = "The game is saved."; }
             else if (action == action.load_game) { _current_text = "The game is loaded."; }
         }
-
-
-
     }
 }
 
