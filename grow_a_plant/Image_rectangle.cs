@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace grow_a_plant
 {
-    class Image_square
+    class Image_rectangle
     {
         public int X_position { get; private set; }
 

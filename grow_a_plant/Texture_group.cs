@@ -8,13 +8,13 @@ namespace grow_a_plant
 {
     abstract class Texture_group
     {
-        public Dictionary<string, Image_square> Image_squares { get; private set; }
+        public Dictionary<string, Image_rectangle> Image_rectangles { get; private set; }
 
         // will probably need more fields in the future, like animations and text
 
         public Texture_group()
         {
-            Image_squares = new Dictionary<string, Image_square>();
+            Image_rectangles = new Dictionary<string, Image_rectangle>();
         }
     }
 }

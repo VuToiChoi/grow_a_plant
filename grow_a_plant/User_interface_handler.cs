@@ -30,10 +30,10 @@ namespace grow_a_plant
 
         public void draw()
         {
-            foreach (Image_square image_square in _current_texture_group.Image_squares)
+            foreach (Image_rectangle image_rectangles in _current_texture_group.Image_rectangles)
             {
                 // I do not currently know how to draw but it might work something like this
-                // some drawer class.draw(image_square)
+                // some drawer class.draw(image_rectangles)
             }
         }
 
