@@ -40,8 +40,8 @@ namespace grow_a_plant
 
             _font = Content.Load<SpriteFont>("File");
 
-            // Load plant (use Data_handler.LoadPlantData if desired)
-            Plant plant = new Plant(0, 0, 0);
+            // Load plant and if the data file doesn't exist, create a new plant with default values
+            Plant plant = _data_Handler.load_plant_data();
             _plant_handler = new Plant_handler(plant);
 
             // Load saved time state and pass into Time_handler
@@ -50,12 +50,13 @@ namespace grow_a_plant
 
             // Start weather updates per 30 minutes
             _weather_handler = new Weather_handler();
-            _weather_handler.start_periodic_updates(TimeSpan.FromMinutes(30)); // For testing, you might want to set this to a shorter interval like 5 minutes
+            _weather_handler.start_periodic_updates(TimeSpan.FromMinutes(1)); // For testing, you might want to set this to a shorter interval like 5 minutes
 
-            // Example: save plant after initial update
-            _data_Handler.save_plant_data(plant);
-            _plant_handler.update_plant_info();
-            _data_Handler.save_plant_data(plant);
+            // Example: save plant after initial update for testing
+            // Can be removed later when you implement actual plant interactions
+            //_data_Handler.save_plant_data(plant);
+            //_plant_handler.update_plant_info();
+            //_data_Handler.save_plant_data(plant);
         }
 
         protected override void Update(GameTime gameTime)
@@ -75,7 +76,7 @@ namespace grow_a_plant
 
             // Draw current in-game clock
             _spriteBatch.DrawString(_font, _timeHandler?.to_clock_string() ?? "00:00", new Vector2(100, 100), Color.White);
-
+            _weather_handler.draw(_spriteBatch, _font, new Vector2(100,200));
 
             _spriteBatch.End();
 
