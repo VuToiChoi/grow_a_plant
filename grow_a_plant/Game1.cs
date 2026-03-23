@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
+using System.Reflection.Metadata;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
@@ -11,7 +13,8 @@ namespace grow_a_plant
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private Song song;
+        private Sound_handler _soundHandler;
+        private Song _song;
 
         public Game1()
         {
@@ -28,7 +31,8 @@ namespace grow_a_plant
             // TODO: Add your initialization logic here
             _graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
-
+            _soundHandler = new Sound_handler(_song);
+            _soundHandler.search_for_music(ContentManager content);
 
 
             base.Initialize();
@@ -37,7 +41,6 @@ namespace grow_a_plant
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            
 
             // TODO: use this.Content to load your game content here
         }
