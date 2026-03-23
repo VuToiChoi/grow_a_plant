@@ -37,19 +37,7 @@ namespace grow_a_plant
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            try
-            {
-                var audioPath = Path.Combine(Content.RootDirectory, "music", "Musicforplant.mp3");
-                var fullPath = Path.GetFullPath(audioPath);
-                song = Song.FromUri("Musicforplant", new Uri(fullPath));
-                MediaPlayer.Play(song);
-                MediaPlayer.IsRepeating = true;
-            }
-            catch (System.Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine("Failed to load song: " + ex);
-                // continue without crashing
-            }
+            
 
             // TODO: use this.Content to load your game content here
         }
