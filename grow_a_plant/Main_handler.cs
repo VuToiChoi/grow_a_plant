@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace grow_a_plant
 {
-    class Main_handlercs
+    public class Main_handler
     {
         // draw, update
     }
