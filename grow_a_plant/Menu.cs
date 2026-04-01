@@ -10,11 +10,11 @@ namespace grow_a_plant
     {
         // options available in the menu, selected option index, step up, step down, step right, step left
 
-        protected string[] _options;
+        protected Menu_command_package[] _options;
 
         protected int _selected_option_index;
 
-        public Menu(string[] options)
+        public Menu(Menu_command_package[] options)
         {
             _options = options;
             _selected_option_index = 0;
@@ -43,7 +43,7 @@ namespace grow_a_plant
         {
         }
 
-        public string get_selected_option()
+        public Menu_command_package get_selected_option()
         {
             return _options[_selected_option_index];
         }

@@ -15,7 +15,7 @@ namespace grow_a_plant
 
         private int _height;
 
-        public Menu_2d(string[] options, int height) : base(options)
+        public Menu_2d(Menu_command_package[] options, int height) : base(options)
         {
             _height = height;
         }

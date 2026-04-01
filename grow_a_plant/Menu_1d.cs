@@ -8,7 +8,7 @@ namespace grow_a_plant
 {
     public abstract class Menu_1d : Menu
     {
-        public Menu_1d(string[] options) : base(options)
+        public Menu_1d(Menu_command_package[] options) : base(options)
         {
             _options = options;
         }
