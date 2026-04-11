@@ -26,48 +26,48 @@ namespace grow_a_plant
 
         public void update()
         {
-            Menu_handler.action action = _menu_handler_inerface.update();
+            Menu_command_package command_package = _menu_handler_inerface.update();
 
-            conduct_action(action);
+            conduct_action(command_package.Command);
 
             _plant_handler.update(); // fix
 
             _interface_handler.update(); // fix
         }
 
-        private void conduct_action(Menu_handler.action action)
+        private void conduct_action(Menu_command_package.command_type command)
         {
-            if (action == Menu_handler.action.return_to_game)
+            if (command == Menu_command_package.command_type.return_to_game)
             {
                 _menu_handler_inerface.change_to_start_menu();
 
                 // change something in the interface for it to change proparly
             }
-            else if (action == Menu_handler.action.save_game)
+            else if (command == Menu_command_package.command_type.save_game)
             {
                 // save game
             }
-            else if (action == Menu_handler.action.load_game)
+            else if (command == Menu_command_package.command_type.load_game)
             {
                 // load game
             }
-            else if (action == Menu_handler.action.exit_game)
+            else if (command == Menu_command_package.command_type.exit_game)
             {
                 // exit game
             }
-            else if (action == Menu_handler.action.water)
+            else if (command == Menu_command_package.command_type.water)
             {
                 // water plant
             }
-            else if (action == Menu_handler.action.open_log)
+            else if (command == Menu_command_package.command_type.open_log)
             {
                 // open log
             }
-            else if (action == Menu_handler.action.fertelize)
+            else if (command == Menu_command_package.command_type.fertelize)
             {
                 // fertelize plant
             }
-            else if (action == Menu_handler.action.open_settings)
+            else if (command == Menu_command_package.command_type.open_settings)
             {
                 // open settings menu
             }
