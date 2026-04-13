@@ -8,11 +8,16 @@ namespace grow_a_plant
 {
     abstract class Texture_group
     {
+        public int X_position { get; private set; } // position relative to the whole screen
+
+        public int Y_position { get; private set; } // position relative to the whole screen
+
+        public bool Is_visible { get; set; }
+
         public List<Image_rectangle> Image_rectangles { get; private set; }
 
         // will probably need more fields in the future, like animations and text
 
-        public bool Is_visible { get; set; }
 
         public Texture_group()
         {
