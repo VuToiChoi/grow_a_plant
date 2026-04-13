@@ -10,21 +10,21 @@ namespace grow_a_plant
     internal class Plant
     {
         // humidity, fertilizer, image, growth stage
-        public int Humidity { get; private set; }
-        public int Fertilizer { get; private set; }
-        public int Current_growth_stage { get; private set; }
+        public float Water_level { get; private set; }
+        public float Fertilize_level { get; private set; }
+        public float Current_growth_stage { get; private set; }
 
-        public Plant(int humidity, int fertilizer, int growth_stage) 
+        public Plant(float water_level, float fertilize_level, float growth_stage) 
         {
-            Humidity = humidity;
-            Fertilizer = fertilizer;
+            Water_level = water_level;
+            Fertilize_level = fertilize_level;
             Current_growth_stage = growth_stage;
         }
 
-        public void update_plant(int humidity, int fertilizer, int growth_stage)
+        public void update_plant(float water_level, float fertilize_level, float growth_stage)
         {
-            Humidity = humidity;
-            Fertilizer = fertilizer;
+            Water_level = water_level;
+            Fertilize_level = fertilize_level;
             Current_growth_stage = growth_stage;
         }
     }

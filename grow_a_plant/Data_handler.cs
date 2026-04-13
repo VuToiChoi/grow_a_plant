@@ -23,7 +23,7 @@ namespace grow_a_plant
         {
             try
             {
-                File.WriteAllText(_plantPath, $"{plant.Humidity};{plant.Fertilizer};{plant.Current_growth_stage}");
+                File.WriteAllText(_plantPath, $"{plant.Water_level};{plant.Fertilize_level};{plant.Current_growth_stage}");
             }
             catch
             {

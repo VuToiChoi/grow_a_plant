@@ -40,10 +40,6 @@ namespace grow_a_plant
 
             _font = Content.Load<SpriteFont>("File");
 
-            // Load plant and if the data file doesn't exist, create a new plant with default values
-            Plant plant = _data_Handler.load_plant_data();
-            _plant_handler = new Plant_handler(plant);
-
             // Load saved time state and pass into Time_handler
             var savedTime = _data_Handler.load_time_state(); // nullable tuple
             _timeHandler = new Time_handler(savedTime);
@@ -52,11 +48,9 @@ namespace grow_a_plant
             _weather_handler = new Weather_handler();
             _weather_handler.start_periodic_updates(TimeSpan.FromMinutes(1)); // For testing, you might want to set this to a shorter interval like 5 minutes
 
-            // Example: save plant after initial update for testing
-            // Can be removed later when you implement actual plant interactions
-            //_data_Handler.save_plant_data(plant);
-            //_plant_handler.update_plant_info();
-            //_data_Handler.save_plant_data(plant);
+            // Load plant and if the data file doesn't exist, create a new plant with default values
+            Plant plant = _data_Handler.load_plant_data();
+            _plant_handler = new Plant_handler(plant, _weather_handler, _timeHandler.get_offline_game_seconds(_data_Handler.load_time_state()?.LastSavedUtcTicks ?? DateTime.UtcNow.Ticks));
         }
 
         protected override void Update(GameTime gameTime)

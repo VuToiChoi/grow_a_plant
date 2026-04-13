@@ -121,6 +121,21 @@ namespace grow_a_plant
             _httpClient.Dispose();
         }
 
+        // Public getters to expose current weather values (thread-safe snapshot)
+        public (float temperature, float humidity_2m, float cloud_cover) get_latest_weather()
+        {
+            lock (_lock)
+            {
+                if (!Is_valid || _weather_data == null) return (0f, 0f, 0f);
+                // convert parsed strings to floats; fall back to 0 on parse failure
+                float.TryParse(_weather_data.Data!.Temperature ?? "0", out var temp);
+                float.TryParse(_weather_data.Data!.Relative_humidity ?? "0", out var hum);
+                float.TryParse(_weather_data.Data!.Cloud_cover ?? "0", out var cloud);
+                Is_valid = true;
+                return (temp, hum, cloud);
+            }
+        }
+
         public class WeatherData
         {
             [JsonProperty("current_units")]
