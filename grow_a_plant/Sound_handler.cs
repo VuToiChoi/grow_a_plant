@@ -8,39 +8,23 @@ namespace grow_a_plant
 {
     internal class Sound_handler
     {
-        private Song _song;
+        private Song song;
 
-        public Sound_handler(Song song)
-        {
-            _song = song;
-        }
-        public void search_for_music(ContentManager content)
+        public Sound_handler(ContentManager content)
         {
             try
             {
                 var audioPath = Path.Combine(content.RootDirectory, "music", "Musicforplant.mp3");
                 var fullPath = Path.GetFullPath(audioPath);
-
-                _song = Song.FromUri("Musicforplant", new Uri(fullPath, UriKind.Absolute));
-
+                song = Song.FromUri("main_menu", new Uri(fullPath));
+                MediaPlayer.Play(song);
+                MediaPlayer.IsRepeating = true;
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine("Failed to load song: " + ex);
-            }
+                // continue without crashing
         }
-
-        public void start_music()
-        {
-            if (_song != null)
-            {
-                MediaPlayer.IsRepeating = true;
-                MediaPlayer.Play(_song);
-            }
-        }
-        public void StopMusic()
-        {
-            MediaPlayer.Stop();
         }
     }
 }
