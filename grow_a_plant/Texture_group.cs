@@ -8,13 +8,15 @@ namespace grow_a_plant
 {
     abstract class Texture_group
     {
-        public Dictionary<string, Image_rectangle> Image_rectangles { get; private set; }
+        public List<Image_rectangle> Image_rectangles { get; private set; }
 
         // will probably need more fields in the future, like animations and text
 
+        public bool Is_visible { get; set; }
+
         public Texture_group()
         {
-            Image_rectangles = new Dictionary<string, Image_rectangle>();
+            Image_rectangles = new List<Image_rectangle>();
         }
     }
 }

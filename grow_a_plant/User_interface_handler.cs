@@ -9,25 +9,28 @@ namespace grow_a_plant
 {
     class User_interface_handler
     {
-        Texture_group _current_texture_group;
+        Texture_screen _texture_Screen;
 
-        public void update(Button_command_package.command_type selected_button)
+        public void update(Texture_screen_information texture_screen_information)
         {
-            
+            _texture_Screen.update(texture_screen_information);
         }
 
         public void draw()
         {
-            foreach (Image_rectangle image_rectangles in _current_texture_group.Image_rectangles)
+            foreach (Texture_group texture_group in _texture_Screen.Texture_groups.Values)
             {
-                // I do not currently know how to draw but it might work something like this
-                // some drawer class.draw(image_rectangles)
+                foreach (Image_rectangle image_rectangle in texture_group.Image_rectangles)
+                {
+                    // I do not currently know how to draw but it might work something like this
+                    // some drawer class.draw(image_rectangle)
+                }
             }
         }
 
-        public void change_texture_group(Texture_group texture_group)
+        public void change_texture_screen(Texture_screen texture_screen)
         {
-            _current_texture_group = texture_group;
+            _texture_Screen = texture_screen;
         }
     }
 }
