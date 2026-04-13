@@ -11,19 +11,7 @@ namespace grow_a_plant
     {
         Texture_group _current_texture_group;
 
-        enum button
-        {
-            water, 
-            log, 
-            fertilize,
-            settings,
-            return_to_game,
-            save_game,
-            load_game,
-            exit_game
-        }
-
-        public void update(button selected_button)
+        public void update(Button_command_package.command_type selected_button)
         {
             
         }
