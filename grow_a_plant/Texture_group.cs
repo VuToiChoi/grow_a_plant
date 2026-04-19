@@ -16,6 +16,8 @@ namespace grow_a_plant
 
         public List<Image_rectangle> Image_rectangles { get; private set; }
 
+        public List<Text_rectangle> Text_rectangles { get; private set; }
+
         // will probably need more fields in the future, like animations and text
 
 
@@ -26,6 +28,8 @@ namespace grow_a_plant
             Is_visible = is_visible;
 
             Image_rectangles = new List<Image_rectangle>();
+
+            Text_rectangles = new List<Text_rectangle>();
         }
     }
 }
