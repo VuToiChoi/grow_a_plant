@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace grow_a_plant
 {
-    abstract class Texture_group
+    class Texture_group
     {
         public int X_position { get; private set; } // position relative to the whole screen
 
@@ -19,8 +19,12 @@ namespace grow_a_plant
         // will probably need more fields in the future, like animations and text
 
 
-        public Texture_group()
+        public Texture_group(int x_position, int y_position, bool is_visible)
         {
+            X_position = x_position;
+            Y_position = y_position;
+            Is_visible = is_visible;
+
             Image_rectangles = new List<Image_rectangle>();
         }
     }

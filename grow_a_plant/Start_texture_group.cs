@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace grow_a_plant
 {
-    class Start_texture_group : Texture_group
+    class Start_texture_screen : Texture_screen
     {
-        public Start_texture_group() : base() 
+        public Start_texture_screen() : base() 
         { 
-            Image_rectangles.Add("water", new Image_rectangle() { X_position = 0, Y_position = 0, Image = Game1.Water_image }); // add something like this
+            // in the fututre, this should probably be done by some config files or something 
+            Texture_groups.Add("menu_water_selected", new Texture_group(0, 0, true)); // add something like this
+            Texture_groups["menu_water_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, )); 
         }
     }
 }
