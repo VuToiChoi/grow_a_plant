@@ -57,8 +57,8 @@ namespace grow_a_plant
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
             _timeHandler?.update(gameTime);
+            _plant_handler.update_plant_info();
 
             base.Update(gameTime);
         }
@@ -71,6 +71,7 @@ namespace grow_a_plant
             // Draw current in-game clock
             _spriteBatch.DrawString(_font, _timeHandler?.to_clock_string() ?? "00:00", new Vector2(100, 100), Color.White);
             _weather_handler.draw(_spriteBatch, _font, new Vector2(100,200));
+            _plant_handler.draw_plant_info(_spriteBatch, _font);
 
             _spriteBatch.End();
 
