@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace grow_a_plant
     {
         public Dictionary<string, Texture_group> Texture_groups { get; private set; }
 
-        public Texture_screen()
+        public Texture_screen(GraphicsDevice graphics_device)
         {
             Texture_groups = new Dictionary<string, Texture_group>();
         }

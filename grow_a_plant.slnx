@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="grow_a_plant/grow_a_plant.csproj" />
+  <Project Path="TestProject1/TestProject1.csproj" Id="4229d83f-cd2f-482a-8099-25c7b8d6e1a2" />
 </Solution>
