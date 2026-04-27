@@ -69,30 +69,31 @@ namespace grow_a_plant
             if (currState.IsKeyDown(Keys.Escape))
             {
                 Exit();
-            _timeHandler?.update(gameTime);
-            // time since last Update as float (seconds)
-            float deltaSeconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            _plant_handler.update_plant_info(deltaSeconds*120);
+                _timeHandler?.update(gameTime);
+                // time since last Update as float (seconds)
+                float deltaSeconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
+                _plant_handler.update_plant_info(deltaSeconds * 120);
 
-            if (Keyboard.GetState().IsKeyDown(Keys.W))
-            { 
-                _plant_handler.water_plant();
+                if (Keyboard.GetState().IsKeyDown(Keys.W))
+                {
+                    _plant_handler.water_plant();
+                }
+                if (Keyboard.GetState().IsKeyDown(Keys.F))
+                {
+                    _plant_handler.fertilize_plant();
+                }
+                if (currState.IsKeyDown(Keys.P) && _prevKeyState.IsKeyUp(Keys.P))
+                {
+                    _soundHandler.play_water_sound(Content);
+                }
+
+                // plays soundeffect when P is pressed
+
+                // TODO: Add your update logic here
+
+                base.Update(gameTime);
+                _prevKeyState = currState;
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.F))
-            {
-                _plant_handler.fertilize_plant();
-            }
-            if (currState.IsKeyDown(Keys.P) && _prevKeyState.IsKeyUp(Keys.P))
-            {
-                _soundHandler.play_water_sound(Content);
-            }
-
-            // plays soundeffect when P is pressed
-
-            // TODO: Add your update logic here
-
-            base.Update(gameTime);
-            _prevKeyState = currState;
         }
 
         protected override void Draw(GameTime gameTime)
