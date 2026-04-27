@@ -14,6 +14,7 @@ namespace grow_a_plant
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private Sound_handler _soundHandler;
+        KeyboardState _prevKeyState;
 
         public Game1()
         {
@@ -31,7 +32,7 @@ namespace grow_a_plant
             _graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
             _soundHandler = new Sound_handler(Content);
-
+            _prevKeyState = Keyboard.GetState();
 
 
             base.Initialize();
@@ -40,19 +41,29 @@ namespace grow_a_plant
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            
 
             // TODO: use this.Content to load your game content here
         }
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            KeyboardState currState = Keyboard.GetState();
+
+            if (currState.IsKeyDown(Keys.Escape))
+            {
                 Exit();
+            }
+
+            if (currState.IsKeyDown(Keys.P) && _prevKeyState.IsKeyUp(Keys.P))
+            {
+                _soundHandler.play_water_sound(Content);
+            }
 
             // TODO: Add your update logic here
 
             base.Update(gameTime);
+            _prevKeyState = currState;
         }
 
         protected override void Draw(GameTime gameTime)
