@@ -58,7 +58,18 @@ namespace grow_a_plant
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
             _timeHandler?.update(gameTime);
-            _plant_handler.update_plant_info();
+            // time since last Update as float (seconds)
+            float deltaSeconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            _plant_handler.update_plant_info(deltaSeconds*120);
+
+            if (Keyboard.GetState().IsKeyDown(Keys.W))
+            { 
+                _plant_handler.water_plant();
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.F))
+            {
+                _plant_handler.fertilize_plant();
+            }
 
             base.Update(gameTime);
         }

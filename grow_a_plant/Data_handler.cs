@@ -13,7 +13,10 @@ namespace grow_a_plant
         public Data_handler()
         {
             _folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "grow_a_plant");
-            Directory.CreateDirectory(_folder);
+            if (!Directory.Exists(_folder))
+            { 
+                Directory.CreateDirectory(_folder); 
+            }
             _plantPath = Path.Combine(_folder, "plant_data.txt");
             _timePath = Path.Combine(_folder, "time_state.json");
         }
