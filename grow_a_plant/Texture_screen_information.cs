@@ -16,9 +16,9 @@ namespace grow_a_plant
 
         public float Fertilize_level { get; private set; }
 
-        public float Growth_stage { get; private set; }
+        public int Growth_stage { get; private set; }
         
-        public Texture_screen_information(Button_command_package selected_button, bool button_is_pressed, float water_level, float fertilize_level, float growth_stage)
+        public Texture_screen_information(Button_command_package selected_button, bool button_is_pressed, float water_level, float fertilize_level, int growth_stage)
         {
             Selected_button = selected_button;
             Button_is_pressed = button_is_pressed;
