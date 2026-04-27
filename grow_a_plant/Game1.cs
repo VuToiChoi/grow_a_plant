@@ -35,6 +35,9 @@ namespace grow_a_plant
         {
             _graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
+            _soundHandler = new Sound_handler(Content);
+            // plays background music
+            _prevKeyState = Keyboard.GetState();
 
             base.Initialize();
         }
@@ -84,7 +87,11 @@ namespace grow_a_plant
                 _soundHandler.play_water_sound(Content);
             }
 
-                base.Update(gameTime);
+            // plays soundeffect when P is pressed
+
+            // TODO: Add your update logic here
+
+            base.Update(gameTime);
             _prevKeyState = currState;
         }
 

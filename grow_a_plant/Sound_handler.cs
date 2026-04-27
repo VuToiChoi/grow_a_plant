@@ -30,11 +30,13 @@ namespace grow_a_plant
                 // continue without crashing
             }
         }
+        // plays water sound effect
 
         public void play_water_sound(ContentManager content)
         {
             _waterSound.Play(0.5f, 0, 0);
         }
+        // plays water sound effect in a separate thread to avoid blocking the main game thread
         public void start_background_music(ContentManager content) {
             var audioPath = Path.Combine(content.RootDirectory, "music", "Musicforplant.mp3");
             var fullPath = Path.GetFullPath(audioPath);
@@ -42,6 +44,7 @@ namespace grow_a_plant
             MediaPlayer.Play(_song);
             MediaPlayer.IsRepeating = true;
             MediaPlayer.Volume = 0.5f;
+            // Plays the background music in a loop on a separate thread to avoid blocking the main game thread
         }
     }
 }
