@@ -32,6 +32,7 @@ namespace grow_a_plant
             _graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
             _soundHandler = new Sound_handler(Content);
+            // plays background music
             _prevKeyState = Keyboard.GetState();
 
 
@@ -59,6 +60,8 @@ namespace grow_a_plant
             {
                 _soundHandler.play_water_sound(Content);
             }
+
+            // plays soundeffect when P is pressed
 
             // TODO: Add your update logic here
 
