@@ -15,7 +15,7 @@ namespace grow_a_plant
         public Text_rectangle Start_menu_information_text_rectangle { get; private set; }
 
 
-        public Start_texture_screen(GraphicsDevice graphics_device) : base(graphics_device) 
+        public Start_texture_screen(GraphicsDevice graphics_device) : base(graphics_device)
         {
             _information_text_updater = new Information_text_updater();
 
@@ -129,7 +129,9 @@ namespace grow_a_plant
 
         override public void update(Texture_screen_information texture_screen_information)
         {
-            select_correct_button(texture_screen_information.Selected_button);
+            update_selected_button(texture_screen_information.Selected_button);
+
+            update_growth_stage(texture_screen_information.Growth_stage);
 
             if (texture_screen_information.Button_is_pressed)
             {
@@ -138,12 +140,10 @@ namespace grow_a_plant
                 // add other things that should happen when a button is pressed, like adding animations
             }
 
-            update_growth_stage(texture_screen_information.Growth_stage);
-
             // add the updatating of the water and fertilize bars
         }
 
-        private void select_correct_button(Button_command_package selected_button)
+        private void update_selected_button(Button_command_package selected_button)
         {
             if (selected_button.Command == Button_command_package.command_type.water)
             {
@@ -218,4 +218,5 @@ namespace grow_a_plant
                 Texture_groups["plant_growth_stage_5"].Is_visible = true;
             }
         }
+    }
 }
