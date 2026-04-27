@@ -1,4 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using System.IO;
+using System.Reflection.Metadata;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -14,6 +18,8 @@ namespace grow_a_plant
         private Data_handler _data_Handler;
         private Time_handler _timeHandler;
         private Weather_handler _weather_handler;
+        private Sound_handler _soundHandler;
+        private KeyboardState _prevKeyState;
 
         public Game1()
         {
@@ -55,7 +61,10 @@ namespace grow_a_plant
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            KeyboardState currState = Keyboard.GetState();
+
+            if (currState.IsKeyDown(Keys.Escape))
+            {
                 Exit();
             _timeHandler?.update(gameTime);
             // time since last Update as float (seconds)
@@ -70,8 +79,13 @@ namespace grow_a_plant
             {
                 _plant_handler.fertilize_plant();
             }
+            if (currState.IsKeyDown(Keys.P) && _prevKeyState.IsKeyUp(Keys.P))
+            {
+                _soundHandler.play_water_sound(Content);
+            }
 
-            base.Update(gameTime);
+                base.Update(gameTime);
+            _prevKeyState = currState;
         }
 
         protected override void Draw(GameTime gameTime)
