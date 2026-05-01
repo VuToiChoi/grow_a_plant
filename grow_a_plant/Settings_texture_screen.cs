@@ -36,11 +36,11 @@ namespace grow_a_plant
             Texture_groups["start_menu"].Image_rectangles.Add(new Image_rectangle(812, 136, 266, 69, Texture2D.FromFile(graphics_device, "Content/picture's/startmenubutton.png")));
             Texture_groups["start_menu"].Image_rectangles.Add(new Image_rectangle(1109, 136, 266, 69, Texture2D.FromFile(graphics_device, "Content/picture's/startmenubutton.png")));
             // text
-            Texture_groups["start_menu"].Text_rectangles.Add(new Text_rectangle("settings opened.", 0, 0));
-            Texture_groups["start_menu"].Text_rectangles.Add(new Text_rectangle("Water", 812, 41));
-            Texture_groups["start_menu"].Text_rectangles.Add(new Text_rectangle("Fertilize", 812, 41));
-            Texture_groups["start_menu"].Text_rectangles.Add(new Text_rectangle("Log", 812, 41));
-            Texture_groups["start_menu"].Text_rectangles.Add(new Text_rectangle("Settings", 812, 41));
+            Texture_groups["start_menu"].Text_rectangles.Add(new Text_rectangle("settings opened.", 0, 0, 100, 100));
+            Texture_groups["start_menu"].Text_rectangles.Add(new Text_rectangle("Water", 812, 41, 266, 69));
+            Texture_groups["start_menu"].Text_rectangles.Add(new Text_rectangle("Fertilize", 812, 41, 266, 69));
+            Texture_groups["start_menu"].Text_rectangles.Add(new Text_rectangle("Log", 812, 41, 266, 69));
+            Texture_groups["start_menu"].Text_rectangles.Add(new Text_rectangle("Settings", 812, 41, 266, 69));
 
 
             //settings menus
@@ -54,10 +54,10 @@ namespace grow_a_plant
             Texture_groups["settings_menu_return_to_game_selected"].Image_rectangles.Add(new Image_rectangle(16, 200, 342, 45, Texture2D.FromFile(graphics_device, "Content/picture's/settingslogbutton.png")));
             Texture_groups["settings_menu_return_to_game_selected"].Image_rectangles.Add(new Image_rectangle(16, 265, 342, 45, Texture2D.FromFile(graphics_device, "Content/picture's/settingslogbutton.png")));
             // text
-            Texture_groups["settings_menu_return_to_game_selected"].Text_rectangles.Add(new Text_rectangle("Return to Game", 16, 70));
-            Texture_groups["settings_menu_return_to_game_selected"].Text_rectangles.Add(new Text_rectangle("Save Game", 16, 135));
-            Texture_groups["settings_menu_return_to_game_selected"].Text_rectangles.Add(new Text_rectangle("Load Game", 16, 200));
-            Texture_groups["settings_menu_return_to_game_selected"].Text_rectangles.Add(new Text_rectangle("Exit Game", 16, 265));
+            Texture_groups["settings_menu_return_to_game_selected"].Text_rectangles.Add(new Text_rectangle("Return to Game", 16, 70, 342, 45));
+            Texture_groups["settings_menu_return_to_game_selected"].Text_rectangles.Add(new Text_rectangle("Save Game", 16, 135, 342, 45));
+            Texture_groups["settings_menu_return_to_game_selected"].Text_rectangles.Add(new Text_rectangle("Load Game", 16, 200, 342, 45));
+            Texture_groups["settings_menu_return_to_game_selected"].Text_rectangles.Add(new Text_rectangle("Exit Game", 16, 265, 342, 45));
 
             // settings menu with save game selected
             Texture_groups.Add("settings_menu_save_game_selected", new Texture_group(1061, 71, false));
@@ -68,10 +68,10 @@ namespace grow_a_plant
             Texture_groups["settings_menu_save_game_selected"].Image_rectangles.Add(new Image_rectangle(16, 200, 342, 45, Texture2D.FromFile(graphics_device, "Content/picture's/settingslogbutton.png")));
             Texture_groups["settings_menu_save_game_selected"].Image_rectangles.Add(new Image_rectangle(16, 265, 342, 45, Texture2D.FromFile(graphics_device, "Content/picture's/settingslogbutton.png")));
             // text
-            Texture_groups["settings_menu_save_game_selected"].Text_rectangles.Add(new Text_rectangle("Return to Game", 16, 70));
-            Texture_groups["settings_menu_save_game_selected"].Text_rectangles.Add(new Text_rectangle("Save Game", 16, 135));
-            Texture_groups["settings_menu_save_game_selected"].Text_rectangles.Add(new Text_rectangle("Load Game", 16, 200));
-            Texture_groups["settings_menu_save_game_selected"].Text_rectangles.Add(new Text_rectangle("Exit Game", 16, 265));
+            Texture_groups["settings_menu_save_game_selected"].Text_rectangles.Add(new Text_rectangle("Return to Game", 16, 70, 342, 45));
+            Texture_groups["settings_menu_save_game_selected"].Text_rectangles.Add(new Text_rectangle("Save Game", 16, 135, 342, 45));
+            Texture_groups["settings_menu_save_game_selected"].Text_rectangles.Add(new Text_rectangle("Load Game", 16, 200, 342, 45));
+            Texture_groups["settings_menu_save_game_selected"].Text_rectangles.Add(new Text_rectangle("Exit Game", 16, 265, 342, 45));
 
             // settings menu with load game selected
             Texture_groups.Add("settings_menu_load_game_selected", new Texture_group(1061, 71, false));
@@ -82,10 +82,10 @@ namespace grow_a_plant
             Texture_groups["settings_menu_load_game_selected"].Image_rectangles.Add(new Image_rectangle(16, 200, 342, 45, Texture2D.FromFile(graphics_device, "Content/picture's/settingslogbuttonselected.png")));
             Texture_groups["settings_menu_load_game_selected"].Image_rectangles.Add(new Image_rectangle(16, 265, 342, 45, Texture2D.FromFile(graphics_device, "Content/picture's/settingslogbutton.png")));
             // text
-            Texture_groups["settings_menu_load_game_selected"].Text_rectangles.Add(new Text_rectangle("Return to Game", 16, 70));
-            Texture_groups["settings_menu_load_game_selected"].Text_rectangles.Add(new Text_rectangle("Save Game", 16, 135));
-            Texture_groups["settings_menu_load_game_selected"].Text_rectangles.Add(new Text_rectangle("Load Game", 16, 200));
-            Texture_groups["settings_menu_load_game_selected"].Text_rectangles.Add(new Text_rectangle("Exit Game", 16, 265));
+            Texture_groups["settings_menu_load_game_selected"].Text_rectangles.Add(new Text_rectangle("Return to Game", 16, 70, 342, 45));
+            Texture_groups["settings_menu_load_game_selected"].Text_rectangles.Add(new Text_rectangle("Save Game", 16, 135, 342, 45));
+            Texture_groups["settings_menu_load_game_selected"].Text_rectangles.Add(new Text_rectangle("Load Game", 16, 200, 342, 45));
+            Texture_groups["settings_menu_load_game_selected"].Text_rectangles.Add(new Text_rectangle("Exit Game", 16, 265, 342, 45));
 
             // settings menu with exit game selected
             Texture_groups.Add("settings_menu_exit_game_selected", new Texture_group(1061, 71, false));
@@ -96,10 +96,10 @@ namespace grow_a_plant
             Texture_groups["settings_menu_exit_game_selected"].Image_rectangles.Add(new Image_rectangle(16, 200, 342, 45, Texture2D.FromFile(graphics_device, "Content/picture's/settingslogbutton.png")));
             Texture_groups["settings_menu_exit_game_selected"].Image_rectangles.Add(new Image_rectangle(16, 265, 342, 45, Texture2D.FromFile(graphics_device, "Content/picture's/settingslogbuttonselected.png")));
             // text
-            Texture_groups["settings_menu_exit_game_selected"].Text_rectangles.Add(new Text_rectangle("Return to Game", 16, 70));
-            Texture_groups["settings_menu_exit_game_selected"].Text_rectangles.Add(new Text_rectangle("Save Game", 16, 135));
-            Texture_groups["settings_menu_exit_game_selected"].Text_rectangles.Add(new Text_rectangle("Load Game", 16, 200));
-            Texture_groups["settings_menu_exit_game_selected"].Text_rectangles.Add(new Text_rectangle("Exit Game", 16, 265));
+            Texture_groups["settings_menu_exit_game_selected"].Text_rectangles.Add(new Text_rectangle("Return to Game", 16, 70, 342, 45));
+            Texture_groups["settings_menu_exit_game_selected"].Text_rectangles.Add(new Text_rectangle("Save Game", 16, 135, 342, 45));
+            Texture_groups["settings_menu_exit_game_selected"].Text_rectangles.Add(new Text_rectangle("Load Game", 16, 200, 342, 45));
+            Texture_groups["settings_menu_exit_game_selected"].Text_rectangles.Add(new Text_rectangle("Exit Game", 16, 265, 342, 45));
 
 
             // plants

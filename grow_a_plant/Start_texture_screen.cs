@@ -35,7 +35,7 @@ namespace grow_a_plant
 
 
             // start menus
-            Start_menu_information_text_rectangle = new Text_rectangle("", 0, 0);
+            Start_menu_information_text_rectangle = new Text_rectangle("", 0, 0, 100, 100);
 
             // start menu with water selected
             Texture_groups.Add("start_menu_water_selected", new Texture_group(0, 783, true));
@@ -47,10 +47,10 @@ namespace grow_a_plant
             Texture_groups["start_menu_water_selected"].Image_rectangles.Add(new Image_rectangle(1109, 136, 266, 69, Texture2D.FromFile(graphics_device, "Content/picture's/startmenubutton.png")));
             // text
             Texture_groups["start_menu_water_selected"].Text_rectangles.Add(Start_menu_information_text_rectangle);
-            Texture_groups["start_menu_water_selected"].Text_rectangles.Add(new Text_rectangle("Water", 812, 41));
-            Texture_groups["start_menu_water_selected"].Text_rectangles.Add(new Text_rectangle("Fertilize", 812, 41));
-            Texture_groups["start_menu_water_selected"].Text_rectangles.Add(new Text_rectangle("Log", 812, 41));
-            Texture_groups["start_menu_water_selected"].Text_rectangles.Add(new Text_rectangle("Settings", 812, 41));
+            Texture_groups["start_menu_water_selected"].Text_rectangles.Add(new Text_rectangle("Water", 812, 41, 266, 69));
+            Texture_groups["start_menu_water_selected"].Text_rectangles.Add(new Text_rectangle("Fertilize", 812, 41, 266, 69));
+            Texture_groups["start_menu_water_selected"].Text_rectangles.Add(new Text_rectangle("Log", 812, 41, 266, 69));
+            Texture_groups["start_menu_water_selected"].Text_rectangles.Add(new Text_rectangle("Settings", 812, 41, 266, 69));
 
 
             // start menu with fertilize selected
@@ -63,10 +63,10 @@ namespace grow_a_plant
             Texture_groups["start_menu_fertilize_selected"].Image_rectangles.Add(new Image_rectangle(1109, 136, 266, 69, Texture2D.FromFile(graphics_device, "Content/picture's/startmenubutton.png")));
             // text
             Texture_groups["start_menu_fertilize_selected"].Text_rectangles.Add(Start_menu_information_text_rectangle);
-            Texture_groups["start_menu_fertilize_selected"].Text_rectangles.Add(new Text_rectangle("Water", 812, 41));
-            Texture_groups["start_menu_fertilize_selected"].Text_rectangles.Add(new Text_rectangle("Fertilize", 812, 41));
-            Texture_groups["start_menu_fertilize_selected"].Text_rectangles.Add(new Text_rectangle("Log", 812, 41));
-            Texture_groups["start_menu_fertilize_selected"].Text_rectangles.Add(new Text_rectangle("Settings", 812, 41));
+            Texture_groups["start_menu_fertilize_selected"].Text_rectangles.Add(new Text_rectangle("Water", 812, 41, 266, 69));
+            Texture_groups["start_menu_fertilize_selected"].Text_rectangles.Add(new Text_rectangle("Fertilize", 812, 41, 266, 69));
+            Texture_groups["start_menu_fertilize_selected"].Text_rectangles.Add(new Text_rectangle("Log", 812, 41, 266, 69));
+            Texture_groups["start_menu_fertilize_selected"].Text_rectangles.Add(new Text_rectangle("Settings", 812, 41, 266, 69));
 
 
             // start menu with log selected
@@ -79,10 +79,10 @@ namespace grow_a_plant
             Texture_groups["start_menu_log_selected"].Image_rectangles.Add(new Image_rectangle(1109, 136, 266, 69, Texture2D.FromFile(graphics_device, "Content/picture's/startmenubutton.png")));
             // text
             Texture_groups["start_menu_log_selected"].Text_rectangles.Add(Start_menu_information_text_rectangle);
-            Texture_groups["start_menu_log_selected"].Text_rectangles.Add(new Text_rectangle("Water", 812, 41));
-            Texture_groups["start_menu_log_selected"].Text_rectangles.Add(new Text_rectangle("Fertilize", 812, 41));
-            Texture_groups["start_menu_log_selected"].Text_rectangles.Add(new Text_rectangle("Log", 812, 41));
-            Texture_groups["start_menu_log_selected"].Text_rectangles.Add(new Text_rectangle("Settings", 812, 41));
+            Texture_groups["start_menu_log_selected"].Text_rectangles.Add(new Text_rectangle("Water", 812, 41, 266, 69));
+            Texture_groups["start_menu_log_selected"].Text_rectangles.Add(new Text_rectangle("Fertilize", 812, 41, 266, 69));
+            Texture_groups["start_menu_log_selected"].Text_rectangles.Add(new Text_rectangle("Log", 812, 41, 266, 69));
+            Texture_groups["start_menu_log_selected"].Text_rectangles.Add(new Text_rectangle("Settings", 812, 41, 266, 69));
 
 
             // start menu with settings selected
@@ -95,10 +95,10 @@ namespace grow_a_plant
             Texture_groups["start_menu_settings_selected"].Image_rectangles.Add(new Image_rectangle(1109, 136, 266, 69, Texture2D.FromFile(graphics_device, "Content/picture's/startmenubuttonselect.png")));
             // text
             Texture_groups["start_menu_settings_selected"].Text_rectangles.Add(Start_menu_information_text_rectangle);
-            Texture_groups["start_menu_settings_selected"].Text_rectangles.Add(new Text_rectangle("Water", 812, 41));
-            Texture_groups["start_menu_settings_selected"].Text_rectangles.Add(new Text_rectangle("Fertilize", 812, 41));
-            Texture_groups["start_menu_settings_selected"].Text_rectangles.Add(new Text_rectangle("Log", 812, 41));
-            Texture_groups["start_menu_settings_selected"].Text_rectangles.Add(new Text_rectangle("Settings", 812, 41));
+            Texture_groups["start_menu_settings_selected"].Text_rectangles.Add(new Text_rectangle("Water", 812, 41, 266, 69));
+            Texture_groups["start_menu_settings_selected"].Text_rectangles.Add(new Text_rectangle("Fertilize", 812, 41, 266, 69));
+            Texture_groups["start_menu_settings_selected"].Text_rectangles.Add(new Text_rectangle("Log", 812, 41, 266, 69));
+            Texture_groups["start_menu_settings_selected"].Text_rectangles.Add(new Text_rectangle("Settings", 812, 41, 266, 69));
 
 
             // plants
