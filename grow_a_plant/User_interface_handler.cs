@@ -30,14 +30,17 @@ namespace grow_a_plant
         {
             foreach (Texture_group texture_group in _texture_Screen.Texture_groups.Values)
             {
-                foreach (Image_rectangle image_rectangle in texture_group.Image_rectangles)
+                if (texture_group.Is_visible)
                 {
-                    _user_interface_drawer.draw(texture_group.X_position, texture_group.Y_position, image_rectangle);
-                }
+                    foreach (Image_rectangle image_rectangle in texture_group.Image_rectangles)
+                    {
+                        _user_interface_drawer.draw(texture_group.X_position, texture_group.Y_position, image_rectangle);
+                    }
 
-                foreach (Text_rectangle text_rectangle in texture_group.Text_rectangles)
-                {
-                    _user_interface_drawer.draw(texture_group.X_position, texture_group.Y_position, text_rectangle);
+                    foreach (Text_rectangle text_rectangle in texture_group.Text_rectangles)
+                    {
+                        _user_interface_drawer.draw(texture_group.X_position, texture_group.Y_position, text_rectangle);
+                    }
                 }
             }
         }
