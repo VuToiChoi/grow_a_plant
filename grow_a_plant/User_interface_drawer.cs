@@ -38,16 +38,16 @@ namespace grow_a_plant
 
         public void draw(int relative_x_origin, int relative_y_origin, Text_rectangle text_rectangle) // the position of a Image_rectangle does not have to be relative to the origin of the screen. The y and x relative origins are therfore used to set this orgin. For an Image_rectangle in a Texture_group, this would be the position of the texture_group.
         {
-            float scale = get_scale_of_text_to_fit_text_rectangle(relative_x_origin, relative_y_origin, text_rectangle);
+            float scale = get_scale_of_text_to_fit_text_rectangle(text_rectangle);
 
             _sprite_batch.Begin();
 
-            _sprite_batch.DrawString(_sprite_font, text_rectangle.Text, new Vector2(text_rectangle.X_postition, text_rectangle.Y_postition), Color.White, 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
+            _sprite_batch.DrawString(_sprite_font, text_rectangle.Text, new Vector2(relative_x_origin + text_rectangle.X_postition,relative_y_origin + text_rectangle.Y_postition), Color.White, 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
             
             _sprite_batch.End();
         }
 
-        private float get_scale_of_text_to_fit_text_rectangle(int relative_x_origin, int relative_y_origin, Text_rectangle text_rectangle) // the position of a Image_rectangle does not have to be relative to the origin of the screen. The y and x relative origins are therfore used to set this orgin. For an Image_rectangle in a Texture_group, this would be the position of the texture_group.
+        private float get_scale_of_text_to_fit_text_rectangle(Text_rectangle text_rectangle)
         {
             Vector2 text_size = _sprite_font.MeasureString(text_rectangle.Text);
 
