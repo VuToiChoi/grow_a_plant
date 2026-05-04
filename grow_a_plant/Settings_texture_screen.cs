@@ -32,10 +32,10 @@ namespace grow_a_plant
             Texture_groups.Add("start_menu", new Texture_group(0, 783, true));
             // images
             Texture_groups["start_menu"].Image_rectangles.Add(new Image_rectangle(0, 0, 1440, 241, _content.Load<Texture2D>("picture's\\background")));
-            Texture_groups["start_menu"].Image_rectangles.Add(new Image_rectangle(812, 41, 266, 69, _content.Load<Texture2D>("picture's\\startmenuebuttonselect")));
+            Texture_groups["start_menu"].Image_rectangles.Add(new Image_rectangle(812, 41, 266, 69, _content.Load<Texture2D>("picture's\\startmenuebutton")));
             Texture_groups["start_menu"].Image_rectangles.Add(new Image_rectangle(1109, 41, 266, 69, _content.Load<Texture2D>("picture's\\startmenuebutton")));
             Texture_groups["start_menu"].Image_rectangles.Add(new Image_rectangle(812, 136, 266, 69, _content.Load<Texture2D>("picture's\\startmenuebutton")));
-            Texture_groups["start_menu"].Image_rectangles.Add(new Image_rectangle(1109, 136, 266, 69, _content.Load<Texture2D>("picture's\\startmenuebutton")));
+            Texture_groups["start_menu"].Image_rectangles.Add(new Image_rectangle(1109, 136, 266, 69, _content.Load<Texture2D>("picture's\\startmenuebuttonselect")));
             // text
             Texture_groups["start_menu"].Text_rectangles.Add(new Text_rectangle("Settings has been opened.", 0, 0, 100, 100));
             Texture_groups["start_menu"].Text_rectangles.Add(new Text_rectangle("Water", 812, 41, 266, 69));
