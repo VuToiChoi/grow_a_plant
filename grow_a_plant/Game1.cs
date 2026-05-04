@@ -1,11 +1,11 @@
 ﻿using System;
+using System;
 using System.IO;
 using System.Reflection.Metadata;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System;
 
 namespace grow_a_plant
 {
@@ -95,11 +95,14 @@ namespace grow_a_plant
                 _plant_handler?.fertilize_plant();
 
             if (currState.IsKeyDown(Keys.P) && _prevKeyState.IsKeyUp(Keys.P))
+            {
                 _soundHandler?.play_water_sound(Content);
+            }
 
             _prevKeyState = currState;
             base.Update(gameTime);
         }
+        
 
         protected override void Draw(GameTime gameTime)
         {
