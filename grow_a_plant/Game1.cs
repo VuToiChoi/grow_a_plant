@@ -1,11 +1,11 @@
 ﻿using System;
+using System;
 using System.IO;
 using System.Reflection.Metadata;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System;
 
 namespace grow_a_plant
 {
@@ -75,14 +75,14 @@ namespace grow_a_plant
                 _soundHandler.play_water_sound(Content);
             }
 
-                // plays soundeffect when P is pressed
+            // plays soundeffect when P is pressed
 
-                // TODO: Add your update logic here
+            // TODO: Add your update logic here
 
-                base.Update(gameTime);
-                _prevKeyState = currState;
-            }
+            base.Update(gameTime);
+            _prevKeyState = currState;
         }
+        
 
         protected override void Draw(GameTime gameTime)
         {
@@ -91,7 +91,7 @@ namespace grow_a_plant
 
             // Draw current in-game clock
             _spriteBatch.DrawString(_font, _timeHandler?.to_clock_string() ?? "00:00", new Vector2(100, 100), Color.White);
-            _weather_handler.draw(_spriteBatch, _font, new Vector2(100,200));
+            _weather_handler.draw(_spriteBatch, _font, new Vector2(100, 200));
             _plant_handler.draw_plant_info(_spriteBatch, _font);
 
             _spriteBatch.End();
