@@ -31,6 +31,7 @@ namespace grow_a_plant
             // TODO: Add your initialization logic here
             _graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
+            _soundHandler = new Sound_handler(Content);
             _prevKeyState = Keyboard.GetState();
 
 
