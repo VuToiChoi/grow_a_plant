@@ -31,8 +31,6 @@ namespace grow_a_plant
             // TODO: Add your initialization logic here
             _graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
-            _soundHandler = new Sound_handler(Content);
-            // plays background music
             _prevKeyState = Keyboard.GetState();
 
 
@@ -56,12 +54,20 @@ namespace grow_a_plant
                 Exit();
             }
 
-            if (currState.IsKeyDown(Keys.P) && _prevKeyState.IsKeyUp(Keys.P))
-            {
-                _soundHandler.play_water_sound(Content);
-            }
+                if (Keyboard.GetState().IsKeyDown(Keys.W))
+                {
+                    _plant_handler.water_plant();
+                }
+                if (Keyboard.GetState().IsKeyDown(Keys.F))
+                {
+                    _plant_handler.fertilize_plant();
+                }
+                if (currState.IsKeyDown(Keys.P) && _prevKeyState.IsKeyUp(Keys.P))
+                {
+                    _soundHandler.play_water_sound(Content);
+                }
 
-            // plays soundeffect when P is pressed
+                // plays soundeffect when P is pressed
 
             // TODO: Add your update logic here
 
