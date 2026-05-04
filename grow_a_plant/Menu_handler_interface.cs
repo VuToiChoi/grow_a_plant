@@ -32,7 +32,7 @@ namespace grow_a_plant
             _menu_handler.change_menu(_settings_menu);
         }
 
-        public Menu_command_package update()
+        public Menu_handler_information update()
         {
             return _menu_handler.update();
         }

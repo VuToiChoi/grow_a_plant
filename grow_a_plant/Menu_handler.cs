@@ -17,7 +17,7 @@ namespace grow_a_plant
             _pressed_keys_handler = new Pressed_keys_handler();
         }
 
-        public Menu_command_package update()
+        public Menu_handler_information update()
         {
             _pressed_keys_handler.update();
 
@@ -25,12 +25,17 @@ namespace grow_a_plant
 
             if (first_pressed_key == Input_handler.key.z) // option is selsected
             {
-                return _current_menu.get_selected_option();
+                Menu_handler_information menu_handler_information = new Menu_handler_information(_current_menu.get_selected_option(), true);
+
+                return menu_handler_information;
             }
             else
             {
                 update_menu(first_pressed_key); // update what option in the menu is selected
-                return new Menu_command_package(Menu_command_package.command_type.none);
+
+                Menu_handler_information menu_handler_information = new Menu_handler_information(_current_menu.get_selected_option(), false);
+
+                return menu_handler_information;
             }
         }
 
