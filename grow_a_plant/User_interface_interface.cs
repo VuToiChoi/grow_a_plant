@@ -39,5 +39,9 @@ namespace grow_a_plant
             _user_interface_handler.update(texture_screen_information);
         }
 
+        public void draw()
+        {
+            _user_interface_handler.draw();
+        }
     }
 }
