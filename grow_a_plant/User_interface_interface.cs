@@ -21,7 +21,7 @@ namespace grow_a_plant
             _start_texture_screen = new Start_texture_screen(graphics_device, content);
             _settings_texture_screen = new Settings_texture_screen(graphics_device, content);
 
-            User_interface_handler _user_interface_handler = new User_interface_handler(_start_texture_screen, sprite_batch, sprite_font);
+            _user_interface_handler = new User_interface_handler(_start_texture_screen, sprite_batch, sprite_font);
         }
 
         public void change_to_start_texture_screen()
