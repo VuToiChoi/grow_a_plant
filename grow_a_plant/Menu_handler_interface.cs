@@ -19,7 +19,7 @@ namespace grow_a_plant
             _start_menu = new Start_menu();
             _settings_menu = new Settings_menu();
 
-            Menu_handler _menu_handler = new Menu_handler(_start_menu);
+            _menu_handler = new Menu_handler(_start_menu);
         }
 
         public void change_to_start_menu()
