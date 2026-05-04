@@ -35,7 +35,7 @@ namespace grow_a_plant
             Texture_groups["start_menu"].Image_rectangles.Add(new Image_rectangle(812, 41, 266, 69, _content.Load<Texture2D>("picture's\\startmenuebutton")));
             Texture_groups["start_menu"].Image_rectangles.Add(new Image_rectangle(1109, 41, 266, 69, _content.Load<Texture2D>("picture's\\startmenuebutton")));
             Texture_groups["start_menu"].Image_rectangles.Add(new Image_rectangle(812, 136, 266, 69, _content.Load<Texture2D>("picture's\\startmenuebutton")));
-            Texture_groups["start_menu"].Image_rectangles.Add(new Image_rectangle(1109, 136, 266, 69, _content.Load<Texture2D>("picture's\\startmenuebuttonselect")));
+            Texture_groups["start_menu"].Image_rectangles.Add(new Image_rectangle(1109, 136, 266, 69, _content.Load<Texture2D>("picture's\\startmenuebutton")));
             // text
             Texture_groups["start_menu"].Text_rectangles.Add(new Text_rectangle("Settings has been opened.", 0, 0, 100, 100));
             Texture_groups["start_menu"].Text_rectangles.Add(new Text_rectangle("Water", 812, 41, 266, 69));
@@ -155,8 +155,8 @@ namespace grow_a_plant
             else if (selected_button.Command == Button_command_package.command_type.load_game)
             {
                 Texture_groups["settings_menu_return_to_game_selected"].Is_visible = false;
-                Texture_groups["settings_menu_save_game_selected"].Is_visible = true;
-                Texture_groups["settings_menu_load_game_selected"].Is_visible = false;
+                Texture_groups["settings_menu_save_game_selected"].Is_visible = false;
+                Texture_groups["settings_menu_load_game_selected"].Is_visible = true;
                 Texture_groups["settings_menu_exit_game_selected"].Is_visible = false;
             }
             else if (selected_button.Command == Button_command_package.command_type.exit_game)
