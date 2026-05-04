@@ -18,7 +18,7 @@ namespace grow_a_plant
 
         User_interface_interface _user_interface_interface;
 
-        Dictionary<Menu_command_package.command_type, Button_command_package> _menu_command_package_command_type_to_button_command_package_dictionary = new Dictionary<Menu_command_package.command_type, Button_command_package> 
+        Dictionary<Menu_command_package.command_type, Button_command_package> _menu_command_package_command_type_to_button_command_package_dictionary = new Dictionary<Menu_command_package.command_type, Button_command_package>
         {
             { Menu_command_package.command_type.water, new Button_command_package(Button_command_package.command_type.water) },
             { Menu_command_package.command_type.open_log, new Button_command_package(Button_command_package.command_type.log) },
@@ -95,6 +95,9 @@ namespace grow_a_plant
             }
         }
 
-        // draw
+        public void draw()
+        {
+            _user_interface_interface.draw();
+        }
     }
 }
