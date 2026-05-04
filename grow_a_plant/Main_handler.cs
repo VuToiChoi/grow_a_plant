@@ -12,7 +12,7 @@ namespace grow_a_plant
 {
     public class Main_handler
     {
-        Menu_handler_interface _menu_handler_inerface;
+        Menu_handler_interface _menu_handler_interface;
 
         Plant_handler _plant_handler;
 
@@ -32,7 +32,7 @@ namespace grow_a_plant
 
         public Main_handler(SpriteBatch sprite_batch, SpriteFont sprite_font, GraphicsDevice graphics_device, ContentManager content)
         {
-            _menu_handler_inerface = new Menu_handler_interface();
+            _menu_handler_interface = new Menu_handler_interface();
 
             _plant_handler = new Plant_handler(); // fix
 
@@ -41,7 +41,7 @@ namespace grow_a_plant
 
         public void update()
         {
-            Menu_handler_information menu_handler_information = _menu_handler_inerface.update();
+            Menu_handler_information menu_handler_information = _menu_handler_interface.update();
 
             if (menu_handler_information.Button_is_pressed)
             {
@@ -59,9 +59,9 @@ namespace grow_a_plant
         {
             if (command == Menu_command_package.command_type.return_to_game)
             {
-                _menu_handler_inerface.change_to_start_menu();
+                _menu_handler_interface.change_to_start_menu();
 
-                // change something in the interface for it to change proparly
+                _user_interface_interface.change_to_start_texture_screen();
             }
             else if (command == Menu_command_package.command_type.save_game)
             {
@@ -89,10 +89,12 @@ namespace grow_a_plant
             }
             else if (command == Menu_command_package.command_type.open_settings)
             {
-                // open settings menu
+                _menu_handler_interface.change_to_settings_menu();
+
+                _user_interface_interface.change_to_settings_texture_screen();
             }
         }
 
-        // draw, update
+        // draw
     }
 }
