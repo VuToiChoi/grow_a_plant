@@ -69,8 +69,6 @@ namespace grow_a_plant
             if (currState.IsKeyDown(Keys.Escape))
             {
                 Exit();
-            _timeHandler?.update(gameTime);
-            _plant_handler.update_plant_info();
                 _timeHandler?.update(gameTime);
                 // time since last Update as float (seconds)
                 float deltaSeconds = (float)gameTime.ElapsedGameTime.TotalSeconds;

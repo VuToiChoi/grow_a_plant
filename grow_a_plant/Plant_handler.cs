@@ -17,14 +17,14 @@ namespace grow_a_plant
             _delta_time = delta_time;
         }
 
-        public float water_plant()
+        public void water_plant()
         {
-            return 0.1f;
+            _plant.update_plant(Math.Min(1f, _plant.Water_level + 0.1f), _plant.Fertilize_level, _plant.Current_growth_stage);
         }
 
-        public float fertilize_plant()
+        public void fertilize_plant()
         {
-            return 0.1f;
+            _plant.update_plant(_plant.Water_level, Math.Min(1f, _plant.Fertilize_level + 0.1f), _plant.Current_growth_stage);
         }
 
         private float get_cloud_cover()
@@ -58,6 +58,10 @@ namespace grow_a_plant
         {
             // Avrage growth per sec= (((0.5sin(2pi(water-1/4))+1) + 0.5sin(2pi(fertlize-1/4))+1)/2)*(1.5-0.01*cloud_cover) * second * (1/24*3600)
             // Fix integer-division bugs and use floating factors.
+            if (_plant.Water_level == 0 && _plant.Fertilize_level == 0)
+            {
+                return 0f;
+            }
             float waterPhase = _plant.Water_level - 0.25f;           // use 0.25f instead of (1/4)
             float fertPhase = _plant.Fertilize_level - 0.25f;
             float dayFactor = 1f / (24f * 3600f);                    // 1/(24*3600) as float
@@ -65,7 +69,7 @@ namespace grow_a_plant
             float waterSin = 0.5f * (float)Math.Sin(2 * Math.PI * waterPhase) + 1f;
             float fertSin = 0.5f * (float)Math.Sin(2 * Math.PI * fertPhase) + 1f;
             float avgSin = (waterSin + fertSin) / 2f;
-
+            
             return avgSin * (1.5f - 0.01f * get_cloud_cover()) * delta_time * dayFactor;
         }
 
@@ -74,12 +78,6 @@ namespace grow_a_plant
             // Convert growth to growth stage per sec: 6.25*growth^2+0.25*growth
             float avg = calculate_avrage_growth_per_sec(delta_time);
             return 6.25f * (float)Math.Pow(avg, 2) + 0.25f * avg;
-        }
-
-        // old parameterless method kept for backwards compatibility (uses stored _delta_time)
-        public void update_plant_info()
-        {
-            update_plant_info(_delta_time);
         }
 
         // new method: specify delta_time explicitly (use 1.0f for per-second updates)
