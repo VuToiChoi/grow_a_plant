@@ -24,12 +24,12 @@ namespace grow_a_plant
             User_interface_handler _user_interface_handler = new User_interface_handler(_start_texture_screen, sprite_batch, sprite_font);
         }
 
-        public void change_to_start_menu()
+        public void change_to_start_texture_screen()
         {
             _user_interface_handler.change_texture_screen(_start_texture_screen);
         }
 
-        public void change_to_settings_menu()
+        public void change_to_settings_texture_screen()
         {
             _user_interface_handler.change_texture_screen(_settings_texture_screen);
         }
