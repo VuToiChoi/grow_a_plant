@@ -14,8 +14,8 @@ namespace grow_a_plant
         {
             _folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "grow_a_plant");
             if (!Directory.Exists(_folder))
-            { 
-                Directory.CreateDirectory(_folder); 
+            {
+                Directory.CreateDirectory(_folder);
             }
             _plantPath = Path.Combine(_folder, "plant_data.txt");
             _timePath = Path.Combine(_folder, "time_state.json");
@@ -26,11 +26,15 @@ namespace grow_a_plant
         {
             try
             {
+                var dir = Path.GetDirectoryName(_plantPath);
+                if (!string.IsNullOrEmpty(dir) && !Directory.Exists(dir))
+                {
+                    Directory.CreateDirectory(dir);
+                }
                 File.WriteAllText(_plantPath, $"{plant.Water_level};{plant.Fertilize_level};{plant.Current_growth_stage}");
             }
-            catch
+            catch (Exception ex)
             {
-                // best-effort
             }
         }
 
@@ -45,12 +49,12 @@ namespace grow_a_plant
                 var parts = firstLine.Split(';');
                 if (parts.Length < 3) return new Plant(0, 0, 0);
 
-                int humidity = int.TryParse(parts[0], out var h) ? h : 0;
-                int fertilizer = int.TryParse(parts[1], out var f) ? f : 0;
-                int growthStage = int.TryParse(parts[2], out var g) ? g : 0;
+                float humidity = float.TryParse(parts[0].Trim(), out var h) ? h : 0;
+                float fertilizer = float.TryParse(parts[1].Trim(), out var f) ? f : 0;
+                float growthStage = float.TryParse(parts[2].Trim(), out var g) ? g : 0;
                 return new Plant(humidity, fertilizer, growthStage);
             }
-            catch
+            catch (Exception ex)
             {
                 return new Plant(0, 0, 0);
             }
@@ -61,24 +65,25 @@ namespace grow_a_plant
         {
             public long LastSavedUtcTicks { get; set; }
             public long DayCount { get; set; }
+            public double TimeOfDaySeconds { get; set; } // save in-game time-of-day in seconds
         }
 
-        public void save_time_state(long lastSavedUtcTicks, long dayCount)
+        // Save last saved UTC ticks, day count, and the current in-game time-of-day seconds
+        public void save_time_state(long lastSavedUtcTicks, long dayCount, double timeOfDaySeconds)
         {
             try
             {
-                var state = new TimeState { LastSavedUtcTicks = lastSavedUtcTicks, DayCount = dayCount };
+                var state = new TimeState { LastSavedUtcTicks = lastSavedUtcTicks, DayCount = dayCount, TimeOfDaySeconds = timeOfDaySeconds };
                 var json = JsonSerializer.Serialize(state);
                 File.WriteAllText(_timePath, json);
             }
-            catch
+            catch (Exception ex)
             {
-                // best-effort
             }
         }
 
         // Returns null if no saved state
-        public (long LastSavedUtcTicks, long DayCount)? load_time_state()
+        public (long LastSavedUtcTicks, long DayCount, double TimeOfDaySeconds)? load_time_state()
         {
             try
             {
@@ -86,9 +91,9 @@ namespace grow_a_plant
                 var json = File.ReadAllText(_timePath);
                 var state = JsonSerializer.Deserialize<TimeState>(json);
                 if (state == null) return null;
-                return (state.LastSavedUtcTicks, state.DayCount);
+                return (state.LastSavedUtcTicks, state.DayCount, state.TimeOfDaySeconds);
             }
-            catch
+            catch (Exception ex)
             {
                 return null;
             }

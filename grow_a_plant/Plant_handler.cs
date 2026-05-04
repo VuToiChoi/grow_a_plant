@@ -19,12 +19,12 @@ namespace grow_a_plant
 
         public void water_plant()
         {
-            _plant.update_plant(Math.Min(1f, _plant.Water_level + 0.1f), _plant.Fertilize_level, _plant.Current_growth_stage);
+            _plant.update_plant(Math.Min(1f, _plant.Water_level + 0.001f), _plant.Fertilize_level, _plant.Current_growth_stage);
         }
 
         public void fertilize_plant()
         {
-            _plant.update_plant(_plant.Water_level, Math.Min(1f, _plant.Fertilize_level + 0.1f), _plant.Current_growth_stage);
+            _plant.update_plant(_plant.Water_level, Math.Min(1f, _plant.Fertilize_level + 0.001f), _plant.Current_growth_stage);
         }
 
         private float get_cloud_cover()
@@ -94,6 +94,11 @@ namespace grow_a_plant
             float newGrowth = Math.Max(0f, _plant.Current_growth_stage + growthDelta);
 
             _plant.update_plant(newWater, newFertilize, newGrowth);
+        }
+
+        public Plant get_plant()
+        { 
+            return _plant;
         }
 
         public void draw_plant_info(SpriteBatch spriteBatch, SpriteFont font)
