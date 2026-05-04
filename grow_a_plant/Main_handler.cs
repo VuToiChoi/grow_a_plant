@@ -13,7 +13,7 @@ namespace grow_a_plant
 
         Plant_handler _plant_handler;
 
-        Interface_handler _interface_handler;
+        User_interface_handler _user_interface_handler;
 
         public Main_handler()
         {
@@ -21,14 +21,17 @@ namespace grow_a_plant
 
             _plant_handler = new Plant_handler(); // fix
 
-            _interface_handler = new Interface_handler(); // fix
+            _user_interface_handler = new User_interface_handler(); // fix
         }
 
         public void update()
         {
-            Menu_command_package command_package = _menu_handler_inerface.update();
+            Menu_handler_information menu_handler_information = _menu_handler_inerface.update();
 
-            conduct_action(command_package.Command);
+            if (menu_handler_information.Button_is_pressed)
+            {
+                conduct_action(menu_handler_information.Selected_button.Command);
+            }
 
             _plant_handler.update(); // fix
 
