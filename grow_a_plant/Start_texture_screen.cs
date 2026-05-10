@@ -37,13 +37,13 @@ namespace grow_a_plant
             // water bar
             Texture_groups.Add("water_bar", new Texture_group(14, 228, true));
             Texture_groups["water_bar"].Image_rectangles.Add(new Image_rectangle(0, 0, 120, 520, _content.Load<Texture2D>("picture's\\waterbartubebackground")));
-            Texture_groups["water_bar"].Image_rectangles.Add(new Image_rectangle(0, 0, 120, 0, _content.Load<Texture2D>("picture's\\waterbartube")));
+            Texture_groups["water_bar"].Image_rectangles.Add(new Image_rectangle(2, 0, 116, 0, _content.Load<Texture2D>("picture's\\waterbartube")));
 
 
             // fertilize bar
             Texture_groups.Add("fertilize_bar", new Texture_group(14, 176, true));
-            Texture_groups["fertilize_bar"].Image_rectangles.Add(new Image_rectangle(0, 0, 120, 40, _content.Load<Texture2D>("picture's\\fertilizebartubebackground")));
-            Texture_groups["fertilize_bar"].Image_rectangles.Add(new Image_rectangle(0, 0, 0, 40, _content.Load<Texture2D>("picture's\\fertilizebartube")));
+            Texture_groups["fertilize_bar"].Image_rectangles.Add(new Image_rectangle(0, 0, 120, 40, _content.Load<Texture2D>("picture's\\soilbartubebackground")));
+            Texture_groups["fertilize_bar"].Image_rectangles.Add(new Image_rectangle(2, 2, 0, 36, _content.Load<Texture2D>("picture's\\soilbartube")));
 
 
             // start menus
@@ -159,15 +159,15 @@ namespace grow_a_plant
             // add the updatating of the water and fertilize bars
         }
 
-        private void update_water_bar(float water_amount)
+        private void update_water_bar(float water_level)
         {
-            Texture_groups["water_bar"].Image_rectangles[1].Height = (int)(water_amount * Texture_groups["water_bar"].Image_rectangles[0].Height);
+            Texture_groups["water_bar"].Image_rectangles[1].Height = (int)(water_level * Texture_groups["water_bar"].Image_rectangles[0].Height);
             Texture_groups["water_bar"].Image_rectangles[1].Y_position = Texture_groups["water_bar"].Image_rectangles[0].Height - Texture_groups["water_bar"].Image_rectangles[1].Height;
         }
 
-        private void update_fertilize_bar(float fertilize_amount)
+        private void update_fertilize_bar(float fertilize_level)
         {
-            Texture_groups["fertilize_bar"].Image_rectangles[1].Height = (int)(fertilize_amount * Texture_groups["fertilize_bar"].Image_rectangles[0].Width);
+            Texture_groups["fertilize_bar"].Image_rectangles[1].Width = (int)(fertilize_level * Texture_groups["fertilize_bar"].Image_rectangles[0].Width);
         }
 
         private void update_selected_button(Button_command_package selected_button)
