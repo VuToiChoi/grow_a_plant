@@ -32,7 +32,7 @@ namespace grow_a_plant
         }
         // plays water sound effect
 
-        public void play_water_sound(ContentManager content)
+        public void play_water_sound()
         {
             _waterSound.Play(0.5f, 0, 0);
         }
