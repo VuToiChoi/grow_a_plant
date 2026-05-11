@@ -30,17 +30,19 @@ namespace grow_a_plant
             { Menu_command_package.command_type.exit_game, new Button_command_package(Button_command_package.command_type.exit_game) }
         };
 
-        public Main_handler(SpriteBatch sprite_batch, SpriteFont sprite_font, GraphicsDevice graphics_device, ContentManager content)
+        public Main_handler(Plant plant, Weather_handler weather_handler, float offline_game_seconds, SpriteBatch sprite_batch, SpriteFont sprite_font, GraphicsDevice graphics_device, ContentManager content)
         {
             _menu_handler_interface = new Menu_handler_interface();
 
-            _plant_handler = new Plant_handler(); // fix
+            _plant_handler = new Plant_handler(plant, weather_handler, offline_game_seconds);
 
             _user_interface_interface = new User_interface_interface(sprite_batch, sprite_font, graphics_device, content);
         }
 
-        public void update()
+        public void update(float delta_time, TimeSpan time_of_day)
         {
+            _plant_handler.update_plant_info(delta_time * 12000);
+
             Menu_handler_information menu_handler_information = _menu_handler_interface.update();
 
             if (menu_handler_information.Button_is_pressed)
@@ -48,9 +50,7 @@ namespace grow_a_plant
                 conduct_action(menu_handler_information.Selected_button.Command);
             }
 
-            // _plant_handler.update(); // fix
-
-            Texture_screen_information texture_screen_information = new Texture_screen_information(_menu_command_package_command_type_to_button_command_package_dictionary[menu_handler_information.Selected_button.Command], menu_handler_information.Button_is_pressed, 0.5f, 0.5f, 3, 0);
+            Texture_screen_information texture_screen_information = new Texture_screen_information(_menu_command_package_command_type_to_button_command_package_dictionary[menu_handler_information.Selected_button.Command], menu_handler_information.Button_is_pressed, _plant_handler.get_plant().Water_level, _plant_handler.get_plant().Fertilize_level, (int)_plant_handler.get_plant().Current_growth_stage, time_of_day);
 
             _user_interface_interface.update(texture_screen_information);
         }
@@ -77,7 +77,7 @@ namespace grow_a_plant
             }
             else if (command == Menu_command_package.command_type.water)
             {
-                // water plant
+                _plant_handler.water_plant();
             }
             else if (command == Menu_command_package.command_type.open_log)
             {
@@ -85,7 +85,7 @@ namespace grow_a_plant
             }
             else if (command == Menu_command_package.command_type.fertelize)
             {
-                // fertelize plant
+                _plant_handler.fertilize_plant();
             }
             else if (command == Menu_command_package.command_type.open_settings)
             {
@@ -98,6 +98,11 @@ namespace grow_a_plant
         public void draw()
         {
             _user_interface_interface.draw();
+        }
+
+        public Plant get_plant()
+        {
+            return _plant_handler.get_plant();
         }
     }
 }
