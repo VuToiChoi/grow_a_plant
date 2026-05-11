@@ -28,6 +28,11 @@ namespace grow_a_plant
             Texture_groups["background"].Image_rectangles.Add(new Image_rectangle(0, 0, _screen_width, _screen_height, _content.Load<Texture2D>("picture's\\backdrop")));
 
 
+            // clock
+            Texture_groups.Add("clock", new Texture_group(0, 0, true));
+            Texture_groups["clock"].Text_rectangles.Add(new Text_rectangle("", 0, 0, 300, 100));
+
+
             // water bar
             Texture_groups.Add("water_bar", new Texture_group(14, 228, true));
             Texture_groups["water_bar"].Image_rectangles.Add(new Image_rectangle(0, 0, 120, 520, _content.Load<Texture2D>("picture's\\waterbartubebackground")));
@@ -143,6 +148,8 @@ namespace grow_a_plant
 
         public override void update(Texture_screen_information texture_screen_information)
         {
+            update_clock(texture_screen_information.Time_of_the_day_in_seconds);
+
             update_water_bar(texture_screen_information.Water_level);
 
             update_fertilize_bar(texture_screen_information.Fertilize_level);
@@ -150,6 +157,12 @@ namespace grow_a_plant
             update_selected_button(texture_screen_information.Selected_button);
 
             update_growth_stage(texture_screen_information.Growth_stage);
+        }
+
+        private void update_clock(float time_of_the_day_in_seconds)
+        {
+            var timeSpan = TimeSpan.FromSeconds(time_of_the_day_in_seconds);
+            Texture_groups["clock"].Text_rectangles[0].Text = timeSpan.ToString(@"hh\:mm");
         }
 
         private void update_water_bar(float water_level)

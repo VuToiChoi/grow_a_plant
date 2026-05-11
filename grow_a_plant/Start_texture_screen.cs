@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
@@ -25,13 +26,18 @@ namespace grow_a_plant
 
 
             // in the future this would be done in a better way, probably with a json file or something, but for now this is fine
-            // the _screen_width and _screen_height could be implemented in the future
+            // the _screen_width and _screen_height could be implemented in the future to make the design responsive
 
 
 
             // background
             Texture_groups.Add("background", new Texture_group(0, 0, true));
             Texture_groups["background"].Image_rectangles.Add(new Image_rectangle(0, 0, _screen_width, _screen_height, _content.Load<Texture2D>("picture's\\backdrop")));
+
+
+            // clock
+            Texture_groups.Add("clock", new Texture_group(0, 0, true));
+            Texture_groups["clock"].Text_rectangles.Add(new Text_rectangle("", 0, 0, 300, 100));
 
 
             // water bar
@@ -141,6 +147,8 @@ namespace grow_a_plant
 
         override public void update(Texture_screen_information texture_screen_information)
         {
+            update_clock(texture_screen_information.Time_of_the_day_in_seconds);
+
             update_water_bar(texture_screen_information.Water_level);
 
             update_fertilize_bar(texture_screen_information.Fertilize_level);
@@ -157,6 +165,12 @@ namespace grow_a_plant
             }
 
             // add the updatating of the water and fertilize bars
+        }
+
+        private void update_clock(float time_of_the_day_in_seconds)
+        {
+            var timeSpan = TimeSpan.FromSeconds(time_of_the_day_in_seconds);
+            Texture_groups["clock"].Text_rectangles[0].Text = timeSpan.ToString(@"hh\:mm");
         }
 
         private void update_water_bar(float water_level)
