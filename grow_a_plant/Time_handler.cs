@@ -6,7 +6,7 @@ namespace grow_a_plant
     internal class Time_handler
     {
         // 24 in-game hours == 12 real minutes -> multiplier = 86400 / 720 = 120 game-seconds per real-second
-        public const double game_seconds_per_real_second = 120.0;
+        public const double game_seconds_per_real_second = 12000.0;
         private const double _max_real_seconds_per_update = 2;
 
         public TimeSpan Time_of_day { get; private set; } = TimeSpan.Zero;
