@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace grow_a_plant
 {
-    internal class Weather_handler : IDisposable
+    public class Weather_handler : IDisposable
     {
         private readonly HttpClient _httpClient = new();
         private Timer? _timer;
