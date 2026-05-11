@@ -34,7 +34,7 @@ namespace grow_a_plant
 
         public void play_water_sound()
         {
-            _waterSound.Play(0.5f, 0, 0);
+            _waterSound.Play(0.3f, 0, 0);
         }
         // plays water sound effect in a separate thread to avoid blocking the main game thread
         public void start_background_music(ContentManager content) {
