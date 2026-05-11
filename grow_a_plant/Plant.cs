@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace grow_a_plant
 {
-    internal class Plant
+    public class Plant
     {
         // humidity, fertilizer, image, growth stage
         public float Water_level { get; private set; }
