@@ -148,7 +148,7 @@ namespace grow_a_plant
 
         public override void update(Texture_screen_information texture_screen_information)
         {
-            update_clock(texture_screen_information.Time_of_the_day_in_seconds);
+            update_clock(texture_screen_information.Time_of_day);
 
             update_water_bar(texture_screen_information.Water_level);
 
@@ -159,10 +159,9 @@ namespace grow_a_plant
             update_growth_stage(texture_screen_information.Growth_stage);
         }
 
-        private void update_clock(float time_of_the_day_in_seconds)
+        private void update_clock(TimeSpan time_of_day)
         {
-            var timeSpan = TimeSpan.FromSeconds(time_of_the_day_in_seconds);
-            Texture_groups["clock"].Text_rectangles[0].Text = timeSpan.ToString(@"hh\:mm");
+            Texture_groups["clock"].Text_rectangles[0].Text = time_of_day.ToString(@"hh\:mm");
         }
 
         private void update_water_bar(float water_level)
