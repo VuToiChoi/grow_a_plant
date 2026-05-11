@@ -6,7 +6,7 @@ namespace grow_a_plant
     internal class Time_handler
     {
         // 24 in-game hours == 12 real minutes -> multiplier = 86400 / 720 = 120 game-seconds per real-second
-        private const double _game_seconds_per_real_second = 120.0;
+        public const double game_seconds_per_real_second = 120.0;
         private const double _max_real_seconds_per_update = 2;
 
         public TimeSpan Time_of_day { get; private set; } = TimeSpan.Zero;
@@ -42,7 +42,7 @@ namespace grow_a_plant
                 Offline_real_fractional_seconds = (float)(offline_real_seconds - Offline_real_seconds_int);
 
                 // apply only the integer real-seconds converted to game-seconds so you can replay updates per second
-                double offline_game_seconds_int = Offline_real_seconds_int * _game_seconds_per_real_second;
+                double offline_game_seconds_int = Offline_real_seconds_int * game_seconds_per_real_second;
                 initial_seconds += offline_game_seconds_int;
 
                 Day_count = saved_state.Value.DayCount;
@@ -69,7 +69,7 @@ namespace grow_a_plant
 
             real_seconds = Math.Min(real_seconds, _max_real_seconds_per_update);
 
-            double advance_game_seconds = real_seconds * _game_seconds_per_real_second;
+            double advance_game_seconds = real_seconds * game_seconds_per_real_second;
             double new_total_seconds = Time_of_day.TotalSeconds + advance_game_seconds;
 
             if (new_total_seconds >= 86400.0)
@@ -101,7 +101,7 @@ namespace grow_a_plant
         public float get_offline_game_seconds(long last_saved_utc_ticks)
         {
             float offline_real_seconds = get_offline_real_seconds(last_saved_utc_ticks);
-            return offline_real_seconds * (float)_game_seconds_per_real_second;
+            return offline_real_seconds * (float)game_seconds_per_real_second;
         }
 
         public float get_day_progress_normalized() => (float)(Time_of_day.TotalSeconds / 86400.0);
