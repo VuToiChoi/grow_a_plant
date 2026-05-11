@@ -20,6 +20,12 @@
 /processorParam:TextureFormat=Compressed
 /build:File.spritefont
 
+#begin music/Musicforplant.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:music/Musicforplant.mp3
+
 #begin music/water.mp3
 /importer:Mp3Importer
 /processor:SoundEffectProcessor

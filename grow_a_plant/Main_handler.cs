@@ -16,6 +16,8 @@ namespace grow_a_plant
 
         Plant_handler _plant_handler;
 
+        Sound_handler _sound_handler;
+
         User_interface_interface _user_interface_interface;
 
         Dictionary<Menu_command_package.command_type, Button_command_package> _menu_command_package_command_type_to_button_command_package_dictionary = new Dictionary<Menu_command_package.command_type, Button_command_package>
@@ -36,12 +38,14 @@ namespace grow_a_plant
 
             _plant_handler = new Plant_handler(plant, weather_handler, offline_game_seconds);
 
+            _sound_handler = new Sound_handler(content);
+
             _user_interface_interface = new User_interface_interface(sprite_batch, sprite_font, graphics_device, content);
         }
 
-        public void update(float delta_time, TimeSpan time_of_day)
+        public void update(float delta_game_time, TimeSpan time_of_day)
         {
-            _plant_handler.update_plant_info(delta_time * 12000);
+            _plant_handler.update_plant_info(delta_game_time);
 
             Menu_handler_information menu_handler_information = _menu_handler_interface.update();
 
@@ -78,6 +82,8 @@ namespace grow_a_plant
             else if (command == Menu_command_package.command_type.water)
             {
                 _plant_handler.water_plant();
+
+                _sound_handler.play_water_sound();
             }
             else if (command == Menu_command_package.command_type.open_log)
             {

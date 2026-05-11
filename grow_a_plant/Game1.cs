@@ -35,7 +35,6 @@ namespace grow_a_plant
         {
             _graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
-            _soundHandler = new Sound_handler(Content);
             _prevKeyState = Keyboard.GetState();
 
             // Save on exit
@@ -88,11 +87,11 @@ namespace grow_a_plant
             // time since last Update as float (seconds)
             float deltaSeconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            _main_handler.update(deltaSeconds, _time_handler.Time_of_day);
+            _main_handler.update(deltaSeconds * (float)Time_handler.game_seconds_per_real_second, _time_handler.Time_of_day);
 
             if (currState.IsKeyDown(Keys.P) && _prevKeyState.IsKeyUp(Keys.P))
             {
-                _soundHandler?.play_water_sound(Content);
+                _soundHandler?.play_water_sound();
             }
 
             _prevKeyState = currState;
@@ -103,7 +102,6 @@ namespace grow_a_plant
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            //_spriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
             _main_handler.draw();
 
