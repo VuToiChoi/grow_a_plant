@@ -131,24 +131,16 @@ namespace grow_a_plant
             // plants
 
             // plant growth stage 1
-            Texture_groups.Add("plant_growth_stage_1", new Texture_group((int)(_screen_width * 0.334), (int)(_screen_height * 0.292), true));
-            Texture_groups["plant_growth_stage_1"].Image_rectangles.Add(new Image_rectangle(0, 0, (int)(_screen_width * 0.334), (int)(_screen_height * 0.292), _content.Load<Texture2D>("picture's\\firststage")));
+            Texture_groups.Add("plant_growth_stage_1", new Texture_group((int)(_screen_width * 0.321), (int)(-1 * _screen_height * 0.230), true));
+            Texture_groups["plant_growth_stage_1"].Image_rectangles.Add(new Image_rectangle(0, 0, (int)(_screen_width * 0.668), (int)(_screen_height * 1.200), _content.Load<Texture2D>("picture's\\firststage"))); // the names of image might be a bit confusing, the first and second stage images were pretty much the same
 
             // plant growth stage 2
-            Texture_groups.Add("plant_growth_stage_2", new Texture_group(470, 145, false));
-            Texture_groups["plant_growth_stage_2"].Image_rectangles.Add(new Image_rectangle(0, 0, 453, 453, _content.Load<Texture2D>("picture's\\secondstage")));
+            Texture_groups.Add("plant_growth_stage_2", new Texture_group((int)(_screen_width * 0.219), (int)(-1 * _screen_height * 0.054), false));
+            Texture_groups["plant_growth_stage_2"].Image_rectangles.Add(new Image_rectangle(0, 0, (int)(_screen_width * 0.450), (int)(_screen_height * 0.900), _content.Load<Texture2D>("picture's\\secondstage"))); // the names of image might be a bit confusing, the third and fourth stage images were pretty much the same
 
             // plant growth stage 3
-            Texture_groups.Add("plant_growth_stage_3", new Texture_group(470, 145, false));
-            Texture_groups["plant_growth_stage_3"].Image_rectangles.Add(new Image_rectangle(0, 0, 453, 453, _content.Load<Texture2D>("picture's\\thirdstage")));
-
-            // plant growth stage 4
-            Texture_groups.Add("plant_growth_stage_4", new Texture_group(470, 145, false));
-            Texture_groups["plant_growth_stage_4"].Image_rectangles.Add(new Image_rectangle(0, 0, 453, 453, _content.Load<Texture2D>("picture's\\fourthstage")));
-
-            // plant growth stage 5
-            Texture_groups.Add("plant_growth_stage_5", new Texture_group(470, 145, false));
-            Texture_groups["plant_growth_stage_5"].Image_rectangles.Add(new Image_rectangle(0, 0, 453, 453, _content.Load<Texture2D>("picture's\\fifthstage")));
+            Texture_groups.Add("plant_growth_stage_3", new Texture_group((int)(_screen_width * 0.165), (int)(-1 * _screen_height * 0.020), false));
+            Texture_groups["plant_growth_stage_3"].Image_rectangles.Add(new Image_rectangle(0, 0, (int)(_screen_width * 0.403), (int)(_screen_height * 0.833), _content.Load<Texture2D>("picture's\\thirdstage")));
 
 
             // add more texture groups in the future, like the plant and the water and fertilize bars
@@ -231,40 +223,18 @@ namespace grow_a_plant
                 Texture_groups["plant_growth_stage_1"].Is_visible = true;
                 Texture_groups["plant_growth_stage_2"].Is_visible = false;
                 Texture_groups["plant_growth_stage_3"].Is_visible = false;
-                Texture_groups["plant_growth_stage_4"].Is_visible = false;
-                Texture_groups["plant_growth_stage_5"].Is_visible = false;
             }
             else if (growth_stage == 2)
             {
                 Texture_groups["plant_growth_stage_1"].Is_visible = false;
                 Texture_groups["plant_growth_stage_2"].Is_visible = true;
                 Texture_groups["plant_growth_stage_3"].Is_visible = false;
-                Texture_groups["plant_growth_stage_4"].Is_visible = false;
-                Texture_groups["plant_growth_stage_5"].Is_visible = false;
             }
-            else if (growth_stage == 3)
+            else
             {
                 Texture_groups["plant_growth_stage_1"].Is_visible = false;
                 Texture_groups["plant_growth_stage_2"].Is_visible = false;
                 Texture_groups["plant_growth_stage_3"].Is_visible = true;
-                Texture_groups["plant_growth_stage_4"].Is_visible = false;
-                Texture_groups["plant_growth_stage_5"].Is_visible = false;
-            }
-            else if (growth_stage == 4)
-            {
-                Texture_groups["plant_growth_stage_1"].Is_visible = false;
-                Texture_groups["plant_growth_stage_2"].Is_visible = false;
-                Texture_groups["plant_growth_stage_3"].Is_visible = false;
-                Texture_groups["plant_growth_stage_4"].Is_visible = true;
-                Texture_groups["plant_growth_stage_5"].Is_visible = false;
-            }
-            else if (growth_stage >= 5)
-            {
-                Texture_groups["plant_growth_stage_1"].Is_visible = false;
-                Texture_groups["plant_growth_stage_2"].Is_visible = false;
-                Texture_groups["plant_growth_stage_3"].Is_visible = false;
-                Texture_groups["plant_growth_stage_4"].Is_visible = false;
-                Texture_groups["plant_growth_stage_5"].Is_visible = true;
             }
         }
     }
