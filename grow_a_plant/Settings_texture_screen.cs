@@ -111,7 +111,7 @@ namespace grow_a_plant
             Texture_groups["settings_menu_load_game_selected"].Text_rectangles.Add(new Text_rectangle("Exit Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.393), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
 
             // settings menu with exit game selected
-            Texture_groups.Add("settings_menu_exit_game_selected", new Texture_group(settings_menu_width, settings_menu_height, false));
+            Texture_groups.Add("settings_menu_exit_game_selected", new Texture_group((int)(_screen_width * 0.741), (int)(_screen_height * 0.069), false));
             // images
             Texture_groups["settings_menu_exit_game_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, settings_menu_width, settings_menu_height, _content.Load<Texture2D>("picture's\\settingslogbackground")));
             Texture_groups["settings_menu_exit_game_selected"].Image_rectangles.Add(new Image_rectangle((int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.055), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073), _content.Load<Texture2D>("picture's\\settingslogbutton")));
@@ -223,7 +223,7 @@ namespace grow_a_plant
                 Texture_groups["plant_growth_stage_2"].Is_visible = true;
                 Texture_groups["plant_growth_stage_3"].Is_visible = false;
             }
-            else if (growth_stage == 3)
+            else
             {
                 Texture_groups["plant_growth_stage_1"].Is_visible = false;
                 Texture_groups["plant_growth_stage_2"].Is_visible = false;
