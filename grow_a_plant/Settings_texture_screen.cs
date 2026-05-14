@@ -25,125 +25,126 @@ namespace grow_a_plant
 
             // background
             Texture_groups.Add("background", new Texture_group(0, 0, true));
-            Texture_groups["background"].Image_rectangles.Add(new Image_rectangle(0, 0, _screen_width, _screen_height, _content.Load<Texture2D>("picture's\\backdrop")));
+            Texture_groups["background"].Image_rectangles.Add(new Image_rectangle(0, 0, _screen_width, (int)(_screen_height * 0.765), _content.Load<Texture2D>("picture's\\backdrop")));
 
 
             // clock
-            Texture_groups.Add("clock", new Texture_group(0, 0, true));
-            Texture_groups["clock"].Text_rectangles.Add(new Text_rectangle("", 0, 0, 300, 100));
+            Texture_groups.Add("clock", new Texture_group((int)(_screen_width * 0.014), (int)(_screen_height * 0.020), true));
+            Texture_groups["clock"].Text_rectangles.Add(new Text_rectangle("", 0, 0, (int)(_screen_width * 0.152), (int)(_screen_height * 0.070)));
 
 
             // water bar
-            Texture_groups.Add("water_bar", new Texture_group(14, 228, true));
-            Texture_groups["water_bar"].Image_rectangles.Add(new Image_rectangle(0, 0, 120, 520, _content.Load<Texture2D>("picture's\\waterbartubebackground")));
-            Texture_groups["water_bar"].Image_rectangles.Add(new Image_rectangle(2, 0, 116, 0, _content.Load<Texture2D>("picture's\\waterbartube")));
+            Texture_groups.Add("water_bar", new Texture_group((int)(_screen_width * 0.009), (int)(_screen_height * 0.222), true));
+            Texture_groups["water_bar"].Image_rectangles.Add(new Image_rectangle(0, 0, (int)(_screen_width * 0.085), (int)(_screen_height * 0.506), _content.Load<Texture2D>("picture's\\waterbartubebackground")));
+            Texture_groups["water_bar"].Image_rectangles.Add(new Image_rectangle((int)(_screen_width * 0.002), (int)(_screen_height * 0.002), (int)(_screen_width * 0.082), 0, _content.Load<Texture2D>("picture's\\waterbartube")));
 
 
             // fertilize bar
-            Texture_groups.Add("fertilize_bar", new Texture_group(14, 176, true));
-            Texture_groups["fertilize_bar"].Image_rectangles.Add(new Image_rectangle(0, 0, 120, 40, _content.Load<Texture2D>("picture's\\soilbartubebackground")));
-            Texture_groups["fertilize_bar"].Image_rectangles.Add(new Image_rectangle(2, 2, 0, 36, _content.Load<Texture2D>("picture's\\soilbartube")));
+            Texture_groups.Add("fertilize_bar", new Texture_group((int)(_screen_width * 0.009), (int)(_screen_height * 0.169), true));
+            Texture_groups["fertilize_bar"].Image_rectangles.Add(new Image_rectangle(0, 0, (int)(_screen_width * 0.085), (int)(_screen_height * 0.047), _content.Load<Texture2D>("picture's\\soilbartubebackground")));
+            Texture_groups["fertilize_bar"].Image_rectangles.Add(new Image_rectangle((int)(_screen_width * 0.002), (int)(_screen_height * 0.002), 0, (int)(_screen_height * 0.043), _content.Load<Texture2D>("picture's\\soilbartube")));
 
 
             // start menu
-            Texture_groups.Add("start_menu", new Texture_group(0, 783, true));
+            int start_menu_width = _screen_width;
+            int start_menu_height = (int)(_screen_height * 0.236);
+
+            Texture_groups.Add("start_menu", new Texture_group(0, (int)(_screen_height * 0.765), true));
             // images
-            Texture_groups["start_menu"].Image_rectangles.Add(new Image_rectangle(0, 0, 1440, 241, _content.Load<Texture2D>("picture's\\background")));
-            Texture_groups["start_menu"].Image_rectangles.Add(new Image_rectangle(812, 41, 266, 69, _content.Load<Texture2D>("picture's\\startmenuebutton")));
-            Texture_groups["start_menu"].Image_rectangles.Add(new Image_rectangle(1109, 41, 266, 69, _content.Load<Texture2D>("picture's\\startmenuebutton")));
-            Texture_groups["start_menu"].Image_rectangles.Add(new Image_rectangle(812, 136, 266, 69, _content.Load<Texture2D>("picture's\\startmenuebutton")));
-            Texture_groups["start_menu"].Image_rectangles.Add(new Image_rectangle(1109, 136, 266, 69, _content.Load<Texture2D>("picture's\\startmenuebutton")));
+            Texture_groups["start_menu"].Image_rectangles.Add(new Image_rectangle(0, 0, start_menu_width, start_menu_height, _content.Load<Texture2D>("picture's\\background")));
+            Texture_groups["start_menu"].Image_rectangles.Add(new Image_rectangle((int)(start_menu_width * 0.564), (int)(start_menu_height * 0.170), (int)(start_menu_width * 0.185), (int)(start_menu_height * 0.286), _content.Load<Texture2D>("picture's\\startmenuebutton")));
+            Texture_groups["start_menu"].Image_rectangles.Add(new Image_rectangle((int)(start_menu_width * 0.770), (int)(start_menu_height * 0.170), (int)(start_menu_width * 0.185), (int)(start_menu_height * 0.286), _content.Load<Texture2D>("picture's\\startmenuebutton")));
+            Texture_groups["start_menu"].Image_rectangles.Add(new Image_rectangle((int)(start_menu_width * 0.564), (int)(start_menu_height * 0.564), (int)(start_menu_width * 0.185), (int)(start_menu_height * 0.286), _content.Load<Texture2D>("picture's\\startmenuebutton")));
+            Texture_groups["start_menu"].Image_rectangles.Add(new Image_rectangle((int)(start_menu_width * 0.770), (int)(start_menu_height * 0.564), (int)(start_menu_width * 0.185), (int)(start_menu_height * 0.286), _content.Load<Texture2D>("picture's\\startmenuebutton")));
             // text
-            Texture_groups["start_menu"].Text_rectangles.Add(new Text_rectangle("Settings has been opened.", 0, 0, 100, 100));
-            Texture_groups["start_menu"].Text_rectangles.Add(new Text_rectangle("Water", 812, 41, 266, 69));
-            Texture_groups["start_menu"].Text_rectangles.Add(new Text_rectangle("Fertilize", 1109, 41, 266, 69));
-            Texture_groups["start_menu"].Text_rectangles.Add(new Text_rectangle("Log", 812, 136, 266, 69));
-            Texture_groups["start_menu"].Text_rectangles.Add(new Text_rectangle("Settings", 1109, 136, 266, 69));
+            Texture_groups["start_menu"].Text_rectangles.Add(new Text_rectangle("Settings has been opened.", (int)(start_menu_width * 0.156), (int)(start_menu_height * 0.411), (int)(start_menu_width * 0.219), (int)(start_menu_height * 0.178)));
+            Texture_groups["start_menu"].Text_rectangles.Add(new Text_rectangle("Water", (int)(start_menu_width * 0.631), (int)(start_menu_height * 0.245), (int)(start_menu_width * 0.051), (int)(start_menu_height * 0.116)));
+            Texture_groups["start_menu"].Text_rectangles.Add(new Text_rectangle("Fertilize", (int)(start_menu_width * 0.826), (int)(start_menu_height * 0.245), (int)(start_menu_width * 0.063), (int)(start_menu_height * 0.116)));
+            Texture_groups["start_menu"].Text_rectangles.Add(new Text_rectangle("Log", (int)(start_menu_width * 0.643), (int)(start_menu_height * 0.635), (int)(start_menu_width * 0.025), (int)(start_menu_height * 0.116)));
+            Texture_groups["start_menu"].Text_rectangles.Add(new Text_rectangle("Settings", (int)(start_menu_width * 0.830), (int)(start_menu_height * 0.635), (int)(start_menu_width * 0.065), (int)(start_menu_height * 0.116)));
 
 
             //settings menus
+            int settings_menu_width = (int)(_screen_width * 0.259);
+            int settings_menu_height = (int)(_screen_height * 0.672);
 
             // settings menu with return to game selected
-            Texture_groups.Add("settings_menu_return_to_game_selected", new Texture_group(1061, 71, true));
+            Texture_groups.Add("settings_menu_return_to_game_selected", new Texture_group((int)(_screen_width * 0.741), (int)(_screen_height * 0.069), true));
             // images
-            Texture_groups["settings_menu_return_to_game_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, 373, 688, _content.Load<Texture2D>("picture's\\settingslogbackground")));
-            Texture_groups["settings_menu_return_to_game_selected"].Image_rectangles.Add(new Image_rectangle(16, 70, 342, 45, _content.Load<Texture2D>("picture's\\settingslogbuttonselect")));
-            Texture_groups["settings_menu_return_to_game_selected"].Image_rectangles.Add(new Image_rectangle(16, 135, 342, 45, _content.Load<Texture2D>("picture's\\settingslogbutton")));
-            Texture_groups["settings_menu_return_to_game_selected"].Image_rectangles.Add(new Image_rectangle(16, 200, 342, 45, _content.Load<Texture2D>("picture's\\settingslogbutton")));
-            Texture_groups["settings_menu_return_to_game_selected"].Image_rectangles.Add(new Image_rectangle(16, 265, 342, 45, _content.Load<Texture2D>("picture's\\settingslogbutton")));
+            Texture_groups["settings_menu_return_to_game_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, settings_menu_width, settings_menu_height, _content.Load<Texture2D>("picture's\\settingslogbackground")));
+            Texture_groups["settings_menu_return_to_game_selected"].Image_rectangles.Add(new Image_rectangle((int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.055), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073), _content.Load<Texture2D>("picture's\\settingslogbuttonselect")));
+            Texture_groups["settings_menu_return_to_game_selected"].Image_rectangles.Add(new Image_rectangle((int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.168), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073), _content.Load<Texture2D>("picture's\\settingslogbutton")));
+            Texture_groups["settings_menu_return_to_game_selected"].Image_rectangles.Add(new Image_rectangle((int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.280), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073), _content.Load<Texture2D>("picture's\\settingslogbutton")));
+            Texture_groups["settings_menu_return_to_game_selected"].Image_rectangles.Add(new Image_rectangle((int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.393), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073), _content.Load<Texture2D>("picture's\\settingslogbutton")));
             // text
-            Texture_groups["settings_menu_return_to_game_selected"].Text_rectangles.Add(new Text_rectangle("Return to Game", 16, 70, 342, 45));
-            Texture_groups["settings_menu_return_to_game_selected"].Text_rectangles.Add(new Text_rectangle("Save Game", 16, 135, 342, 45));
-            Texture_groups["settings_menu_return_to_game_selected"].Text_rectangles.Add(new Text_rectangle("Load Game", 16, 200, 342, 45));
-            Texture_groups["settings_menu_return_to_game_selected"].Text_rectangles.Add(new Text_rectangle("Exit Game", 16, 265, 342, 45));
+            Texture_groups["settings_menu_return_to_game_selected"].Text_rectangles.Add(new Text_rectangle("Return to Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.055), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
+            Texture_groups["settings_menu_return_to_game_selected"].Text_rectangles.Add(new Text_rectangle("Save Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.168), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
+            Texture_groups["settings_menu_return_to_game_selected"].Text_rectangles.Add(new Text_rectangle("Load Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.280), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
+            Texture_groups["settings_menu_return_to_game_selected"].Text_rectangles.Add(new Text_rectangle("Exit Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.393), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
 
             // settings menu with save game selected
-            Texture_groups.Add("settings_menu_save_game_selected", new Texture_group(1061, 71, false));
+            Texture_groups.Add("settings_menu_save_game_selected", new Texture_group((int)(_screen_width * 0.741), (int)(_screen_height * 0.069), false));
             // images
-            Texture_groups["settings_menu_save_game_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, 373, 688, _content.Load<Texture2D>("picture's\\settingslogbackground")));
-            Texture_groups["settings_menu_save_game_selected"].Image_rectangles.Add(new Image_rectangle(16, 70, 342, 45, _content.Load<Texture2D>("picture's\\settingslogbutton")));
-            Texture_groups["settings_menu_save_game_selected"].Image_rectangles.Add(new Image_rectangle(16, 135, 342, 45, _content.Load<Texture2D>("picture's\\settingslogbuttonselect")));
-            Texture_groups["settings_menu_save_game_selected"].Image_rectangles.Add(new Image_rectangle(16, 200, 342, 45, _content.Load<Texture2D>("picture's\\settingslogbutton")));
-            Texture_groups["settings_menu_save_game_selected"].Image_rectangles.Add(new Image_rectangle(16, 265, 342, 45, _content.Load<Texture2D>("picture's\\settingslogbutton")));
+            Texture_groups["settings_menu_save_game_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, settings_menu_width, settings_menu_height, _content.Load<Texture2D>("picture's\\settingslogbackground")));
+            Texture_groups["settings_menu_save_game_selected"].Image_rectangles.Add(new Image_rectangle((int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.055), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073), _content.Load<Texture2D>("picture's\\settingslogbutton")));
+            Texture_groups["settings_menu_save_game_selected"].Image_rectangles.Add(new Image_rectangle((int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.168), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073), _content.Load<Texture2D>("picture's\\settingslogbuttonselect")));
+            Texture_groups["settings_menu_save_game_selected"].Image_rectangles.Add(new Image_rectangle((int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.280), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073), _content.Load<Texture2D>("picture's\\settingslogbutton")));
+            Texture_groups["settings_menu_save_game_selected"].Image_rectangles.Add(new Image_rectangle((int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.393), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073), _content.Load<Texture2D>("picture's\\settingslogbutton")));
             // text
-            Texture_groups["settings_menu_save_game_selected"].Text_rectangles.Add(new Text_rectangle("Return to Game", 16, 70, 342, 45));
-            Texture_groups["settings_menu_save_game_selected"].Text_rectangles.Add(new Text_rectangle("Save Game", 16, 135, 342, 45));
-            Texture_groups["settings_menu_save_game_selected"].Text_rectangles.Add(new Text_rectangle("Load Game", 16, 200, 342, 45));
-            Texture_groups["settings_menu_save_game_selected"].Text_rectangles.Add(new Text_rectangle("Exit Game", 16, 265, 342, 45));
+            Texture_groups["settings_menu_save_game_selected"].Text_rectangles.Add(new Text_rectangle("Return to Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.055), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
+            Texture_groups["settings_menu_save_game_selected"].Text_rectangles.Add(new Text_rectangle("Save Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.168), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
+            Texture_groups["settings_menu_save_game_selected"].Text_rectangles.Add(new Text_rectangle("Load Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.280), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
+            Texture_groups["settings_menu_save_game_selected"].Text_rectangles.Add(new Text_rectangle("Exit Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.393), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
 
             // settings menu with load game selected
-            Texture_groups.Add("settings_menu_load_game_selected", new Texture_group(1061, 71, false));
+            Texture_groups.Add("settings_menu_load_game_selected", new Texture_group((int)(_screen_width * 0.741), (int)(_screen_height * 0.069), false));
             // images
-            Texture_groups["settings_menu_load_game_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, 373, 688, _content.Load<Texture2D>("picture's\\settingslogbackground")));
-            Texture_groups["settings_menu_load_game_selected"].Image_rectangles.Add(new Image_rectangle(16, 70, 342, 45, _content.Load<Texture2D>("picture's\\settingslogbutton")));
-            Texture_groups["settings_menu_load_game_selected"].Image_rectangles.Add(new Image_rectangle(16, 135, 342, 45, _content.Load<Texture2D>("picture's\\settingslogbutton")));
-            Texture_groups["settings_menu_load_game_selected"].Image_rectangles.Add(new Image_rectangle(16, 200, 342, 45, _content.Load<Texture2D>("picture's\\settingslogbuttonselect")));
-            Texture_groups["settings_menu_load_game_selected"].Image_rectangles.Add(new Image_rectangle(16, 265, 342, 45, _content.Load<Texture2D>("picture's\\settingslogbutton")));
+            Texture_groups["settings_menu_load_game_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, settings_menu_width, settings_menu_height, _content.Load<Texture2D>("picture's\\settingslogbackground")));
+            Texture_groups["settings_menu_load_game_selected"].Image_rectangles.Add(new Image_rectangle((int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.055), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073), _content.Load<Texture2D>("picture's\\settingslogbutton")));
+            Texture_groups["settings_menu_load_game_selected"].Image_rectangles.Add(new Image_rectangle((int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.168), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073), _content.Load<Texture2D>("picture's\\settingslogbutton")));
+            Texture_groups["settings_menu_load_game_selected"].Image_rectangles.Add(new Image_rectangle((int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.280), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073), _content.Load<Texture2D>("picture's\\settingslogbuttonselect")));
+            Texture_groups["settings_menu_load_game_selected"].Image_rectangles.Add(new Image_rectangle((int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.393), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073), _content.Load<Texture2D>("picture's\\settingslogbutton")));
             // text
-            Texture_groups["settings_menu_load_game_selected"].Text_rectangles.Add(new Text_rectangle("Return to Game", 16, 70, 342, 45));
-            Texture_groups["settings_menu_load_game_selected"].Text_rectangles.Add(new Text_rectangle("Save Game", 16, 135, 342, 45));
-            Texture_groups["settings_menu_load_game_selected"].Text_rectangles.Add(new Text_rectangle("Load Game", 16, 200, 342, 45));
-            Texture_groups["settings_menu_load_game_selected"].Text_rectangles.Add(new Text_rectangle("Exit Game", 16, 265, 342, 45));
+            Texture_groups["settings_menu_load_game_selected"].Text_rectangles.Add(new Text_rectangle("Return to Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.055), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
+            Texture_groups["settings_menu_load_game_selected"].Text_rectangles.Add(new Text_rectangle("Save Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.168), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
+            Texture_groups["settings_menu_load_game_selected"].Text_rectangles.Add(new Text_rectangle("Load Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.280), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
+            Texture_groups["settings_menu_load_game_selected"].Text_rectangles.Add(new Text_rectangle("Exit Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.393), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
 
             // settings menu with exit game selected
-            Texture_groups.Add("settings_menu_exit_game_selected", new Texture_group(1061, 71, false));
+            Texture_groups.Add("settings_menu_exit_game_selected", new Texture_group(settings_menu_width, settings_menu_height, false));
             // images
-            Texture_groups["settings_menu_exit_game_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, 373, 688, _content.Load<Texture2D>("picture's\\settingslogbackground")));
-            Texture_groups["settings_menu_exit_game_selected"].Image_rectangles.Add(new Image_rectangle(16, 70, 342, 45, _content.Load<Texture2D>("picture's\\settingslogbutton")));
-            Texture_groups["settings_menu_exit_game_selected"].Image_rectangles.Add(new Image_rectangle(16, 135, 342, 45, _content.Load<Texture2D>("picture's\\settingslogbutton")));
-            Texture_groups["settings_menu_exit_game_selected"].Image_rectangles.Add(new Image_rectangle(16, 200, 342, 45, _content.Load<Texture2D>("picture's\\settingslogbutton")));
-            Texture_groups["settings_menu_exit_game_selected"].Image_rectangles.Add(new Image_rectangle(16, 265, 342, 45, _content.Load<Texture2D>("picture's\\settingslogbuttonselect")));
+            Texture_groups["settings_menu_exit_game_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, settings_menu_width, settings_menu_height, _content.Load<Texture2D>("picture's\\settingslogbackground")));
+            Texture_groups["settings_menu_exit_game_selected"].Image_rectangles.Add(new Image_rectangle((int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.055), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073), _content.Load<Texture2D>("picture's\\settingslogbutton")));
+            Texture_groups["settings_menu_exit_game_selected"].Image_rectangles.Add(new Image_rectangle((int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.168), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073), _content.Load<Texture2D>("picture's\\settingslogbutton")));
+            Texture_groups["settings_menu_exit_game_selected"].Image_rectangles.Add(new Image_rectangle((int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.280), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073), _content.Load<Texture2D>("picture's\\settingslogbutton")));
+            Texture_groups["settings_menu_exit_game_selected"].Image_rectangles.Add(new Image_rectangle((int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.393), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073), _content.Load<Texture2D>("picture's\\settingslogbuttonselect")));
             // text
-            Texture_groups["settings_menu_exit_game_selected"].Text_rectangles.Add(new Text_rectangle("Return to Game", 16, 70, 342, 45));
-            Texture_groups["settings_menu_exit_game_selected"].Text_rectangles.Add(new Text_rectangle("Save Game", 16, 135, 342, 45));
-            Texture_groups["settings_menu_exit_game_selected"].Text_rectangles.Add(new Text_rectangle("Load Game", 16, 200, 342, 45));
-            Texture_groups["settings_menu_exit_game_selected"].Text_rectangles.Add(new Text_rectangle("Exit Game", 16, 265, 342, 45));
+            Texture_groups["settings_menu_exit_game_selected"].Text_rectangles.Add(new Text_rectangle("Return to Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.055), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
+            Texture_groups["settings_menu_exit_game_selected"].Text_rectangles.Add(new Text_rectangle("Save Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.168), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
+            Texture_groups["settings_menu_exit_game_selected"].Text_rectangles.Add(new Text_rectangle("Load Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.280), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
+            Texture_groups["settings_menu_exit_game_selected"].Text_rectangles.Add(new Text_rectangle("Exit Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.393), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
+
+
+            // stool
+            Texture_groups.Add("stool", new Texture_group((int)(_screen_width * 0.334), (int)(_screen_height * 0.292), true));
+            Texture_groups["stool"].Image_rectangles.Add(new Image_rectangle(0, 0, (int)(_screen_width * 0.332), (int)(_screen_height * 0.576), _content.Load<Texture2D>("picture's\\stool")));
 
 
             // plants
 
             // plant growth stage 1
-            Texture_groups.Add("plant_growth_stage_1", new Texture_group(470, 145, true));
-            Texture_groups["plant_growth_stage_1"].Image_rectangles.Add(new Image_rectangle(0, 0, 453, 453, _content.Load<Texture2D>("picture's\\firststage")));
+            Texture_groups.Add("plant_growth_stage_1", new Texture_group((int)(_screen_width * 0.321), (int)(-1 * _screen_height * 0.230), true));
+            Texture_groups["plant_growth_stage_1"].Image_rectangles.Add(new Image_rectangle(0, 0, (int)(_screen_width * 0.668), (int)(_screen_height * 1.200), _content.Load<Texture2D>("picture's\\firststage"))); // the names of image might be a bit confusing, the first and second stage images were pretty much the same
 
             // plant growth stage 2
-            Texture_groups.Add("plant_growth_stage_2", new Texture_group(470, 145, false));
-            Texture_groups["plant_growth_stage_2"].Image_rectangles.Add(new Image_rectangle(0, 0, 453, 453, _content.Load<Texture2D>("picture's\\secondstage")));
+            Texture_groups.Add("plant_growth_stage_2", new Texture_group((int)(_screen_width * 0.219), (int)(-1 * _screen_height * 0.054), false));
+            Texture_groups["plant_growth_stage_2"].Image_rectangles.Add(new Image_rectangle(0, 0, (int)(_screen_width * 0.450), (int)(_screen_height * 0.900), _content.Load<Texture2D>("picture's\\secondstage"))); // the names of image might be a bit confusing, the third and fourth stage images were pretty much the same
 
             // plant growth stage 3
-            Texture_groups.Add("plant_growth_stage_3", new Texture_group(470, 145, false));
-            Texture_groups["plant_growth_stage_3"].Image_rectangles.Add(new Image_rectangle(0, 0, 453, 453, _content.Load<Texture2D>("picture's\\thirdstage")));
+            Texture_groups.Add("plant_growth_stage_3", new Texture_group((int)(_screen_width * 0.165), (int)(-1 * _screen_height * 0.020), false));
+            Texture_groups["plant_growth_stage_3"].Image_rectangles.Add(new Image_rectangle(0, 0, (int)(_screen_width * 0.403), (int)(_screen_height * 0.833), _content.Load<Texture2D>("picture's\\thirdstage")));
 
-            // plant growth stage 4
-            Texture_groups.Add("plant_growth_stage_4", new Texture_group(470, 145, false));
-            Texture_groups["plant_growth_stage_4"].Image_rectangles.Add(new Image_rectangle(0, 0, 453, 453, _content.Load<Texture2D>("picture's\\fourthstage")));
-
-            // plant growth stage 5
-            Texture_groups.Add("plant_growth_stage_5", new Texture_group(470, 145, false));
-            Texture_groups["plant_growth_stage_5"].Image_rectangles.Add(new Image_rectangle(0, 0, 453, 453, _content.Load<Texture2D>("picture's\\fifthstage")));
-
-
-            // add more texture groups in the future, like the plant and the water and fertilize bars
+            // add more texture groups in the future, like animations
         }
 
         public override void update(Texture_screen_information texture_screen_information)
@@ -215,44 +216,20 @@ namespace grow_a_plant
                 Texture_groups["plant_growth_stage_1"].Is_visible = true;
                 Texture_groups["plant_growth_stage_2"].Is_visible = false;
                 Texture_groups["plant_growth_stage_3"].Is_visible = false;
-                Texture_groups["plant_growth_stage_4"].Is_visible = false;
-                Texture_groups["plant_growth_stage_5"].Is_visible = false;
             }
             else if (growth_stage == 2)
             {
                 Texture_groups["plant_growth_stage_1"].Is_visible = false;
                 Texture_groups["plant_growth_stage_2"].Is_visible = true;
                 Texture_groups["plant_growth_stage_3"].Is_visible = false;
-                Texture_groups["plant_growth_stage_4"].Is_visible = false;
-                Texture_groups["plant_growth_stage_5"].Is_visible = false;
             }
             else if (growth_stage == 3)
             {
                 Texture_groups["plant_growth_stage_1"].Is_visible = false;
                 Texture_groups["plant_growth_stage_2"].Is_visible = false;
                 Texture_groups["plant_growth_stage_3"].Is_visible = true;
-                Texture_groups["plant_growth_stage_4"].Is_visible = false;
-                Texture_groups["plant_growth_stage_5"].Is_visible = false;
-            }
-            else if (growth_stage == 4)
-            {
-                Texture_groups["plant_growth_stage_1"].Is_visible = false;
-                Texture_groups["plant_growth_stage_2"].Is_visible = false;
-                Texture_groups["plant_growth_stage_3"].Is_visible = false;
-                Texture_groups["plant_growth_stage_4"].Is_visible = true;
-                Texture_groups["plant_growth_stage_5"].Is_visible = false;
-            }
-            else if (growth_stage >= 5)
-            {
-                Texture_groups["plant_growth_stage_1"].Is_visible = false;
-                Texture_groups["plant_growth_stage_2"].Is_visible = false;
-                Texture_groups["plant_growth_stage_3"].Is_visible = false;
-                Texture_groups["plant_growth_stage_4"].Is_visible = false;
-                Texture_groups["plant_growth_stage_5"].Is_visible = true;
             }
         }
-
-
     }
 }
 

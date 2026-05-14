@@ -7,6 +7,7 @@ using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing.Text;
 
 namespace grow_a_plant
 {
@@ -32,117 +33,116 @@ namespace grow_a_plant
 
             // background
             Texture_groups.Add("background", new Texture_group(0, 0, true));
-            Texture_groups["background"].Image_rectangles.Add(new Image_rectangle(0, 0, _screen_width, _screen_height, _content.Load<Texture2D>("picture's\\backdrop")));
+            Texture_groups["background"].Image_rectangles.Add(new Image_rectangle(0, 0, _screen_width, (int)(_screen_height * 0.765), _content.Load<Texture2D>("picture's\\backdrop")));
 
 
             // clock
-            Texture_groups.Add("clock", new Texture_group(0, 0, true));
-            Texture_groups["clock"].Text_rectangles.Add(new Text_rectangle("", 0, 0, 300, 100));
+            Texture_groups.Add("clock", new Texture_group((int)(_screen_width * 0.014), (int)(_screen_height * 0.020), true));
+            Texture_groups["clock"].Text_rectangles.Add(new Text_rectangle("", 0, 0, (int)(_screen_width * 0.152), (int)(_screen_height * 0.070)));
 
 
             // water bar
-            Texture_groups.Add("water_bar", new Texture_group(14, 228, true));
-            Texture_groups["water_bar"].Image_rectangles.Add(new Image_rectangle(0, 0, 120, 520, _content.Load<Texture2D>("picture's\\waterbartubebackground")));
-            Texture_groups["water_bar"].Image_rectangles.Add(new Image_rectangle(2, 0, 116, 0, _content.Load<Texture2D>("picture's\\waterbartube")));
+            Texture_groups.Add("water_bar", new Texture_group((int)(_screen_width * 0.009), (int)(_screen_height * 0.222), true));
+            Texture_groups["water_bar"].Image_rectangles.Add(new Image_rectangle(0, 0, (int)(_screen_width * 0.085), (int)(_screen_height * 0.506), _content.Load<Texture2D>("picture's\\waterbartubebackground")));
+            Texture_groups["water_bar"].Image_rectangles.Add(new Image_rectangle((int)(_screen_width * 0.002), (int)(_screen_height * 0.002), (int)(_screen_width * 0.082), 0, _content.Load<Texture2D>("picture's\\waterbartube")));
 
 
             // fertilize bar
-            Texture_groups.Add("fertilize_bar", new Texture_group(14, 176, true));
-            Texture_groups["fertilize_bar"].Image_rectangles.Add(new Image_rectangle(0, 0, 120, 40, _content.Load<Texture2D>("picture's\\soilbartubebackground")));
-            Texture_groups["fertilize_bar"].Image_rectangles.Add(new Image_rectangle(2, 2, 0, 36, _content.Load<Texture2D>("picture's\\soilbartube")));
+            Texture_groups.Add("fertilize_bar", new Texture_group((int)(_screen_width * 0.009), (int)(_screen_height * 0.169), true));
+            Texture_groups["fertilize_bar"].Image_rectangles.Add(new Image_rectangle(0, 0, (int)(_screen_width * 0.085), (int)(_screen_height * 0.047), _content.Load<Texture2D>("picture's\\soilbartubebackground")));
+            Texture_groups["fertilize_bar"].Image_rectangles.Add(new Image_rectangle((int)(_screen_width * 0.002), (int)(_screen_height * 0.002), 0, (int)(_screen_height * 0.043), _content.Load<Texture2D>("picture's\\soilbartube")));
 
 
             // start menus
-            Start_menu_information_text_rectangle = new Text_rectangle("", 0, 0, 100, 100);
+            int menu_width = _screen_width;
+            int menu_height = (int)(_screen_height * 0.236);
+
+            Start_menu_information_text_rectangle = new Text_rectangle("", (int)(menu_width * 0.156), (int)(menu_height * 0.411), (int)(menu_width * 0.219), (int)(menu_height * 0.178));
 
             // start menu with water selected
-            Texture_groups.Add("start_menu_water_selected", new Texture_group(0, 783, true));
+            Texture_groups.Add("start_menu_water_selected", new Texture_group(0, (int)(_screen_height * 0.765), true));
             // images
-            Texture_groups["start_menu_water_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, 1440, 241, _content.Load<Texture2D>("picture's\\background")));
-            Texture_groups["start_menu_water_selected"].Image_rectangles.Add(new Image_rectangle(812, 41, 266, 69, _content.Load<Texture2D>("picture's\\startmenuebuttonselect")));
-            Texture_groups["start_menu_water_selected"].Image_rectangles.Add(new Image_rectangle(1109, 41, 266, 69, _content.Load<Texture2D>("picture's\\startmenuebutton")));
-            Texture_groups["start_menu_water_selected"].Image_rectangles.Add(new Image_rectangle(812, 136, 266, 69, _content.Load<Texture2D>("picture's\\startmenuebutton")));
-            Texture_groups["start_menu_water_selected"].Image_rectangles.Add(new Image_rectangle(1109, 136, 266, 69, _content.Load<Texture2D>("picture's\\startmenuebutton")));
+            Texture_groups["start_menu_water_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, menu_width, menu_height, _content.Load<Texture2D>("picture's\\background")));
+            Texture_groups["start_menu_water_selected"].Image_rectangles.Add(new Image_rectangle((int)(menu_width * 0.564), (int)(menu_height * 0.170), (int)(menu_width * 0.185), (int)(menu_height * 0.286), _content.Load<Texture2D>("picture's\\startmenuebuttonselect")));
+            Texture_groups["start_menu_water_selected"].Image_rectangles.Add(new Image_rectangle((int)(menu_width * 0.770), (int)(menu_height * 0.170), (int)(menu_width * 0.185), (int)(menu_height * 0.286), _content.Load<Texture2D>("picture's\\startmenuebutton")));
+            Texture_groups["start_menu_water_selected"].Image_rectangles.Add(new Image_rectangle((int)(menu_width * 0.564), (int)(menu_height * 0.564), (int)(menu_width * 0.185), (int)(menu_height * 0.286), _content.Load<Texture2D>("picture's\\startmenuebutton")));
+            Texture_groups["start_menu_water_selected"].Image_rectangles.Add(new Image_rectangle((int)(menu_width * 0.770), (int)(menu_height * 0.564), (int)(menu_width * 0.185), (int)(menu_height * 0.286), _content.Load<Texture2D>("picture's\\startmenuebutton")));
             // text
             Texture_groups["start_menu_water_selected"].Text_rectangles.Add(Start_menu_information_text_rectangle);
-            Texture_groups["start_menu_water_selected"].Text_rectangles.Add(new Text_rectangle("Water", 812, 41, 266, 69));
-            Texture_groups["start_menu_water_selected"].Text_rectangles.Add(new Text_rectangle("Fertilize", 1109, 41, 266, 69));
-            Texture_groups["start_menu_water_selected"].Text_rectangles.Add(new Text_rectangle("Log", 812, 136, 266, 69));
-            Texture_groups["start_menu_water_selected"].Text_rectangles.Add(new Text_rectangle("Settings", 1109, 136, 266, 69));
+            Texture_groups["start_menu_water_selected"].Text_rectangles.Add(new Text_rectangle("Water", (int)(menu_width * 0.631), (int)(menu_height * 0.245), (int)(menu_width * 0.051), (int)(menu_height * 0.116)));
+            Texture_groups["start_menu_water_selected"].Text_rectangles.Add(new Text_rectangle("Fertilize", (int)(menu_width * 0.826), (int)(menu_height * 0.245), (int)(menu_width * 0.063), (int)(menu_height * 0.116)));
+            Texture_groups["start_menu_water_selected"].Text_rectangles.Add(new Text_rectangle("Log", (int)(menu_width * 0.643), (int)(menu_height * 0.635), (int)(menu_width * 0.025), (int)(menu_height * 0.116)));
+            Texture_groups["start_menu_water_selected"].Text_rectangles.Add(new Text_rectangle("Settings", (int)(menu_width * 0.830), (int)(menu_height * 0.635), (int)(menu_width * 0.065), (int)(menu_height * 0.116)));
 
 
             // start menu with fertilize selected
-            Texture_groups.Add("start_menu_fertilize_selected", new Texture_group(0, 783, false));
+            Texture_groups.Add("start_menu_fertilize_selected", new Texture_group(0, (int)(_screen_height * 0.765), false));
             // images
-            Texture_groups["start_menu_fertilize_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, 1440, 241, _content.Load<Texture2D>("picture's\\background")));
-            Texture_groups["start_menu_fertilize_selected"].Image_rectangles.Add(new Image_rectangle(812, 41, 266, 69, _content.Load<Texture2D>("picture's\\startmenuebutton")));
-            Texture_groups["start_menu_fertilize_selected"].Image_rectangles.Add(new Image_rectangle(1109, 41, 266, 69, _content.Load<Texture2D>("picture's\\startmenuebuttonselect")));
-            Texture_groups["start_menu_fertilize_selected"].Image_rectangles.Add(new Image_rectangle(812, 136, 266, 69, _content.Load<Texture2D>("picture's\\startmenuebutton")));
-            Texture_groups["start_menu_fertilize_selected"].Image_rectangles.Add(new Image_rectangle(1109, 136, 266, 69, _content.Load<Texture2D>("picture's\\startmenuebutton")));
+            Texture_groups["start_menu_fertilize_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, menu_width, menu_height, _content.Load<Texture2D>("picture's\\background")));
+            Texture_groups["start_menu_fertilize_selected"].Image_rectangles.Add(new Image_rectangle((int)(menu_width * 0.564), (int)(menu_height * 0.170), (int)(menu_width * 0.185), (int)(menu_height * 0.286), _content.Load<Texture2D>("picture's\\startmenuebutton")));
+            Texture_groups["start_menu_fertilize_selected"].Image_rectangles.Add(new Image_rectangle((int)(menu_width * 0.770), (int)(menu_height * 0.170), (int)(menu_width * 0.185), (int)(menu_height * 0.286), _content.Load<Texture2D>("picture's\\startmenuebuttonselect")));
+            Texture_groups["start_menu_fertilize_selected"].Image_rectangles.Add(new Image_rectangle((int)(menu_width * 0.564), (int)(menu_height * 0.564), (int)(menu_width * 0.185), (int)(menu_height * 0.286), _content.Load<Texture2D>("picture's\\startmenuebutton")));
+            Texture_groups["start_menu_fertilize_selected"].Image_rectangles.Add(new Image_rectangle((int)(menu_width * 0.770), (int)(menu_height * 0.564), (int)(menu_width * 0.185), (int)(menu_height * 0.286), _content.Load<Texture2D>("picture's\\startmenuebutton")));
             // text
             Texture_groups["start_menu_fertilize_selected"].Text_rectangles.Add(Start_menu_information_text_rectangle);
-            Texture_groups["start_menu_fertilize_selected"].Text_rectangles.Add(new Text_rectangle("Water", 812, 41, 266, 69));
-            Texture_groups["start_menu_fertilize_selected"].Text_rectangles.Add(new Text_rectangle("Fertilize", 1109, 41, 266, 69));
-            Texture_groups["start_menu_fertilize_selected"].Text_rectangles.Add(new Text_rectangle("Log", 812, 136, 266, 69));
-            Texture_groups["start_menu_fertilize_selected"].Text_rectangles.Add(new Text_rectangle("Settings", 1109, 136, 266, 69));
+            Texture_groups["start_menu_fertilize_selected"].Text_rectangles.Add(new Text_rectangle("Water", (int)(menu_width * 0.631), (int)(menu_height * 0.245), (int)(menu_width * 0.051), (int)(menu_height * 0.116)));
+            Texture_groups["start_menu_fertilize_selected"].Text_rectangles.Add(new Text_rectangle("Fertilize", (int)(menu_width * 0.826), (int)(menu_height * 0.245), (int)(menu_width * 0.063), (int)(menu_height * 0.116)));
+            Texture_groups["start_menu_fertilize_selected"].Text_rectangles.Add(new Text_rectangle("Log", (int)(menu_width * 0.643), (int)(menu_height * 0.635), (int)(menu_width * 0.025), (int)(menu_height * 0.116)));
+            Texture_groups["start_menu_fertilize_selected"].Text_rectangles.Add(new Text_rectangle("Settings", (int)(menu_width * 0.830), (int)(menu_height * 0.635), (int)(menu_width * 0.065), (int)(menu_height * 0.116)));
 
 
             // start menu with log selected
-            Texture_groups.Add("start_menu_log_selected", new Texture_group(0, 783, false));
+            Texture_groups.Add("start_menu_log_selected", new Texture_group(0, (int)(_screen_height * 0.765), false));
             // images
-            Texture_groups["start_menu_log_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, 1440, 241, _content.Load<Texture2D>("picture's\\background")));
-            Texture_groups["start_menu_log_selected"].Image_rectangles.Add(new Image_rectangle(812, 41, 266, 69, _content.Load<Texture2D>("picture's\\startmenuebutton")));
-            Texture_groups["start_menu_log_selected"].Image_rectangles.Add(new Image_rectangle(1109, 41, 266, 69, _content.Load<Texture2D>("picture's\\startmenuebutton")));
-            Texture_groups["start_menu_log_selected"].Image_rectangles.Add(new Image_rectangle(812, 136, 266, 69, _content.Load<Texture2D>("picture's\\startmenuebuttonselect")));
-            Texture_groups["start_menu_log_selected"].Image_rectangles.Add(new Image_rectangle(1109, 136, 266, 69, _content.Load<Texture2D>("picture's\\startmenuebutton")));
+            Texture_groups["start_menu_log_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, menu_width, menu_height, _content.Load<Texture2D>("picture's\\background")));
+            Texture_groups["start_menu_log_selected"].Image_rectangles.Add(new Image_rectangle((int)(menu_width * 0.564), (int)(menu_height * 0.170), (int)(menu_width * 0.185), (int)(menu_height * 0.286), _content.Load<Texture2D>("picture's\\startmenuebutton")));
+            Texture_groups["start_menu_log_selected"].Image_rectangles.Add(new Image_rectangle((int)(menu_width * 0.770), (int)(menu_height * 0.170), (int)(menu_width * 0.185), (int)(menu_height * 0.286), _content.Load<Texture2D>("picture's\\startmenuebutton")));
+            Texture_groups["start_menu_log_selected"].Image_rectangles.Add(new Image_rectangle((int)(menu_width * 0.564), (int)(menu_height * 0.564), (int)(menu_width * 0.185), (int)(menu_height * 0.286), _content.Load<Texture2D>("picture's\\startmenuebuttonselect")));
+            Texture_groups["start_menu_log_selected"].Image_rectangles.Add(new Image_rectangle((int)(menu_width * 0.770), (int)(menu_height * 0.564), (int)(menu_width * 0.185), (int)(menu_height * 0.286), _content.Load<Texture2D>("picture's\\startmenuebutton")));
             // text
             Texture_groups["start_menu_log_selected"].Text_rectangles.Add(Start_menu_information_text_rectangle);
-            Texture_groups["start_menu_log_selected"].Text_rectangles.Add(new Text_rectangle("Water", 812, 41, 266, 69));
-            Texture_groups["start_menu_log_selected"].Text_rectangles.Add(new Text_rectangle("Fertilize", 1109, 41, 266, 69));
-            Texture_groups["start_menu_log_selected"].Text_rectangles.Add(new Text_rectangle("Log", 812, 136, 266, 69));
-            Texture_groups["start_menu_log_selected"].Text_rectangles.Add(new Text_rectangle("Settings", 1109, 136, 266, 69));
+            Texture_groups["start_menu_log_selected"].Text_rectangles.Add(new Text_rectangle("Water", (int)(menu_width * 0.631), (int)(menu_height * 0.245), (int)(menu_width * 0.051), (int)(menu_height * 0.116)));
+            Texture_groups["start_menu_log_selected"].Text_rectangles.Add(new Text_rectangle("Fertilize", (int)(menu_width * 0.826), (int)(menu_height * 0.245), (int)(menu_width * 0.063), (int)(menu_height * 0.116)));
+            Texture_groups["start_menu_log_selected"].Text_rectangles.Add(new Text_rectangle("Log", (int)(menu_width * 0.643), (int)(menu_height * 0.635), (int)(menu_width * 0.025), (int)(menu_height * 0.116)));
+            Texture_groups["start_menu_log_selected"].Text_rectangles.Add(new Text_rectangle("Settings", (int)(menu_width * 0.830), (int)(menu_height * 0.635), (int)(menu_width * 0.065), (int)(menu_height * 0.116)));
 
 
             // start menu with settings selected
-            Texture_groups.Add("start_menu_settings_selected", new Texture_group(0, 783, false));
+            Texture_groups.Add("start_menu_settings_selected", new Texture_group(0, (int)(_screen_height * 0.765), false));
             //images
-            Texture_groups["start_menu_settings_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, 1440, 241, _content.Load<Texture2D>("picture's\\background")));
-            Texture_groups["start_menu_settings_selected"].Image_rectangles.Add(new Image_rectangle(812, 41, 266, 69, _content.Load<Texture2D>("picture's\\startmenuebutton")));
-            Texture_groups["start_menu_settings_selected"].Image_rectangles.Add(new Image_rectangle(1109, 41, 266, 69, _content.Load<Texture2D>("picture's\\startmenuebutton")));
-            Texture_groups["start_menu_settings_selected"].Image_rectangles.Add(new Image_rectangle(812, 136, 266, 69, _content.Load<Texture2D>("picture's\\startmenuebutton")));
-            Texture_groups["start_menu_settings_selected"].Image_rectangles.Add(new Image_rectangle(1109, 136, 266, 69, _content.Load<Texture2D>("picture's\\startmenuebuttonselect")));
+            Texture_groups["start_menu_settings_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, menu_width, menu_height, _content.Load<Texture2D>("picture's\\background")));
+            Texture_groups["start_menu_settings_selected"].Image_rectangles.Add(new Image_rectangle((int)(menu_width * 0.564), (int)(menu_height * 0.170), (int)(menu_width * 0.185), (int)(menu_height * 0.286), _content.Load<Texture2D>("picture's\\startmenuebutton")));
+            Texture_groups["start_menu_settings_selected"].Image_rectangles.Add(new Image_rectangle((int)(menu_width * 0.770), (int)(menu_height * 0.170), (int)(menu_width * 0.185), (int)(menu_height * 0.286), _content.Load<Texture2D>("picture's\\startmenuebutton")));
+            Texture_groups["start_menu_settings_selected"].Image_rectangles.Add(new Image_rectangle((int)(menu_width * 0.564), (int)(menu_height * 0.564), (int)(menu_width * 0.185), (int)(menu_height * 0.286), _content.Load<Texture2D>("picture's\\startmenuebutton")));
+            Texture_groups["start_menu_settings_selected"].Image_rectangles.Add(new Image_rectangle((int)(menu_width * 0.770), (int)(menu_height * 0.564), (int)(menu_width * 0.185), (int)(menu_height * 0.286), _content.Load<Texture2D>("picture's\\startmenuebuttonselect")));
             // text
             Texture_groups["start_menu_settings_selected"].Text_rectangles.Add(Start_menu_information_text_rectangle);
-            Texture_groups["start_menu_settings_selected"].Text_rectangles.Add(new Text_rectangle("Water", 812, 41, 266, 69));
-            Texture_groups["start_menu_settings_selected"].Text_rectangles.Add(new Text_rectangle("Fertilize", 1109, 41, 266, 69));
-            Texture_groups["start_menu_settings_selected"].Text_rectangles.Add(new Text_rectangle("Log", 812, 136, 266, 69));
-            Texture_groups["start_menu_settings_selected"].Text_rectangles.Add(new Text_rectangle("Settings", 1109, 136, 266, 69));
+            Texture_groups["start_menu_settings_selected"].Text_rectangles.Add(new Text_rectangle("Water", (int)(menu_width * 0.631), (int)(menu_height * 0.245), (int)(menu_width * 0.051), (int)(menu_height * 0.116)));
+            Texture_groups["start_menu_settings_selected"].Text_rectangles.Add(new Text_rectangle("Fertilize", (int)(menu_width * 0.826), (int)(menu_height * 0.245), (int)(menu_width * 0.063), (int)(menu_height * 0.116)));
+            Texture_groups["start_menu_settings_selected"].Text_rectangles.Add(new Text_rectangle("Log", (int)(menu_width * 0.643), (int)(menu_height * 0.635), (int)(menu_width * 0.025), (int)(menu_height * 0.116)));
+            Texture_groups["start_menu_settings_selected"].Text_rectangles.Add(new Text_rectangle("Settings", (int)(menu_width * 0.830), (int)(menu_height * 0.635), (int)(menu_width * 0.065), (int)(menu_height * 0.116)));
+
+
+            // stool
+            Texture_groups.Add("stool", new Texture_group((int)(_screen_width * 0.334), (int)(_screen_height * 0.292), true));
+            Texture_groups["stool"].Image_rectangles.Add(new Image_rectangle(0, 0, (int)(_screen_width * 0.332), (int)(_screen_height * 0.576), _content.Load<Texture2D>("picture's\\stool")));
 
 
             // plants
 
             // plant growth stage 1
-            Texture_groups.Add("plant_growth_stage_1", new Texture_group(470, 145, true));
-            Texture_groups["plant_growth_stage_1"].Image_rectangles.Add(new Image_rectangle(0, 0, 453, 453, _content.Load<Texture2D>("picture's\\firststage")));
+            Texture_groups.Add("plant_growth_stage_1", new Texture_group((int)(_screen_width * 0.321), (int)(-1 * _screen_height * 0.230), true));
+            Texture_groups["plant_growth_stage_1"].Image_rectangles.Add(new Image_rectangle(0, 0, (int)(_screen_width * 0.668), (int)(_screen_height * 1.200), _content.Load<Texture2D>("picture's\\firststage"))); // the names of image might be a bit confusing, the first and second stage images were pretty much the same
 
             // plant growth stage 2
-            Texture_groups.Add("plant_growth_stage_2", new Texture_group(470, 145, false));
-            Texture_groups["plant_growth_stage_2"].Image_rectangles.Add(new Image_rectangle(0, 0, 453, 453, _content.Load<Texture2D>("picture's\\secondstage")));
+            Texture_groups.Add("plant_growth_stage_2", new Texture_group((int)(_screen_width * 0.219), (int)(-1 * _screen_height * 0.054), false));
+            Texture_groups["plant_growth_stage_2"].Image_rectangles.Add(new Image_rectangle(0, 0, (int)(_screen_width * 0.450), (int)(_screen_height * 0.900), _content.Load<Texture2D>("picture's\\secondstage"))); // the names of image might be a bit confusing, the third and fourth stage images were pretty much the same
 
             // plant growth stage 3
-            Texture_groups.Add("plant_growth_stage_3", new Texture_group(470, 145, false));
-            Texture_groups["plant_growth_stage_3"].Image_rectangles.Add(new Image_rectangle(0, 0, 453, 453, _content.Load<Texture2D>("picture's\\thirdstage")));
+            Texture_groups.Add("plant_growth_stage_3", new Texture_group((int)(_screen_width * 0.165), (int)(-1 * _screen_height * 0.020), false));
+            Texture_groups["plant_growth_stage_3"].Image_rectangles.Add(new Image_rectangle(0, 0, (int)(_screen_width * 0.403), (int)(_screen_height * 0.833), _content.Load<Texture2D>("picture's\\thirdstage")));
 
-            // plant growth stage 4
-            Texture_groups.Add("plant_growth_stage_4", new Texture_group(470, 145, false));
-            Texture_groups["plant_growth_stage_4"].Image_rectangles.Add(new Image_rectangle(0, 0, 453, 453, _content.Load<Texture2D>("picture's\\fourthstage")));
-
-            // plant growth stage 5
-            Texture_groups.Add("plant_growth_stage_5", new Texture_group(470, 145, false));
-            Texture_groups["plant_growth_stage_5"].Image_rectangles.Add(new Image_rectangle(0, 0, 453, 453, _content.Load<Texture2D>("picture's\\fifthstage")));
-
-
-            // add more texture groups in the future, like the plant and the water and fertilize bars
+            // add more texture groups in the future, like animations
         }
 
         override public void update(Texture_screen_information texture_screen_information)
@@ -222,40 +222,18 @@ namespace grow_a_plant
                 Texture_groups["plant_growth_stage_1"].Is_visible = true;
                 Texture_groups["plant_growth_stage_2"].Is_visible = false;
                 Texture_groups["plant_growth_stage_3"].Is_visible = false;
-                Texture_groups["plant_growth_stage_4"].Is_visible = false;
-                Texture_groups["plant_growth_stage_5"].Is_visible = false;
             }
             else if (growth_stage == 2)
             {
                 Texture_groups["plant_growth_stage_1"].Is_visible = false;
                 Texture_groups["plant_growth_stage_2"].Is_visible = true;
                 Texture_groups["plant_growth_stage_3"].Is_visible = false;
-                Texture_groups["plant_growth_stage_4"].Is_visible = false;
-                Texture_groups["plant_growth_stage_5"].Is_visible = false;
             }
-            else if (growth_stage == 3)
+            else
             {
                 Texture_groups["plant_growth_stage_1"].Is_visible = false;
                 Texture_groups["plant_growth_stage_2"].Is_visible = false;
                 Texture_groups["plant_growth_stage_3"].Is_visible = true;
-                Texture_groups["plant_growth_stage_4"].Is_visible = false;
-                Texture_groups["plant_growth_stage_5"].Is_visible = false;
-            }
-            else if (growth_stage == 4)
-            {
-                Texture_groups["plant_growth_stage_1"].Is_visible = false;
-                Texture_groups["plant_growth_stage_2"].Is_visible = false;
-                Texture_groups["plant_growth_stage_3"].Is_visible = false;
-                Texture_groups["plant_growth_stage_4"].Is_visible = true;
-                Texture_groups["plant_growth_stage_5"].Is_visible = false;
-            }
-            else if (growth_stage >= 5)
-            {
-                Texture_groups["plant_growth_stage_1"].Is_visible = false;
-                Texture_groups["plant_growth_stage_2"].Is_visible = false;
-                Texture_groups["plant_growth_stage_3"].Is_visible = false;
-                Texture_groups["plant_growth_stage_4"].Is_visible = false;
-                Texture_groups["plant_growth_stage_5"].Is_visible = true;
             }
         }
     }

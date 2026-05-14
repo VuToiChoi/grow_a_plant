@@ -56,18 +56,6 @@
 /processorParam:TextureFormat=Color
 /build:picture's/background.png
 
-#begin picture's/fifthstage.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:picture's/fifthstage.png
-
 #begin picture's/firststage.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -79,18 +67,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:picture's/firststage.png
-
-#begin picture's/fourthstage.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:picture's/fourthstage.png
 
 #begin picture's/logmessage.png
 /importer:TextureImporter
