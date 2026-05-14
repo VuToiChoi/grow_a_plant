@@ -37,8 +37,8 @@ namespace grow_a_plant
 
 
             // clock
-            Texture_groups.Add("clock", new Texture_group(0, 0, true));
-            Texture_groups["clock"].Text_rectangles.Add(new Text_rectangle("", (int)(_screen_width * 0.014), (int)(_screen_height * 0.020), (int)(_screen_width * 0.152), (int)(_screen_height * 0.070)));
+            Texture_groups.Add("clock", new Texture_group((int)(_screen_width * 0.014), (int)(_screen_height * 0.020), true));
+            Texture_groups["clock"].Text_rectangles.Add(new Text_rectangle("", 0, 0, (int)(_screen_width * 0.152), (int)(_screen_height * 0.070)));
 
 
             // water bar
@@ -142,8 +142,7 @@ namespace grow_a_plant
             Texture_groups.Add("plant_growth_stage_3", new Texture_group((int)(_screen_width * 0.165), (int)(-1 * _screen_height * 0.020), false));
             Texture_groups["plant_growth_stage_3"].Image_rectangles.Add(new Image_rectangle(0, 0, (int)(_screen_width * 0.403), (int)(_screen_height * 0.833), _content.Load<Texture2D>("picture's\\thirdstage")));
 
-
-            // add more texture groups in the future, like the plant and the water and fertilize bars
+            // add more texture groups in the future, like animations
         }
 
         override public void update(Texture_screen_information texture_screen_information)
