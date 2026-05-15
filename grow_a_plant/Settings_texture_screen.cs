@@ -33,6 +33,11 @@ namespace grow_a_plant
             Texture_groups["clock"].Text_rectangles.Add(new Text_rectangle("", 0, 0, (int)(_screen_width * 0.152), (int)(_screen_height * 0.070)));
 
 
+            // day counter
+            Texture_groups.Add("day_counter", new Texture_group((int)(_screen_width * 0.014), (int)(_screen_height * 0.100), true));
+            Texture_groups["day_counter"].Text_rectangles.Add(new Text_rectangle("", 0, 0, (int)(_screen_width * 0.152), (int)(_screen_height * 0.070)));
+
+
             // water bar
             Texture_groups.Add("water_bar", new Texture_group((int)(_screen_width * 0.009), (int)(_screen_height * 0.222), true));
             Texture_groups["water_bar"].Image_rectangles.Add(new Image_rectangle(0, 0, (int)(_screen_width * 0.085), (int)(_screen_height * 0.506), _content.Load<Texture2D>("picture's\\waterbartubebackground")));
@@ -151,6 +156,8 @@ namespace grow_a_plant
         {
             update_clock(texture_screen_information.Time_of_day);
 
+            update_day_counter(texture_screen_information.Days_passed);
+
             update_water_bar(texture_screen_information.Water_level);
 
             update_fertilize_bar(texture_screen_information.Fertilize_level);
@@ -163,6 +170,11 @@ namespace grow_a_plant
         private void update_clock(TimeSpan time_of_day)
         {
             Texture_groups["clock"].Text_rectangles[0].Text = time_of_day.ToString(@"hh\:mm");
+        }
+
+        private void update_day_counter(int days_passed)
+        {
+            Texture_groups["day_counter"].Text_rectangles[0].Text = $"Days passed: {days_passed}";
         }
 
         private void update_water_bar(float water_level)

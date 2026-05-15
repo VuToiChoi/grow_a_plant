@@ -20,8 +20,10 @@ namespace grow_a_plant
         public int Growth_stage { get; private set; }
 
         public TimeSpan Time_of_day { get; private set; }
+
+        public int Days_passed { get; private set; }
         
-        public Texture_screen_information(Button_command_package selected_button, bool button_is_pressed, float water_level, float fertilize_level, int growth_stage, TimeSpan time_of_day)
+        public Texture_screen_information(Button_command_package selected_button, bool button_is_pressed, float water_level, float fertilize_level, int growth_stage, TimeSpan time_of_day, int days_passed)
         {
             Selected_button = selected_button;
             Button_is_pressed = button_is_pressed;
@@ -29,6 +31,7 @@ namespace grow_a_plant
             Fertilize_level = fertilize_level;
             Growth_stage = growth_stage;
             Time_of_day = time_of_day;
+            Days_passed = days_passed;
         }
     }
 }
