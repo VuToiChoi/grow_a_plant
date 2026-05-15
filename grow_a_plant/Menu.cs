@@ -48,7 +48,7 @@ namespace grow_a_plant
             return _options[_selected_option_index];
         }
 
-        protected void nudge_selected_option_index_inside_of_indexes()
+        protected void nudge_selected_option_index_inside_of_indexes() // is used to ensure that the option is in the range of the options. If the index is less than 0, it will wrap around to the end of the options. If the index is greater than the number of options, it will wrap around to the beginning of the options.    
         {
             int mod = ((_selected_option_index % _options.Length) + _options.Length) % _options.Length;
 
