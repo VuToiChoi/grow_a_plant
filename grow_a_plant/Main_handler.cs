@@ -43,7 +43,7 @@ namespace grow_a_plant
             _user_interface_interface = new User_interface_interface(sprite_batch, sprite_font, graphics_device, content);
         }
 
-        public void update(float delta_game_time, TimeSpan time_of_day)
+        public void update(float delta_game_time, TimeSpan time_of_day, long day_count)
         {
             _plant_handler.update_plant_info(delta_game_time);
 
@@ -54,7 +54,7 @@ namespace grow_a_plant
                 conduct_action(menu_handler_information.Selected_button.Command);
             }
 
-            Texture_screen_information texture_screen_information = new Texture_screen_information(_menu_command_package_command_type_to_button_command_package_dictionary[menu_handler_information.Selected_button.Command], menu_handler_information.Button_is_pressed, _plant_handler.get_plant().Water_level, _plant_handler.get_plant().Fertilize_level, (int)_plant_handler.get_plant().Current_growth_stage, time_of_day);
+            Texture_screen_information texture_screen_information = new Texture_screen_information(_menu_command_package_command_type_to_button_command_package_dictionary[menu_handler_information.Selected_button.Command], menu_handler_information.Button_is_pressed, _plant_handler.get_plant().Water_level, _plant_handler.get_plant().Fertilize_level, (int)_plant_handler.get_plant().Current_growth_stage, time_of_day, (int)day_count);
 
             _user_interface_interface.update(texture_screen_information);
         }

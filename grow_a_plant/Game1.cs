@@ -87,7 +87,7 @@ namespace grow_a_plant
             // time since last Update as float (seconds)
             float deltaSeconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            _main_handler.update(deltaSeconds * (float)Time_handler.game_seconds_per_real_second, _time_handler.Time_of_day);
+            _main_handler.update(deltaSeconds * (float)Time_handler.game_seconds_per_real_second, _time_handler.Time_of_day, _time_handler.Day_count);
 
             if (currState.IsKeyDown(Keys.P) && _prevKeyState.IsKeyUp(Keys.P))
             {
