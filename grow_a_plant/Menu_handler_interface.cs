@@ -19,7 +19,7 @@ namespace grow_a_plant
             _start_menu = new Start_menu();
             _settings_menu = new Settings_menu();
 
-            Menu_handler _menu_handler = new Menu_handler(_start_menu);
+            _menu_handler = new Menu_handler(_start_menu);
         }
 
         public void change_to_start_menu()
@@ -32,7 +32,7 @@ namespace grow_a_plant
             _menu_handler.change_menu(_settings_menu);
         }
 
-        public Menu_handler.action update()
+        public Menu_handler_information update()
         {
             return _menu_handler.update();
         }

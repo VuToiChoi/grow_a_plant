@@ -14,11 +14,11 @@ namespace grow_a_plant
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private SpriteFont _font;
-        private Plant_handler _plant_handler;
         private Data_handler _data_handler;
         private Time_handler _time_handler;
         private Weather_handler _weather_handler;
         private Sound_handler _soundHandler;
+        private Main_handler _main_handler;
         private KeyboardState _prevKeyState;
 
         public Game1()
@@ -35,7 +35,6 @@ namespace grow_a_plant
         {
             _graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
-            _soundHandler = new Sound_handler(Content);
             _prevKeyState = Keyboard.GetState();
 
             // Save on exit
@@ -66,6 +65,10 @@ namespace grow_a_plant
             long last_saved_ticks = saved_time?.last_saved_utc_ticks ?? DateTime.UtcNow.Ticks;
             float offline_game_seconds = _time_handler.get_offline_game_seconds(last_saved_ticks);
 
+
+            _main_handler = new Main_handler(plant, _weather_handler, offline_game_seconds, _spriteBatch, _font, GraphicsDevice, Content);
+
+            // Do NOT recreate a Time_handler or replay the offline time again here.
             _plant_handler = new Plant_handler(plant, _weather_handler, offline_game_seconds);
             _plant_handler.apply_offline_time(offline_game_seconds);
         }
@@ -85,17 +88,12 @@ namespace grow_a_plant
 
             // time since last Update as float (seconds)
             float deltaSeconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            _plant_handler?.update_plant_info(deltaSeconds * 120f);
 
-            if (currState.IsKeyDown(Keys.W))
-                _plant_handler?.water_plant();
-
-            if (currState.IsKeyDown(Keys.F))
-                _plant_handler?.fertilize_plant();
+            _main_handler.update(deltaSeconds * (float)Time_handler.game_seconds_per_real_second, _time_handler.Time_of_day, _time_handler.Day_count);
 
             if (currState.IsKeyDown(Keys.P) && _prevKeyState.IsKeyUp(Keys.P))
             {
-                _soundHandler?.play_water_sound(Content);
+                _soundHandler?.play_water_sound();
             }
 
             _prevKeyState = currState;
@@ -106,14 +104,8 @@ namespace grow_a_plant
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
-            // Draw current in-game clock
-            _spriteBatch.DrawString(_font, _time_handler?.to_clock_string() ?? "00:00", new Vector2(100, 100), Color.White);
-            _weather_handler.draw(_spriteBatch, _font, new Vector2(100,200));
-            _plant_handler.draw_plant_info(_spriteBatch, _font);
-
-            _spriteBatch.End();
+            _main_handler.draw();
 
             base.Draw(gameTime);
         }
@@ -121,7 +113,7 @@ namespace grow_a_plant
         private void on_exiting(object sender, EventArgs e)
         {
             // save plant if needed
-            _data_handler?.save_plant_data(_plant_handler?.get_plant());
+            _data_handler?.save_plant_data(_main_handler.get_plant());
 
             // Persist time state via Data_handler (now includes the in-game Time_of_day seconds)
             if (_time_handler != null && _data_handler != null)
