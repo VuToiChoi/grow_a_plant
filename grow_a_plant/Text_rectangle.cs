@@ -14,11 +14,18 @@ namespace grow_a_plant
 
         public int Y_postition { get; private set; }
 
-        public Text_rectangle(string text, int x_postition, int y_postition)
+        public int Width { get; private set; }
+
+        public int Height { get; private set; }
+
+
+        public Text_rectangle(string text, int x_postition, int y_postition, int width, int height)
         {
             Text = text;
             X_postition = x_postition;
             Y_postition = y_postition;
+            Width = width;
+            Height = height;
         }
     }
 }

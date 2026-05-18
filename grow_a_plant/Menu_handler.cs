@@ -11,55 +11,36 @@ namespace grow_a_plant
         private Menu _current_menu;
         private Pressed_keys_handler _pressed_keys_handler;
 
-        public enum action
-        {
-            return_to_game,
-            save_game,
-            load_game,
-            exit_game,
-            water,
-            open_log,
-            fertelize,
-            open_settings,
-            none
-        }
-
-        private Dictionary<string, action> _menu_string_to_action_dictionary = new()
-        {
-            { "Return to Game", action.return_to_game },
-            { "Save Game", action.save_game },
-            { "Load Game", action.load_game },
-            { "Exit Game", action.exit_game },
-            { "Water", action.water },
-            { "Log", action.open_log },
-            { "Fertelize", action.fertelize },
-            { "Settings", action.open_settings }
-        };
-
         public Menu_handler(Menu menu_to_use_currently)
         {
             _current_menu = menu_to_use_currently;
             _pressed_keys_handler = new Pressed_keys_handler();
         }
 
-        public action update()
+        public Menu_handler_information update()
         {
+            // update pressed keys and get the first pressed key
             _pressed_keys_handler.update();
-
             Input_handler.key first_pressed_key = _pressed_keys_handler.get_first_pressed_key();
 
-            if (first_pressed_key == Input_handler.key.z) // option is selsected
+            if (first_pressed_key == Input_handler.key.z) // when z is pressed selected option should be conducted
             {
-                return _menu_string_to_action_dictionary[_current_menu.get_selected_option()];
+                // returns the selected option and that the button is pressed
+                Menu_handler_information menu_handler_information = new Menu_handler_information(_current_menu.get_selected_option(), true);
+                return menu_handler_information;
             }
             else
             {
-                update_menu(first_pressed_key); // update what option in the menu is selected
-                return action.none;
+                // update what option in the menu is selected
+                step_through_menu(first_pressed_key);
+
+                // returns the selected option and that the button is not pressed
+                Menu_handler_information menu_handler_information = new Menu_handler_information(_current_menu.get_selected_option(), false);
+                return menu_handler_information;
             }
         }
 
-        private void update_menu(Input_handler.key pressed_key)
+        private void step_through_menu(Input_handler.key pressed_key)
         {
             if (pressed_key == Input_handler.key.up || pressed_key == Input_handler.key.w)
             {
