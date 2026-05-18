@@ -127,7 +127,7 @@ namespace grow_a_plant
             if (_time_handler != null && _data_handler != null)
             {
                 var state = _time_handler.get_save_state();
-                _data_handler.save_time_state(state.LastSavedUtcTicks, state.DayCount, state.TimeOfDaySeconds);
+                _data_handler.save_time_state(state.last_saved_utc_ticks, state.day_count, state.time_of_day_seconds);
             }
 
             _weather_handler?.Dispose();

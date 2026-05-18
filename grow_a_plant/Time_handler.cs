@@ -21,19 +21,20 @@ namespace grow_a_plant
         public float Offline_real_fractional_seconds { get; private set; } = 0f;
 
         // Accept optional saved state (last saved UTC ticks, saved day count, saved in-game time-of-day seconds)
-        public Time_handler((long LastSavedUtcTicks, long DayCount, double TimeOfDaySeconds)? saved_state = null)
+        public Time_handler((long last_saved_utc_ticks, long day_count, double time_of_day_seconds)? saved_state = null)
         {
             initialize_from_saved_state(saved_state);
         }
 
-        private void initialize_from_saved_state((long LastSavedUtcTicks, long DayCount, double TimeOfDaySeconds)? saved_state)
+        // Initialize the time handler from the optional saved state, applying offline time progression based on the last saved UTC ticks and the in-game time-of-day seconds.
+        private void initialize_from_saved_state((long last_saved_utc_ticks, long day_count, double time_of_day_seconds)? saved_state)
         {
             // Start with either the saved in-game time-of-day seconds or local real time if no saved data
-            double initial_seconds = saved_state.HasValue ? saved_state.Value.TimeOfDaySeconds : DateTime.Now.TimeOfDay.TotalSeconds;
+            double initial_seconds = saved_state.HasValue ? saved_state.Value.time_of_day_seconds : DateTime.Now.TimeOfDay.TotalSeconds;
 
             if (saved_state.HasValue)
             {
-                var last_saved_utc = new DateTime(saved_state.Value.LastSavedUtcTicks, DateTimeKind.Utc);
+                var last_saved_utc = new DateTime(saved_state.Value.last_saved_utc_ticks, DateTimeKind.Utc);
                 double offline_real_seconds = (DateTime.UtcNow - last_saved_utc).TotalSeconds;
                 if (offline_real_seconds < 0) offline_real_seconds = 0;
 
@@ -45,8 +46,8 @@ namespace grow_a_plant
                 double offline_game_seconds_int = Offline_real_seconds_int * game_seconds_per_real_second;
                 initial_seconds += offline_game_seconds_int;
 
-                Day_count = saved_state.Value.DayCount;
-                Last_login_utc_ticks = saved_state.Value.LastSavedUtcTicks;
+                Day_count = saved_state.Value.day_count;
+                Last_login_utc_ticks = saved_state.Value.last_saved_utc_ticks;
 
                 if (initial_seconds >= 86400.0)
                 {
@@ -59,12 +60,12 @@ namespace grow_a_plant
             Time_of_day = TimeSpan.FromSeconds(initial_seconds % 86400.0);
         }
 
-        // Call from Game1.Update(gameTime)
-        public void update(GameTime gameTime)
+        // Update the in-game time based on the real time elapsed since the last update, applying the game-seconds multiplier and handling day progression. If paused, do nothing.
+        public void update(GameTime game_time)
         {
             if (Is_paused) return;
 
-            double real_seconds = gameTime.ElapsedGameTime.TotalSeconds;
+            double real_seconds = game_time.ElapsedGameTime.TotalSeconds;
             if (real_seconds <= 0) return;
 
             real_seconds = Math.Min(real_seconds, _max_real_seconds_per_update);
@@ -83,7 +84,7 @@ namespace grow_a_plant
         }
 
         // Provide a tuple for persistence (include in-game time-of-day seconds)
-        public (long LastSavedUtcTicks, long DayCount, double TimeOfDaySeconds) get_save_state()
+        public (long last_saved_utc_ticks, long day_count, double time_of_day_seconds) get_save_state()
         {
             return (DateTime.UtcNow.Ticks, Day_count, Time_of_day.TotalSeconds);
         }
