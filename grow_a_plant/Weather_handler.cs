@@ -11,7 +11,7 @@ namespace grow_a_plant
 {
     public class Weather_handler : IDisposable
     {
-        private readonly HttpClient _httpClient = new();
+        private readonly HttpClient _http_client = new();
         private Timer? _timer;
         private readonly string _latitude = "56.0467";
         private readonly string _longitude = "12.6944"; // Example: Helsinborg, Sweden
@@ -46,7 +46,7 @@ namespace grow_a_plant
             $"longitude={_longitude}&" +
             $"current=temperature_2m,rain,snowfall,relative_humidity_2m,cloud_cover&timezone=Europe%2FBerlin&forecast_days=1";
 
-            var response = await _httpClient.GetAsync(api_url);
+            var response = await _http_client.GetAsync(api_url);
             try
             {
                 response.EnsureSuccessStatusCode();
@@ -118,7 +118,7 @@ namespace grow_a_plant
         public void Dispose()
         {
             stop_periodic_updates();
-            _httpClient.Dispose();
+            _http_client.Dispose();
         }
 
         // Public getters to expose current weather values (thread-safe snapshot)
