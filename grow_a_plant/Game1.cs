@@ -63,12 +63,11 @@ namespace grow_a_plant
             Plant plant = _data_handler.load_plant_data();
 
             // Compute offline game-seconds once from the saved ticks and pass into Plant_handler
-            long last_saved_ticks = saved_time?.LastSavedUtcTicks ?? DateTime.UtcNow.Ticks;
+            long last_saved_ticks = saved_time?.last_saved_utc_ticks ?? DateTime.UtcNow.Ticks;
             float offline_game_seconds = _time_handler.get_offline_game_seconds(last_saved_ticks);
 
             _plant_handler = new Plant_handler(plant, _weather_handler, offline_game_seconds);
-
-            // Do NOT recreate a Time_handler or replay the offline time again here.
+            _plant_handler.apply_offline_time(offline_game_seconds);
         }
 
         protected override void Update(GameTime gameTime)

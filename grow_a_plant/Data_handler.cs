@@ -12,6 +12,7 @@ namespace grow_a_plant
 
         public Data_handler()
         {
+            // Use LocalApplicationData for better cross-platform support and to avoid permission issues
             _folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "grow_a_plant");
             if (!Directory.Exists(_folder))
             {
@@ -21,7 +22,7 @@ namespace grow_a_plant
             _timePath = Path.Combine(_folder, "time_state.json");
         }
 
-        // Robust plant persistence
+        // Save plant data in a simple text format: "water_level;fertilize_level;current_growth_stage"
         public void save_plant_data(Plant plant)
         {
             try
@@ -38,6 +39,7 @@ namespace grow_a_plant
             }
         }
 
+        // Load plant data, returning a Plant object. If loading fails, return a default Plant with 0 values.
         public Plant load_plant_data()
         {
             try
@@ -45,14 +47,14 @@ namespace grow_a_plant
                 if (!File.Exists(_plantPath)) return new Plant(0, 0, 0);
                 var text = File.ReadAllText(_plantPath);
                 if (string.IsNullOrWhiteSpace(text)) return new Plant(0, 0, 0);
-                var firstLine = text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries)[0];
-                var parts = firstLine.Split(';');
+                var first_line = text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries)[0];
+                var parts = first_line.Split(';');
                 if (parts.Length < 3) return new Plant(0, 0, 0);
 
                 float humidity = float.TryParse(parts[0].Trim(), out var h) ? h : 0;
                 float fertilizer = float.TryParse(parts[1].Trim(), out var f) ? f : 0;
-                float growthStage = float.TryParse(parts[2].Trim(), out var g) ? g : 0;
-                return new Plant(humidity, fertilizer, growthStage);
+                float growth_stage = float.TryParse(parts[2].Trim(), out var g) ? g : 0;
+                return new Plant(humidity, fertilizer, growth_stage);
             }
             catch (Exception ex)
             {
@@ -60,20 +62,20 @@ namespace grow_a_plant
             }
         }
 
-        // Time persistence for Time_handler
+        // Class to represent the time state for JSON serialization
         private class TimeState
         {
-            public long LastSavedUtcTicks { get; set; }
-            public long DayCount { get; set; }
-            public double TimeOfDaySeconds { get; set; } // save in-game time-of-day in seconds
+            public long last_saved_utc_ticks { get; set; }
+            public long day_count { get; set; }
+            public double time_of_day_seconds { get; set; } // save in-game time-of-day in seconds
         }
 
         // Save last saved UTC ticks, day count, and the current in-game time-of-day seconds
-        public void save_time_state(long lastSavedUtcTicks, long dayCount, double timeOfDaySeconds)
+        public void save_time_state(long last_saved_utc_ticks, long day_count, double time_of_day_seconds)
         {
             try
             {
-                var state = new TimeState { LastSavedUtcTicks = lastSavedUtcTicks, DayCount = dayCount, TimeOfDaySeconds = timeOfDaySeconds };
+                var state = new TimeState { last_saved_utc_ticks = last_saved_utc_ticks, day_count = day_count, time_of_day_seconds = time_of_day_seconds };
                 var json = JsonSerializer.Serialize(state);
                 File.WriteAllText(_timePath, json);
             }
@@ -82,8 +84,8 @@ namespace grow_a_plant
             }
         }
 
-        // Returns null if no saved state
-        public (long LastSavedUtcTicks, long DayCount, double TimeOfDaySeconds)? load_time_state()
+        // Load time state, returning a tuple of (last saved UTC ticks, day count, in-game time-of-day seconds). If loading fails, return null.
+        public (long last_saved_utc_ticks, long day_count, double time_of_day_seconds)? load_time_state()
         {
             try
             {
@@ -91,7 +93,7 @@ namespace grow_a_plant
                 var json = File.ReadAllText(_timePath);
                 var state = JsonSerializer.Deserialize<TimeState>(json);
                 if (state == null) return null;
-                return (state.LastSavedUtcTicks, state.DayCount, state.TimeOfDaySeconds);
+                return (state.last_saved_utc_ticks, state.day_count, state.time_of_day_seconds);
             }
             catch (Exception ex)
             {
