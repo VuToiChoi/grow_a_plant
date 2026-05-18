@@ -62,7 +62,7 @@ namespace grow_a_plant
             int menu_width = _screen_width;
             int menu_height = (int)(_screen_height * 0.236);
 
-            Start_menu_information_text_rectangle = new Text_rectangle("", (int)(menu_width * 0.156), (int)(menu_height * 0.411), (int)(menu_width * 0.219), (int)(menu_height * 0.178));
+            Start_menu_information_text_rectangle = new Text_rectangle("choose what to do.", (int)(menu_width * 0.156), (int)(menu_height * 0.411), (int)(menu_width * 0.219), (int)(menu_height * 0.178));
 
             // start menu with water selected
             Texture_groups.Add("start_menu_water_selected", new Texture_group(0, (int)(_screen_height * 0.765), true));
