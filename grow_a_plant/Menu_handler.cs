@@ -19,27 +19,28 @@ namespace grow_a_plant
 
         public Menu_handler_information update()
         {
+            // update pressed keys and get the first pressed key
             _pressed_keys_handler.update();
-
             Input_handler.key first_pressed_key = _pressed_keys_handler.get_first_pressed_key();
 
-            if (first_pressed_key == Input_handler.key.z) // option is selsected
+            if (first_pressed_key == Input_handler.key.z) // when z is pressed selected option should be conducted
             {
+                // returns the selected option and that the button is pressed
                 Menu_handler_information menu_handler_information = new Menu_handler_information(_current_menu.get_selected_option(), true);
-
                 return menu_handler_information;
             }
             else
             {
-                update_menu(first_pressed_key); // update what option in the menu is selected
+                // update what option in the menu is selected
+                step_through_menu(first_pressed_key);
 
+                // returns the selected option and that the button is not pressed
                 Menu_handler_information menu_handler_information = new Menu_handler_information(_current_menu.get_selected_option(), false);
-
                 return menu_handler_information;
             }
         }
 
-        private void update_menu(Input_handler.key pressed_key)
+        private void step_through_menu(Input_handler.key pressed_key)
         {
             if (pressed_key == Input_handler.key.up || pressed_key == Input_handler.key.w)
             {
