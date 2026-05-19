@@ -18,8 +18,8 @@ namespace grow_a_plant
             save_game,
             load_game,
             exit_game,
-            understood,
-            skip
+            next_tutorial_slide,
+            exit_tutorial
         }
 
         public Button_command_package(command_type command) : base(command)

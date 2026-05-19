@@ -18,6 +18,8 @@ namespace grow_a_plant
             open_log,
             fertelize,
             open_settings,
+            next_tutorial_slide,
+            exit_tutorial,
             none
         }
 
