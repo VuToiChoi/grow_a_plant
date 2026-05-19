@@ -67,10 +67,6 @@ namespace grow_a_plant
 
 
             _main_handler = new Main_handler(plant, _weather_handler, offline_game_seconds, _spriteBatch, _font, GraphicsDevice, Content);
-
-            //// Do NOT recreate a Time_handler or replay the offline time again here.
-            //_plant_handler = new Plant_handler(plant, _weather_handler, offline_game_seconds);
-            //_plant_handler.apply_offline_time(offline_game_seconds);
         }
 
         protected override void Update(GameTime gameTime)

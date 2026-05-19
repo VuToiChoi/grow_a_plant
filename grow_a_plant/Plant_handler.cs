@@ -21,6 +21,7 @@ namespace grow_a_plant
             {
                 _delta_time = 0;
             }
+            apply_offline_time(delta_time);
         }
 
         //Adds 0.1 to the water level, but clamps it to a maximum of 1.0 to prevent overflow.
