@@ -17,7 +17,9 @@ namespace grow_a_plant
             return_to_game,
             save_game,
             load_game,
-            exit_game
+            exit_game,
+            understood,
+            skip
         }
 
         public Button_command_package(command_type command) : base(command)
