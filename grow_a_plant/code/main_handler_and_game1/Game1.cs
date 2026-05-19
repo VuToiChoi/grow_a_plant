@@ -71,28 +71,20 @@ namespace grow_a_plant
 
         protected override void Update(GameTime gameTime)
         {
-            KeyboardState currState = Keyboard.GetState();
-
-            if (currState.IsKeyDown(Keys.Escape))
-            {
-                Exit();
-                return;
-            }
-
             // update time once per frame
             _time_handler?.update(gameTime);
 
             // time since last Update as float (seconds)
             float deltaSeconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            _main_handler.update(deltaSeconds * (float)Time_handler.game_seconds_per_real_second, _time_handler.Time_of_day, _time_handler.Day_count);
-
-            if (currState.IsKeyDown(Keys.P) && _prevKeyState.IsKeyUp(Keys.P))
+            bool game_should_not_exit = _main_handler.update(deltaSeconds * (float)Time_handler.game_seconds_per_real_second, _time_handler.Time_of_day, _time_handler.Day_count);
+            
+            if (!game_should_not_exit)
             {
-                _soundHandler?.play_water_sound();
+                Exit();
+                return;
             }
 
-            _prevKeyState = currState;
             base.Update(gameTime);
         }
         
