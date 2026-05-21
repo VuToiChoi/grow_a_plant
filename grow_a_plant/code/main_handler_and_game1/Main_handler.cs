@@ -31,7 +31,10 @@ namespace grow_a_plant
             { Menu_command_package.command_type.return_to_game, new Button_command_package(Button_command_package.command_type.return_to_game) },
             { Menu_command_package.command_type.save_game, new Button_command_package(Button_command_package.command_type.save_game) },
             { Menu_command_package.command_type.load_game, new Button_command_package(Button_command_package.command_type.load_game) },
-            { Menu_command_package.command_type.exit_game, new Button_command_package(Button_command_package.command_type.exit_game) }
+            { Menu_command_package.command_type.exit_game, new Button_command_package(Button_command_package.command_type.exit_game) },
+            { Menu_command_package.command_type.previous_tutorial_slide, new Button_command_package(Button_command_package.command_type.previous_tutorial_slide) },
+            { Menu_command_package.command_type.next_tutorial_slide, new Button_command_package(Button_command_package.command_type.next_tutorial_slide) },
+            { Menu_command_package.command_type.exit_tutorial, new Button_command_package(Button_command_package.command_type.exit_tutorial) }
         };
 
         public Main_handler(Plant plant, Weather_handler weather_handler, float offline_game_seconds, SpriteBatch sprite_batch, SpriteFont sprite_font, GraphicsDevice graphics_device, ContentManager content)
@@ -75,7 +78,6 @@ namespace grow_a_plant
             if (command == Menu_command_package.command_type.return_to_game)
             {
                 _menu_handler_interface.change_to_start_menu();
-
                 _user_interface_interface.change_to_start_texture_screen();
             }
             else if (command == Menu_command_package.command_type.save_game)
@@ -93,7 +95,6 @@ namespace grow_a_plant
             else if (command == Menu_command_package.command_type.water)
             {
                 _plant_handler.water_plant();
-
                 _sound_handler.play_water_sound();
             }
             else if (command == Menu_command_package.command_type.open_log)
@@ -107,8 +108,12 @@ namespace grow_a_plant
             else if (command == Menu_command_package.command_type.open_settings)
             {
                 _menu_handler_interface.change_to_settings_menu();
-
                 _user_interface_interface.change_to_settings_texture_screen();
+            }
+            else if (command == Menu_command_package.command_type.exit_tutorial)
+            {
+                _menu_handler_interface.change_to_start_menu();
+                _user_interface_interface.change_to_start_texture_screen();
             }
         }
 

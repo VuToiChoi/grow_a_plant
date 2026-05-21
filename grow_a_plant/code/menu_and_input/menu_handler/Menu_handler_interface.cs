@@ -23,7 +23,7 @@ namespace grow_a_plant
             _settings_menu = new Settings_menu();
             _tutorial_menu = new Tutorial_menu();
 
-            _menu_handler = new Menu_handler(_start_menu);
+            _menu_handler = new Menu_handler(_tutorial_menu);
         }
 
         public void change_to_start_menu()
