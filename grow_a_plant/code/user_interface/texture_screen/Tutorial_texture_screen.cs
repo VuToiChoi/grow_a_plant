@@ -40,21 +40,21 @@ namespace grow_a_plant.code.user_interface.texture_screen
 
             //  next tutorial slide button selected
             Texture_groups.Add("menu_previous_tutorial_slide_selected", new Texture_group(0, 0, true));
-            Texture_groups["menu_previous_tutorial_slide_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, _screen_width, (int)(_screen_height * 0.765), _content.Load<Texture2D>("picture's\\startmenubuttonselect")));
-            Texture_groups["menu_previous_tutorial_slide_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, _screen_width, (int)(_screen_height * 0.765), _content.Load<Texture2D>("picture's\\startmenubutton")));
-            Texture_groups["menu_previous_tutorial_slide_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, _screen_width, (int)(_screen_height * 0.765), _content.Load<Texture2D>("picture's\\startmenubutton")));
+            Texture_groups["menu_previous_tutorial_slide_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, _screen_width, (int)(_screen_height * 0.765), _content.Load<Texture2D>("picture's\\startmenuebuttonselect")));
+            Texture_groups["menu_previous_tutorial_slide_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, _screen_width, (int)(_screen_height * 0.765), _content.Load<Texture2D>("picture's\\startmenuebutton")));
+            Texture_groups["menu_previous_tutorial_slide_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, _screen_width, (int)(_screen_height * 0.765), _content.Load<Texture2D>("picture's\\startmenuebutton")));
 
             //  next tutorial slide button selected
             Texture_groups.Add("menu_next_tutorial_slide_selected", new Texture_group(0, 0, true));
-            Texture_groups["menu_next_tutorial_slide_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, _screen_width, (int)(_screen_height * 0.765), _content.Load<Texture2D>("picture's\\startmenubutton")));
-            Texture_groups["menu_next_tutorial_slide_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, _screen_width, (int)(_screen_height * 0.765), _content.Load<Texture2D>("picture's\\startmenubuttonselect")));
-            Texture_groups["menu_next_tutorial_slide_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, _screen_width, (int)(_screen_height * 0.765), _content.Load<Texture2D>("picture's\\startmenubutton")));
+            Texture_groups["menu_next_tutorial_slide_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, _screen_width, (int)(_screen_height * 0.765), _content.Load<Texture2D>("picture's\\startmenuebutton")));
+            Texture_groups["menu_next_tutorial_slide_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, _screen_width, (int)(_screen_height * 0.765), _content.Load<Texture2D>("picture's\\startmenuebuttonselect")));
+            Texture_groups["menu_next_tutorial_slide_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, _screen_width, (int)(_screen_height * 0.765), _content.Load<Texture2D>("picture's\\startmenuebutton")));
 
             //  exit tutorial button selected
             Texture_groups.Add("menu_exit_tutorial_selected", new Texture_group(0, 0, true));
-            Texture_groups["menu_exit_tutorial_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, _screen_width, (int)(_screen_height * 0.765), _content.Load<Texture2D>("picture's\\startmenubutton")));
-            Texture_groups["menu_exit_tutorial_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, _screen_width, (int)(_screen_height * 0.765), _content.Load<Texture2D>("picture's\\startmenubutton")));
-            Texture_groups["menu_exit_tutorial_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, _screen_width, (int)(_screen_height * 0.765), _content.Load<Texture2D>("picture's\\startmenubuttonselect")));
+            Texture_groups["menu_exit_tutorial_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, _screen_width, (int)(_screen_height * 0.765), _content.Load<Texture2D>("picture's\\startmenuebutton")));
+            Texture_groups["menu_exit_tutorial_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, _screen_width, (int)(_screen_height * 0.765), _content.Load<Texture2D>("picture's\\startmenuebutton")));
+            Texture_groups["menu_exit_tutorial_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, _screen_width, (int)(_screen_height * 0.765), _content.Load<Texture2D>("picture's\\startmenuebuttonselect")));
         }
 
         public override void update(Texture_screen_information texture_screen_information)
