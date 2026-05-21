@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Content;
+﻿using grow_a_plant.code.user_interface.texture_screen;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -16,10 +17,13 @@ namespace grow_a_plant
 
         Settings_texture_screen _settings_texture_screen;
 
+        Tutorial_texture_screen _tutorial_texture_screen;
+
         public User_interface_interface(SpriteBatch sprite_batch, SpriteFont sprite_font, GraphicsDevice graphics_device, ContentManager content)
         {
             _start_texture_screen = new Start_texture_screen(graphics_device, content);
             _settings_texture_screen = new Settings_texture_screen(graphics_device, content);
+            _tutorial_texture_screen = new Tutorial_texture_screen(graphics_device, content);
 
             _user_interface_handler = new User_interface_handler(_start_texture_screen, sprite_batch, sprite_font);
         }
@@ -33,6 +37,12 @@ namespace grow_a_plant
         {
             _user_interface_handler.change_texture_screen(_settings_texture_screen);
         }
+
+        public void change_to_tutorial_texture_screen()
+        {
+            _user_interface_handler.change_texture_screen(_tutorial_texture_screen);
+        }
+
 
         public void update(Texture_screen_information texture_screen_information)
         {
