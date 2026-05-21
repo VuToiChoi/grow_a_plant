@@ -55,5 +55,10 @@ namespace grow_a_plant.code.user_interface.texture_screen
         {
             return _tutorial_slides[current_slide_index].Information_text;
         }
+
+        public int get_total_amount_of_slides()
+        {
+            return _tutorial_slides.Count;
+        }
     }
 }
