@@ -19,6 +19,7 @@ namespace grow_a_plant
             fertelize,
             open_settings,
             next_tutorial_slide,
+            previous_tutorial_slide,
             exit_tutorial,
             none
         }
