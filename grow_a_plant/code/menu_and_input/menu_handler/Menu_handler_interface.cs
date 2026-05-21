@@ -1,4 +1,5 @@
-﻿using System;
+﻿using grow_a_plant.code.menu_and_input.menus;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,10 +15,13 @@ namespace grow_a_plant
 
         Settings_menu _settings_menu;
 
+        Tutorial_menu _tutorial_menu;
+
         public Menu_handler_interface()
         {
             _start_menu = new Start_menu();
             _settings_menu = new Settings_menu();
+            _tutorial_menu = new Tutorial_menu();
 
             _menu_handler = new Menu_handler(_start_menu);
         }
@@ -30,6 +34,11 @@ namespace grow_a_plant
         public void change_to_settings_menu()
         {
             _menu_handler.change_menu(_settings_menu);
+        }
+
+        public void change_to_tutorial_menu()
+        {
+            _menu_handler.change_menu(_tutorial_menu);
         }
 
         public Menu_handler_information update()
