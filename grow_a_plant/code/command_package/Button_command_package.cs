@@ -19,6 +19,7 @@ namespace grow_a_plant
             load_game,
             exit_game,
             next_tutorial_slide,
+            previous_tutorial_slide,
             exit_tutorial
         }
 
