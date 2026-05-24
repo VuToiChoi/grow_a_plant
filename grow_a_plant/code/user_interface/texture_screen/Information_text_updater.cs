@@ -22,10 +22,6 @@
             {
                 text_rectangle.Text = "the game is saved.";
             }
-            else if (command == Button_command_package.command_type.load_game)
-            {
-                text_rectangle.Text = "the game is loaded.";
-            }
         }
     }
 }
