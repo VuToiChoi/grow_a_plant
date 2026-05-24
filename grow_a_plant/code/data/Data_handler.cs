@@ -4,7 +4,7 @@ using System.Text.Json;
 
 namespace grow_a_plant
 {
-    internal class Data_handler
+    public class Data_handler
     {
         private readonly string _folder;
         private readonly string _plantPath;
