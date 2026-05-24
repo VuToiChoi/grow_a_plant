@@ -84,7 +84,7 @@ namespace grow_a_plant
             // text
             Texture_groups["settings_menu_return_to_game_selected"].Text_rectangles.Add(new Text_rectangle("Return to Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.055), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
             Texture_groups["settings_menu_return_to_game_selected"].Text_rectangles.Add(new Text_rectangle("Save Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.168), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
-            Texture_groups["settings_menu_return_to_game_selected"].Text_rectangles.Add(new Text_rectangle("Load Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.280), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
+            Texture_groups["settings_menu_return_to_game_selected"].Text_rectangles.Add(new Text_rectangle("Open Tutorial", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.280), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
             Texture_groups["settings_menu_return_to_game_selected"].Text_rectangles.Add(new Text_rectangle("Exit Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.393), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
 
             // settings menu with save game selected
@@ -98,22 +98,22 @@ namespace grow_a_plant
             // text
             Texture_groups["settings_menu_save_game_selected"].Text_rectangles.Add(new Text_rectangle("Return to Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.055), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
             Texture_groups["settings_menu_save_game_selected"].Text_rectangles.Add(new Text_rectangle("Save Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.168), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
-            Texture_groups["settings_menu_save_game_selected"].Text_rectangles.Add(new Text_rectangle("Load Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.280), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
+            Texture_groups["settings_menu_save_game_selected"].Text_rectangles.Add(new Text_rectangle("Open Tutorial", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.280), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
             Texture_groups["settings_menu_save_game_selected"].Text_rectangles.Add(new Text_rectangle("Exit Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.393), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
 
             // settings menu with load game selected
-            Texture_groups.Add("settings_menu_load_game_selected", new Texture_group((int)(_screen_width * 0.741), (int)(_screen_height * 0.069), false));
+            Texture_groups.Add("settings_menu_open_tutorial_selected", new Texture_group((int)(_screen_width * 0.741), (int)(_screen_height * 0.069), false));
             // images
-            Texture_groups["settings_menu_load_game_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, settings_menu_width, settings_menu_height, _content.Load<Texture2D>("picture's\\settingslogbackground")));
-            Texture_groups["settings_menu_load_game_selected"].Image_rectangles.Add(new Image_rectangle((int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.055), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073), _content.Load<Texture2D>("picture's\\settingslogbutton")));
-            Texture_groups["settings_menu_load_game_selected"].Image_rectangles.Add(new Image_rectangle((int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.168), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073), _content.Load<Texture2D>("picture's\\settingslogbutton")));
-            Texture_groups["settings_menu_load_game_selected"].Image_rectangles.Add(new Image_rectangle((int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.280), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073), _content.Load<Texture2D>("picture's\\settingslogbuttonselect")));
-            Texture_groups["settings_menu_load_game_selected"].Image_rectangles.Add(new Image_rectangle((int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.393), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073), _content.Load<Texture2D>("picture's\\settingslogbutton")));
+            Texture_groups["settings_menu_open_tutorial_selected"].Image_rectangles.Add(new Image_rectangle(0, 0, settings_menu_width, settings_menu_height, _content.Load<Texture2D>("picture's\\settingslogbackground")));
+            Texture_groups["settings_menu_open_tutorial_selected"].Image_rectangles.Add(new Image_rectangle((int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.055), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073), _content.Load<Texture2D>("picture's\\settingslogbutton")));
+            Texture_groups["settings_menu_open_tutorial_selected"].Image_rectangles.Add(new Image_rectangle((int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.168), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073), _content.Load<Texture2D>("picture's\\settingslogbutton")));
+            Texture_groups["settings_menu_open_tutorial_selected"].Image_rectangles.Add(new Image_rectangle((int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.280), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073), _content.Load<Texture2D>("picture's\\settingslogbuttonselect")));
+            Texture_groups["settings_menu_open_tutorial_selected"].Image_rectangles.Add(new Image_rectangle((int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.393), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073), _content.Load<Texture2D>("picture's\\settingslogbutton")));
             // text
-            Texture_groups["settings_menu_load_game_selected"].Text_rectangles.Add(new Text_rectangle("Return to Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.055), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
-            Texture_groups["settings_menu_load_game_selected"].Text_rectangles.Add(new Text_rectangle("Save Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.168), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
-            Texture_groups["settings_menu_load_game_selected"].Text_rectangles.Add(new Text_rectangle("Load Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.280), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
-            Texture_groups["settings_menu_load_game_selected"].Text_rectangles.Add(new Text_rectangle("Exit Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.393), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
+            Texture_groups["settings_menu_open_tutorial_selected"].Text_rectangles.Add(new Text_rectangle("Return to Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.055), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
+            Texture_groups["settings_menu_open_tutorial_selected"].Text_rectangles.Add(new Text_rectangle("Save Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.168), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
+            Texture_groups["settings_menu_open_tutorial_selected"].Text_rectangles.Add(new Text_rectangle("Open Tutorial", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.280), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
+            Texture_groups["settings_menu_open_tutorial_selected"].Text_rectangles.Add(new Text_rectangle("Exit Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.393), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
 
             // settings menu with exit game selected
             Texture_groups.Add("settings_menu_exit_game_selected", new Texture_group((int)(_screen_width * 0.741), (int)(_screen_height * 0.069), false));
@@ -126,7 +126,7 @@ namespace grow_a_plant
             // text
             Texture_groups["settings_menu_exit_game_selected"].Text_rectangles.Add(new Text_rectangle("Return to Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.055), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
             Texture_groups["settings_menu_exit_game_selected"].Text_rectangles.Add(new Text_rectangle("Save Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.168), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
-            Texture_groups["settings_menu_exit_game_selected"].Text_rectangles.Add(new Text_rectangle("Load Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.280), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
+            Texture_groups["settings_menu_exit_game_selected"].Text_rectangles.Add(new Text_rectangle("Open Tutorial", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.280), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
             Texture_groups["settings_menu_exit_game_selected"].Text_rectangles.Add(new Text_rectangle("Exit Game", (int)(settings_menu_width * 0.049), (int)(settings_menu_height * 0.393), (int)(settings_menu_width * 0.917), (int)(settings_menu_height * 0.073)));
 
 
@@ -194,28 +194,28 @@ namespace grow_a_plant
             {
                 Texture_groups["settings_menu_return_to_game_selected"].Is_visible = true;
                 Texture_groups["settings_menu_save_game_selected"].Is_visible = false;
-                Texture_groups["settings_menu_load_game_selected"].Is_visible = false;
+                Texture_groups["settings_menu_open_tutorial_selected"].Is_visible = false;
                 Texture_groups["settings_menu_exit_game_selected"].Is_visible = false;
             }
             else if (selected_button.Command == Button_command_package.command_type.save_game)
             {
                 Texture_groups["settings_menu_return_to_game_selected"].Is_visible = false;
                 Texture_groups["settings_menu_save_game_selected"].Is_visible = true;
-                Texture_groups["settings_menu_load_game_selected"].Is_visible = false;
+                Texture_groups["settings_menu_open_tutorial_selected"].Is_visible = false;
                 Texture_groups["settings_menu_exit_game_selected"].Is_visible = false;
             }
-            else if (selected_button.Command == Button_command_package.command_type.load_game)
+            else if (selected_button.Command == Button_command_package.command_type.open_tutorial)
             {
                 Texture_groups["settings_menu_return_to_game_selected"].Is_visible = false;
                 Texture_groups["settings_menu_save_game_selected"].Is_visible = false;
-                Texture_groups["settings_menu_load_game_selected"].Is_visible = true;
+                Texture_groups["settings_menu_open_tutorial_selected"].Is_visible = true;
                 Texture_groups["settings_menu_exit_game_selected"].Is_visible = false;
             }
             else if (selected_button.Command == Button_command_package.command_type.exit_game)
             {
                 Texture_groups["settings_menu_return_to_game_selected"].Is_visible = false;
                 Texture_groups["settings_menu_save_game_selected"].Is_visible = false;
-                Texture_groups["settings_menu_load_game_selected"].Is_visible = false;
+                Texture_groups["settings_menu_open_tutorial_selected"].Is_visible = false;
                 Texture_groups["settings_menu_exit_game_selected"].Is_visible = true;
             }
         }
