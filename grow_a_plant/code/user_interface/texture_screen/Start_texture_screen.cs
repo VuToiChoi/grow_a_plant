@@ -26,8 +26,7 @@ namespace grow_a_plant
             int _screen_height = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
 
 
-            // in the future this would be done in a better way, probably with a json file or something, but for now this is fine
-            // the _screen_width and _screen_height could be implemented in the future to make the design responsive
+            // in the future this would be done in a better way, probably with a json file or something, also perhaps with some subclasses. This is just a quick way to get everything in place for the first version of the game, and it works fine for now, but it becomes a bit messy if I keep adding more texture groups like this.
 
 
 
@@ -58,7 +57,7 @@ namespace grow_a_plant
             Texture_groups["fertilize_bar"].Image_rectangles.Add(new Image_rectangle((int)(_screen_width * 0.002), (int)(_screen_height * 0.002), 0, (int)(_screen_height * 0.043), _content.Load<Texture2D>("picture's\\soilbartube")));
 
 
-            // start menus
+            // start menus (there is one texture_group for each case where one of the buttons are selected)
             int menu_width = _screen_width;
             int menu_height = (int)(_screen_height * 0.236);
 
@@ -137,11 +136,11 @@ namespace grow_a_plant
 
             // plant growth stage 1
             Texture_groups.Add("plant_growth_stage_1", new Texture_group((int)(_screen_width * 0.321), (int)(-1 * _screen_height * 0.230), true));
-            Texture_groups["plant_growth_stage_1"].Image_rectangles.Add(new Image_rectangle(0, 0, (int)(_screen_width * 0.668), (int)(_screen_height * 1.200), _content.Load<Texture2D>("picture's\\firststage"))); // the names of image might be a bit confusing, the first and second stage images were pretty much the same
+            Texture_groups["plant_growth_stage_1"].Image_rectangles.Add(new Image_rectangle(0, 0, (int)(_screen_width * 0.668), (int)(_screen_height * 1.200), _content.Load<Texture2D>("picture's\\firststage")));
 
             // plant growth stage 2
             Texture_groups.Add("plant_growth_stage_2", new Texture_group((int)(_screen_width * 0.219), (int)(-1 * _screen_height * 0.054), false));
-            Texture_groups["plant_growth_stage_2"].Image_rectangles.Add(new Image_rectangle(0, 0, (int)(_screen_width * 0.450), (int)(_screen_height * 0.900), _content.Load<Texture2D>("picture's\\secondstage"))); // the names of image might be a bit confusing, the third and fourth stage images were pretty much the same
+            Texture_groups["plant_growth_stage_2"].Image_rectangles.Add(new Image_rectangle(0, 0, (int)(_screen_width * 0.450), (int)(_screen_height * 0.900), _content.Load<Texture2D>("picture's\\secondstage")));
 
             // plant growth stage 3
             Texture_groups.Add("plant_growth_stage_3", new Texture_group((int)(_screen_width * 0.165), (int)(-1 * _screen_height * 0.020), false));
@@ -170,8 +169,6 @@ namespace grow_a_plant
 
                 // add other things that should happen when a button is pressed, like adding animations
             }
-
-            // add the updatating of the water and fertilize bars
         }
 
         private void update_clock(TimeSpan time_of_day)
