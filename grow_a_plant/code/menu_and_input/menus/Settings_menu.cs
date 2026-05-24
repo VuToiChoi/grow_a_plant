@@ -10,7 +10,7 @@ namespace grow_a_plant
     {
         public Settings_menu() : base(new Menu_command_package[] { new Menu_command_package(Menu_command_package.command_type.return_to_game), 
                                                                    new Menu_command_package(Menu_command_package.command_type.save_game),
-                                                                   new Menu_command_package(Menu_command_package.command_type.load_game),
+                                                                   new Menu_command_package(Menu_command_package.command_type.open_tutorial),
                                                                    new Menu_command_package(Menu_command_package.command_type.exit_game)
                                                                  })
         {
