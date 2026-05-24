@@ -51,18 +51,22 @@ namespace grow_a_plant
 
         public bool update(float delta_game_time, TimeSpan time_of_day, long day_count)
         {
+            // update plant
             _plant_handler.update_plant_info(delta_game_time);
 
+            // update the menus based on input and get the information about what it looks like right now (if a button is pressed or what option in a menu is selected)
             Menu_handler_information menu_handler_information = _menu_handler_interface.update();
 
+            // if a button is pressed, conduct the action related to that button
             if (menu_handler_information.Button_is_pressed)
             {
                 conduct_action(menu_handler_information.Selected_button.Command);
             }
 
+            // create the information needed to update the texture screen and update it
             Texture_screen_information texture_screen_information = new Texture_screen_information(_menu_command_package_command_type_to_button_command_package_dictionary[menu_handler_information.Selected_button.Command], menu_handler_information.Button_is_pressed, _plant_handler.get_plant().Water_level, _plant_handler.get_plant().Fertilize_level, (int)_plant_handler.get_plant().Current_growth_stage, time_of_day, (int)day_count);
-
             _user_interface_interface.update(texture_screen_information);
+
 
             if (_should_exit_game)
             {
