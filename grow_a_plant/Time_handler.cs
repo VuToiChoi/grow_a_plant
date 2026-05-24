@@ -3,7 +3,7 @@ using System;
 
 namespace grow_a_plant
 {
-    internal class Time_handler
+     public class Time_handler
     {
         // 24 in-game hours == 12 real minutes -> multiplier = 86400 / 720 = 120 game-seconds per real-second
         public const double game_seconds_per_real_second = 12000.0;
