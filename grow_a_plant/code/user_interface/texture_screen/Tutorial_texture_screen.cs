@@ -20,6 +20,9 @@ namespace grow_a_plant.code.user_interface.texture_screen
             int _screen_width = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
             int _screen_height = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
 
+            // in the future this would be done in a better way, probably with a json file or something, also perhaps with some subclasses. This is just a quick way to get everything in place for the first version of the game, and it works fine for now, but it becomes a bit messy if I keep adding more texture groups like this.
+
+
             // background
             Texture_groups.Add("background", new Texture_group(0, 0, true));
             Texture_groups["background"].Image_rectangles.Add(new Image_rectangle(0, 0, _screen_width, (int)(_screen_height), _content.Load<Texture2D>("picture's\\tutorialbackground")));

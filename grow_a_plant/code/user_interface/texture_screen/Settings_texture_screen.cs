@@ -18,8 +18,7 @@ namespace grow_a_plant
             int _screen_height = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
 
 
-            // in the future this would be done in a better way, probably with a json file or something, but for now this is fine
-            // the _screen_width and _screen_height could be implemented in the future
+            // in the future this would be done in a better way, probably with a json file or something, also perhaps with some subclasses. This is just a quick way to get everything in place for the first version of the game, and it works fine for now, but it becomes a bit messy if I keep adding more texture groups like this.
 
 
 
@@ -69,7 +68,7 @@ namespace grow_a_plant
             Texture_groups["start_menu"].Text_rectangles.Add(new Text_rectangle("Settings", (int)(start_menu_width * 0.830), (int)(start_menu_height * 0.635), (int)(start_menu_width * 0.065), (int)(start_menu_height * 0.116)));
 
 
-            //settings menus
+            // settings menus (there is one texture_group for each case where one of the buttons are selected)
             int settings_menu_width = (int)(_screen_width * 0.259);
             int settings_menu_height = (int)(_screen_height * 0.672);
 
