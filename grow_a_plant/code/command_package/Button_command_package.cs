@@ -16,11 +16,11 @@ namespace grow_a_plant
             settings,
             return_to_game,
             save_game,
-            load_game,
             exit_game,
             next_tutorial_slide,
             previous_tutorial_slide,
-            exit_tutorial
+            exit_tutorial,
+            open_tutorial
         }
 
         public Button_command_package(command_type command) : base(command)
