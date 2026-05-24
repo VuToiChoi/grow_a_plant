@@ -14,13 +14,18 @@ namespace grow_a_plant
     {
         bool _should_exit_game = false;
 
-        Menu_handler_interface _menu_handler_interface;
+        Data_handler _data_handler;
+
+        Time_handler _time_handler;
 
         Plant_handler _plant_handler;
 
         Sound_handler _sound_handler;
 
+        Menu_handler_interface _menu_handler_interface;
+
         User_interface_interface _user_interface_interface;
+
 
         Dictionary<Menu_command_package.command_type, Button_command_package> _menu_command_package_command_type_to_button_command_package_dictionary = new Dictionary<Menu_command_package.command_type, Button_command_package>
         {
@@ -38,13 +43,17 @@ namespace grow_a_plant
 
         };
 
-        public Main_handler(Plant plant, Weather_handler weather_handler, float offline_game_seconds, SpriteBatch sprite_batch, SpriteFont sprite_font, GraphicsDevice graphics_device, ContentManager content)
+        public Main_handler(Data_handler data_handler, Time_handler time_handler, Plant plant, Weather_handler weather_handler, float offline_game_seconds, SpriteBatch sprite_batch, SpriteFont sprite_font, GraphicsDevice graphics_device, ContentManager content)
         {
-            _menu_handler_interface = new Menu_handler_interface();
+            _data_handler =  data_handler;
+
+            _time_handler = time_handler;
 
             _plant_handler = new Plant_handler(plant, weather_handler, offline_game_seconds);
 
             _sound_handler = new Sound_handler(content);
+
+            _menu_handler_interface = new Menu_handler_interface();
 
             _user_interface_interface = new User_interface_interface(sprite_batch, sprite_font, graphics_device, content);
         }
@@ -87,7 +96,10 @@ namespace grow_a_plant
             }
             else if (command == Menu_command_package.command_type.save_game)
             {
-                // save game
+                _data_handler.save_plant_data(_plant_handler.get_plant());
+                var state = _time_handler.get_save_state();
+                _data_handler.save_time_state(state.last_saved_utc_ticks, state.day_count, state.time_of_day_seconds);
+
             }
             else if (command == Menu_command_package.command_type.open_tutorial)
             {
