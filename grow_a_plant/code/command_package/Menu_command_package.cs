@@ -12,7 +12,6 @@ namespace grow_a_plant
         {
             return_to_game,
             save_game,
-            load_game,
             exit_game,
             water,
             open_log,
@@ -21,6 +20,7 @@ namespace grow_a_plant
             next_tutorial_slide,
             previous_tutorial_slide,
             exit_tutorial,
+            open_tutorial,
             none
         }
 
