@@ -226,19 +226,19 @@ namespace grow_a_plant
 
         private void update_growth_stage(int growth_stage)
         {
-            if (growth_stage == 1)
+            if (growth_stage <= 0)
             {
                 Texture_groups["plant_growth_stage_1"].Is_visible = true;
                 Texture_groups["plant_growth_stage_2"].Is_visible = false;
                 Texture_groups["plant_growth_stage_3"].Is_visible = false;
             }
-            else if (growth_stage == 2)
+            else if (growth_stage == 1)
             {
                 Texture_groups["plant_growth_stage_1"].Is_visible = false;
                 Texture_groups["plant_growth_stage_2"].Is_visible = true;
                 Texture_groups["plant_growth_stage_3"].Is_visible = false;
             }
-            else
+            else if (growth_stage >= 2)
             {
                 Texture_groups["plant_growth_stage_1"].Is_visible = false;
                 Texture_groups["plant_growth_stage_2"].Is_visible = false;
