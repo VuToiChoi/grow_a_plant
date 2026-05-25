@@ -17,9 +17,7 @@ namespace grow_a_plant
         private Data_handler _data_handler;
         private Time_handler _time_handler;
         private Weather_handler _weather_handler;
-        private Sound_handler _soundHandler;
         private Main_handler _main_handler;
-        private KeyboardState _prevKeyState;
 
         public Game1()
         {
@@ -35,7 +33,6 @@ namespace grow_a_plant
         {
             _graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
-            _prevKeyState = Keyboard.GetState();
 
             // Save on exit
             this.Exiting += on_exiting;
@@ -66,7 +63,7 @@ namespace grow_a_plant
             float offline_game_seconds = _time_handler.get_offline_game_seconds(last_saved_ticks);
 
 
-            _main_handler = new Main_handler(plant, _weather_handler, offline_game_seconds, _spriteBatch, _font, GraphicsDevice, Content);
+            _main_handler = new Main_handler(_data_handler, _time_handler, plant, _weather_handler, offline_game_seconds, _spriteBatch, _font, GraphicsDevice, Content);
         }
 
         protected override void Update(GameTime gameTime)
