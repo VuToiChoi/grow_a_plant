@@ -40,8 +40,15 @@ Alla:
 - Användarmanual (beskrivning)
 
 ## Beskrivning
+Vi gjorde det för att vi behövde ett projekt att arbeta med och det var en lite kul spelidé.
+
+Det är ett spel där man ska få en planta att växa. Det är tänkt att plantan ska växa hela tiden även när spelet är avstängt. I den här första versionen som vi har skapat av spelet går tiden 12000 gånger snabbare än verkligheten bara för att man ska kunna testa lite saker, i den slutliga versionen ska tiden gå lika snabbt som i verkligeten. 
+
+Det finns många saker man kan lägga till i framtiden, till exemepel en shop, olika plantor, att plantan kan dö.
+
 Dokumentation om användarmanual:
 https://docs.google.com/document/d/1qk2RD6STzAyNpvqqI8ktYnp2ClUEkxt66Yw2WBcW3-Q/edit?tab=t.0
+https://docs.google.com/document/d/1BGNSHgj6Q38nHhx41mHgp9UTXvw39IjgpWv9yP6Jg9w/edit?tab=t.0#heading=h.21t5txwws5gg
 
 ## Kom igång
 
